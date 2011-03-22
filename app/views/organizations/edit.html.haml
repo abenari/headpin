@@ -1,0 +1,27 @@
+#orgs.grid_3.actionsidebar
+  %dl
+    %dt #{_("Actions")}
+  %dd.delete
+    %span
+    = link_to _("Delete"), { :controller => "organizations", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@organization.name
+
+
+.grid_13#main
+  %h2
+    = @organization.name
+  = form_for @organization, :url => {:action => "update",  :controller => "organizations"},  :method => "put" do |f|
+    .grid_16
+      %fieldset.clearfix
+        %b
+          %label.grid_5 #{_("Description")}:
+        .grid_7
+          = f.text_area :description, :class=>'grid_6'
+      %fieldset.clearfix
+        %b
+          %label.grid_5 #{_("Owner")}:
+        .grid_7
+          %select{:disabled => true, :class => 'grid_5'}
+            %option #{_("Select")} #{_("Owner")}
+          %button.submit.linkbutton.grid_1 #{_("New")}
+    .grid_12
+      = f.submit "#{_("Update")}", :class => "submit dialogbutton", :style=>"float:right;"

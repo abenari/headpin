@@ -1,0 +1,16 @@
+%h1 #{_("Create Organization")}
+= form_tag organizations_path, :method => "post" do |f|
+  .grid_16
+    %fieldset.clearfix
+      %b
+        %label.grid_5 #{_("Name")}:
+      .grid_7
+        = text_field_tag :name, params[:name], :class=>'grid_6'
+    %fieldset.clearfix
+      %b
+        %label.grid_5 #{_("Description")}:
+      .grid_7
+        = text_area_tag :description, params[:description], :class=>'grid_6'
+  .grid_12
+    = submit_tag "#{_('Create')}", :class => "submit dialogbutton", :style=>"float:right;"
+    %button.formbutton{:disabled => true, :style=>"float:right;"} #{_("Reset")}

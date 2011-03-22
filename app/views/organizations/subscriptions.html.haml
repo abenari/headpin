@@ -1,0 +1,30 @@
+
+%h3 Manage Content Providers
+#providers
+  .grid_13#provider
+    %nav.subsubnav
+      = render_navigation(:expand_all => true, :level => 3)
+    %h4 Current Subscriptions
+    %table
+      %thead
+        %th Name
+        %th Consumed Subscriptions
+        %th Quantity Available
+      - @subscriptions.each do |sub|
+        %tr{:class => cycle(nil, 'alt')}
+          %td
+            = sub["productName"]
+          %td
+            = sub["consumed"]
+          %td
+            = sub["quantity"]
+-#    %h4 Upload Subscription Manifest
+-#    = form_for @organization, :html => {:multipart => true, :method => :post}, :url => subscriptions_organization_path do |f|
+-#      %fieldset
+-#        = f.label :upload, "Specify Local Manifest"
+-#        = f.file_field :contents
+-#        .actions
+-#          = f.submit "Upload"
+
+
+  

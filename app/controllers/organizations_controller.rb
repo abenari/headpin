@@ -50,8 +50,7 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-    @organization = Kalpana::Glue::Organization.first :name => params[:id]
-    @env_choices =  @organization.environments.collect {|p| [ p.name, p.name ]}
+    @organization = @cp.get_owner(params[:id])
   end
 
   def update

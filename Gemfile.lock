@@ -29,16 +29,31 @@ GEM
       activesupport (= 3.0.3)
     activesupport (3.0.3)
     arel (2.0.7)
+    bson_ext (1.2.0)
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    fast_gettext (0.5.10)
+    gettext_i18n_rails (0.2.14)
+      fast_gettext
+    haml (3.0.25)
+    haml-rails (0.3.4)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      haml (~> 3.0)
+      railties (~> 3.0)
     i18n (0.5.0)
+    i18n_data (0.2.7)
+      activesupport
+    json (1.5.1)
+    macaddr (1.0.0)
     mail (2.2.15)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    oauth (0.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -59,17 +74,55 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    redis (2.1.1)
+    redis-namespace (0.10.0)
+      redis (< 3.0.0)
+    redisk (0.2.2)
+      redis (>= 0.1.1)
+      redis-namespace (>= 0.1.0)
+    resque (1.8.2)
+      redis
+      redis-namespace
+      sinatra (>= 0.9.2)
+      vegas (>= 0.1.2)
+    resque-status (0.2.1)
+      redisk (>= 0.2.1)
+      resque (>= 1.3.1)
+      uuid (>= 2.0.2)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
+    simple-navigation (3.1.0)
+      activesupport (>= 2.3.2)
+    sinatra (1.1.2)
+      rack (~> 1.1)
+      tilt (~> 1.2)
     sqlite3 (1.3.3)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
     thor (0.14.6)
+    tilt (1.2.2)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    uuid (2.3.1)
+      macaddr (~> 1.0)
+    vegas (0.1.8)
+      rack (>= 1.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bson_ext (>= 1.0.4)
+  gettext_i18n_rails
+  haml (>= 3.0.16)
+  haml-rails
+  i18n_data (>= 0.2.6)
+  json
+  oauth
   rails (= 3.0.3)
+  resque
+  resque-status
+  rest-client
+  simple-navigation (= 3.1.0)
   sqlite3-ruby

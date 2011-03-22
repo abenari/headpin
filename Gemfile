@@ -2,10 +2,32 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 
+gem 'json'
+gem 'resque'
+gem 'resque-status', :require => 'resque/status'
+gem 'rest-client', :require => 'rest_client'
+#gem 'jammit'
+gem 'sqlite3-ruby', :require => 'sqlite3'
+#gem 'pg'
+gem 'bson_ext', '>= 1.0.4'
+#gem 'rails_warden'
+#gem 'net-ldap'
+gem 'oauth'
+# Stuff for view/display/frontend
+gem 'haml', '>= 3.0.16'
+gem 'haml-rails'
+#gem 'compass', '>= 0.10.5'
+#gem 'compass-960-plugin', '>= 0.10.0'
+gem 'simple-navigation', '3.1.0'
+# Stuff for i18n
+gem 'gettext_i18n_rails'
+gem 'i18n_data', '>= 0.2.6', :require => 'i18n_data'
+
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', :require => 'sqlite3'
+#gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

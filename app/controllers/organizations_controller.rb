@@ -98,8 +98,7 @@ class OrganizationsController < ApplicationController
     # We default to none imported until we can properly poll Candlepin for status of the import
     @subscriptions = [{'productName' => _("None Imported"), "consumed" => "0", "quantity" => "0"}]
     begin
-      # Use current owner?
-      @subscriptions = Candlepin::Owner.pools @organization['key']
+      @subscriptions = @cp.list_pools({:owner => @organization['id']})
     rescue Exception => error
       Rails.logger.error "Error fetching subscriptions from Candlepin"
       Rails.logger.error error

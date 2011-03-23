@@ -66,7 +66,7 @@ class OrganizationsController < ApplicationController
 
   def destroy
     begin
-      Kalpana::Glue::Organization.destroy params[:id]
+      @cp.delete_owner(params[:id])
       flash[:notice] = N_("Organization '#{params[:id]}' was deleted.")
     rescue Exception => error
       errors error.to_s

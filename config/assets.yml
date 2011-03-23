@@ -1,0 +1,39 @@
+embed_assets: on
+javascript_compressor: yui
+
+javascripts:
+  common:
+    - public/javascripts/jquery-1.4.2.js
+    - public/javascripts/jquery-ui-1.8.7.custom/js/jquery-ui-1.8.7.custom.min.js
+    - public/javascripts/jquery.hoverIntent.js
+    - public/javascripts/jquery-ujs/rails.js
+    - public/javascripts/kalpana.js
+  content:
+    - public/javascripts/content.js
+    - public/javascripts/jquery.periodicalupdater.js
+  kalpana_client:
+    - public/javascripts/kalpana_client.js
+  environment:
+    - public/javascripts/environment.js
+  changeset:
+    - public/javascripts/changeset.js
+  systems:
+    - public/javascripts/systems.js
+  panel:
+    - public/javascripts/jquery.ba-resize.js
+    - public/javascripts/panel.js
+  provider:
+    - public/javascripts/provider.js
+  edit:
+    - public/javascripts/jquery.jeditable.js
+    - public/javascripts/jeditable_helpers.js
+stylesheets:
+  common:
+    - public/javascripts/jquery-ui-1.8.7.custom/css/ui-lightness/jquery-ui-1.8.7.custom.css
+    - public/stylesheets/compiled/kalpana.css
+    - public/stylesheets/jquery.loadmask.css
+    - public/stylesheets/compiled/grid.css
+    - public/stylesheets/compiled/screen.css
+    - public/stylesheets/compiled/text.css
+    - public/stylesheets/compiled/ie.css
+  empty:

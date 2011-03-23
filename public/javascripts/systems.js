@@ -1,0 +1,5 @@
+var system = (function(){
+    return {
+
+    };
+})();

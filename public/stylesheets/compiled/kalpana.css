@@ -1,0 +1,2322 @@
+@charset "UTF-8";
+/* 960 Grid System ~ Core CSS.
+ * Learn more ~ http://960.gs/
+ * *
+ * Licensed under GPL and MIT. */
+/* line 14, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 17, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+/* line 19, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 21, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 23, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 25, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 96, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 27, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-0.10.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 10, ../../../app/stylesheets/grid.scss */
+.container_12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 33, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_1, .container_12 .grid_2, .container_12 .grid_3, .container_12 .grid_4, .container_12 .grid_5, .container_12 .grid_6, .container_12 .grid_7, .container_12 .grid_8, .container_12 .grid_9, .container_12 .grid_10, .container_12 .grid_11, .container_12 .grid_12 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_1 {
+  width: 60px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_2 {
+  width: 140px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_3 {
+  width: 220px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_4 {
+  width: 300px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_5 {
+  width: 380px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_6 {
+  width: 460px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_7 {
+  width: 540px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_8 {
+  width: 620px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_9 {
+  width: 700px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_10 {
+  width: 780px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_11 {
+  width: 860px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .grid_12 {
+  width: 940px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_1 {
+  padding-left: 80px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_2 {
+  padding-left: 160px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_3 {
+  padding-left: 240px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_4 {
+  padding-left: 320px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_5 {
+  padding-left: 400px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_6 {
+  padding-left: 480px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_7 {
+  padding-left: 560px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_8 {
+  padding-left: 640px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_9 {
+  padding-left: 720px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_10 {
+  padding-left: 800px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .prefix_11 {
+  padding-left: 880px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_1 {
+  padding-right: 80px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_2 {
+  padding-right: 160px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_3 {
+  padding-right: 240px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_4 {
+  padding-right: 320px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_5 {
+  padding-right: 400px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_6 {
+  padding-right: 480px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_7 {
+  padding-right: 560px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_8 {
+  padding-right: 640px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_9 {
+  padding-right: 720px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_10 {
+  padding-right: 800px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .suffix_11 {
+  padding-right: 880px;
+}
+/* line 56, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .alpha {
+  margin-left: 0;
+}
+/* line 58, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .omega {
+  margin-right: 0;
+}
+/* line 71, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_1, .container_12 .push_2, .container_12 .push_3, .container_12 .push_4, .container_12 .push_5, .container_12 .push_6, .container_12 .push_7, .container_12 .push_8, .container_12 .push_9, .container_12 .push_10, .container_12 .push_11, .container_12 .push_12,
+.container_12 .pull_1, .container_12 .pull_2, .container_12 .pull_3, .container_12 .pull_4, .container_12 .pull_5, .container_12 .pull_6, .container_12 .pull_7, .container_12 .pull_8, .container_12 .pull_9, .container_12 .pull_10, .container_12 .pull_11, .container_12 .pull_12 {
+  position: relative;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_1 {
+  left: 80px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_1 {
+  left: -80px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_2 {
+  left: 160px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_2 {
+  left: -160px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_3 {
+  left: 240px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_3 {
+  left: -240px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_4 {
+  left: 320px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_4 {
+  left: -320px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_5 {
+  left: 400px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_5 {
+  left: -400px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_6 {
+  left: 480px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_6 {
+  left: -480px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_7 {
+  left: 560px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_7 {
+  left: -560px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_8 {
+  left: 640px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_8 {
+  left: -640px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_9 {
+  left: 720px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_9 {
+  left: -720px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_10 {
+  left: 800px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_10 {
+  left: -800px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_11 {
+  left: 880px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_11 {
+  left: -880px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .push_12 {
+  left: 960px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_12 .pull_12 {
+  left: -960px;
+}
+
+/* line 14, ../../../app/stylesheets/grid.scss */
+.container_16 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 33, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_1, .container_16 .grid_2, .container_16 .grid_3, .container_16 .grid_4, .container_16 .grid_5, .container_16 .grid_6, .container_16 .grid_7, .container_16 .grid_8, .container_16 .grid_9, .container_16 .grid_10, .container_16 .grid_11, .container_16 .grid_12, .container_16 .grid_13, .container_16 .grid_14, .container_16 .grid_15, .container_16 .grid_16 {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_1 {
+  width: 40px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_2 {
+  width: 100px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_3 {
+  width: 160px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_4 {
+  width: 220px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_5 {
+  width: 280px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_6 {
+  width: 340px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_7 {
+  width: 400px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_8 {
+  width: 460px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_9 {
+  width: 520px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_10 {
+  width: 580px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_11 {
+  width: 640px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_12 {
+  width: 700px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_13 {
+  width: 760px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_14 {
+  width: 820px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_15 {
+  width: 880px;
+}
+/* line 36, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .grid_16 {
+  width: 940px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_1 {
+  padding-left: 60px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_2 {
+  padding-left: 120px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_3 {
+  padding-left: 180px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_4 {
+  padding-left: 240px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_5 {
+  padding-left: 300px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_6 {
+  padding-left: 360px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_7 {
+  padding-left: 420px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_8 {
+  padding-left: 480px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_9 {
+  padding-left: 540px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_10 {
+  padding-left: 600px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_11 {
+  padding-left: 660px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_12 {
+  padding-left: 720px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_13 {
+  padding-left: 780px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_14 {
+  padding-left: 840px;
+}
+/* line 44, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .prefix_15 {
+  padding-left: 900px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_1 {
+  padding-right: 60px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_2 {
+  padding-right: 120px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_3 {
+  padding-right: 180px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_4 {
+  padding-right: 240px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_5 {
+  padding-right: 300px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_6 {
+  padding-right: 360px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_7 {
+  padding-right: 420px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_8 {
+  padding-right: 480px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_9 {
+  padding-right: 540px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_10 {
+  padding-right: 600px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_11 {
+  padding-right: 660px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_12 {
+  padding-right: 720px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_13 {
+  padding-right: 780px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_14 {
+  padding-right: 840px;
+}
+/* line 52, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .suffix_15 {
+  padding-right: 900px;
+}
+/* line 56, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .alpha {
+  margin-left: 0;
+}
+/* line 58, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .omega {
+  margin-right: 0;
+}
+/* line 71, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_1, .container_16 .push_2, .container_16 .push_3, .container_16 .push_4, .container_16 .push_5, .container_16 .push_6, .container_16 .push_7, .container_16 .push_8, .container_16 .push_9, .container_16 .push_10, .container_16 .push_11, .container_16 .push_12, .container_16 .push_13, .container_16 .push_14, .container_16 .push_15, .container_16 .push_16,
+.container_16 .pull_1, .container_16 .pull_2, .container_16 .pull_3, .container_16 .pull_4, .container_16 .pull_5, .container_16 .pull_6, .container_16 .pull_7, .container_16 .pull_8, .container_16 .pull_9, .container_16 .pull_10, .container_16 .pull_11, .container_16 .pull_12, .container_16 .pull_13, .container_16 .pull_14, .container_16 .pull_15, .container_16 .pull_16 {
+  position: relative;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_1 {
+  left: 60px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_1 {
+  left: -60px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_2 {
+  left: 120px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_2 {
+  left: -120px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_3 {
+  left: 180px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_3 {
+  left: -180px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_4 {
+  left: 240px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_4 {
+  left: -240px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_5 {
+  left: 300px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_5 {
+  left: -300px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_6 {
+  left: 360px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_6 {
+  left: -360px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_7 {
+  left: 420px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_7 {
+  left: -420px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_8 {
+  left: 480px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_8 {
+  left: -480px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_9 {
+  left: 540px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_9 {
+  left: -540px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_10 {
+  left: 600px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_10 {
+  left: -600px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_11 {
+  left: 660px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_11 {
+  left: -660px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_12 {
+  left: 720px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_12 {
+  left: -720px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_13 {
+  left: 780px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_13 {
+  left: -780px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_14 {
+  left: 840px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_14 {
+  left: -840px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_15 {
+  left: 900px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_15 {
+  left: -900px;
+}
+/* line 75, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .push_16 {
+  left: 960px;
+}
+/* line 77, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_grid.sass */
+.container_16 .pull_16 {
+  left: -960px;
+}
+
+/* line 22, ../../../app/stylesheets/grid.scss */
+.two-column {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+/* line 27, ../../../app/stylesheets/grid.scss */
+.two-column #header,
+.two-column #footer,
+.two-column #sidebar,
+.two-column #main-content {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/* line 30, ../../../app/stylesheets/grid.scss */
+.two-column #header, .two-column #footer {
+  width: 940px;
+}
+/* line 33, ../../../app/stylesheets/grid.scss */
+.two-column #sidebar {
+  width: 300px;
+}
+/* line 36, ../../../app/stylesheets/grid.scss */
+.two-column #main-content {
+  width: 620px;
+}
+
+/* colors */
+/* 960 Grid System ~ Text CSS.
+ * Learn more ~ http://960.gs/
+ * *
+ * Licensed under GPL and MIT. */
+/* line 4, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+body {
+  font: 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+
+/* line 6, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+a:focus {
+  outline: 1px dotted invert;
+}
+
+/* line 8, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+hr {
+  border-color: #cccccc;
+  border-style: solid;
+  border-width: 1px 0 0;
+  clear: both;
+  height: 0;
+}
+
+/* line 14, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+h1 {
+  font-size: 25px;
+}
+
+/* line 16, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+h2 {
+  font-size: 23px;
+}
+
+/* line 18, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+h3 {
+  font-size: 21px;
+}
+
+/* line 20, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+h4 {
+  font-size: 19px;
+}
+
+/* line 22, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+h5 {
+  font-size: 17px;
+}
+
+/* line 24, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+h6 {
+  font-size: 15px;
+}
+
+/* line 26, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+ol {
+  list-style: decimal;
+}
+
+/* line 28, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+ul {
+  list-style: square;
+}
+
+/* line 30, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+li {
+  margin-left: 30px;
+}
+
+/* line 32, ../../../../../../../../usr/lib/ruby/gems/1.8/gems/compass-960-plugin-0.10.0/stylesheets/960/_text.sass */
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset {
+  margin-bottom: 20px;
+}
+
+/* line 10, ../../../app/stylesheets/text.scss */
+li {
+  margin-left: 0;
+}
+
+/* line 14, ../../../app/stylesheets/text.scss */
+fieldset {
+  margin-bottom: 10px;
+}
+
+/* line 7, ../../../app/stylesheets/kalpana.scss */
+a {
+  color: #03689e;
+  text-decoration: none;
+}
+/* line 10, ../../../app/stylesheets/kalpana.scss */
+a:hover, a:focus {
+  color: #0da8fa;
+  text-decoration: underline;
+}
+/* line 14, ../../../app/stylesheets/kalpana.scss */
+a:active {
+  color: #01263a;
+}
+
+/* TEXT ENTRIES */
+/* line 20, ../../../app/stylesheets/kalpana.scss */
+input, textarea {
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  border: 1px solid #aaaaaa;
+  background-color: #f0f0f0;
+  background: #f0f0f0 url(/images/input-bg.png) repeat-x 0 0;
+  padding: 4px;
+  margin: 0;
+}
+/* line 27, ../../../app/stylesheets/kalpana.scss */
+input:focus, textarea:focus {
+  border-width: 2px;
+  padding: 3px;
+  background-color: #fff;
+  outline: none;
+}
+/* line 33, ../../../app/stylesheets/kalpana.scss */
+input.disabled, input[disabled], textarea.disabled, textarea[disabled] {
+  opacity: 0.4;
+}
+
+/* line 37, ../../../app/stylesheets/kalpana.scss */
+input[type="search"] {
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  padding: 4px 30px 4px 10px;
+}
+/* line 40, ../../../app/stylesheets/kalpana.scss */
+input[type="search"]:focus {
+  padding: 3px 29px 3px 9px;
+}
+
+/* CHECKBOXES and RADIOBUTTONS*/
+/* line 45, ../../../app/stylesheets/kalpana.scss */
+input[type="checkbox"], input[type="radio"] {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 2px;
+}
+/* line 50, ../../../app/stylesheets/kalpana.scss */
+input[type="checkbox"]:focus, input[type="radio"]:focus {
+  border-width: 1px;
+  padding: 1px;
+}
+
+/* FILE INPUT */
+/* line 57, ../../../app/stylesheets/kalpana.scss */
+input[type="file"] {
+  /* FIXME */
+}
+
+/* compensate grid_* for padding+border of the inputboxes and textareas */
+/* line 62, ../../../app/stylesheets/kalpana.scss */
+input.grid_1 {
+  width: 30px !important;
+}
+
+/* line 63, ../../../app/stylesheets/kalpana.scss */
+input.grid_2 {
+  width: 90px !important;
+}
+
+/* line 64, ../../../app/stylesheets/kalpana.scss */
+.grid_2 input[type="file"] {
+  width: 90px;
+}
+
+/* line 65, ../../../app/stylesheets/kalpana.scss */
+input.grid_3 {
+  width: 150px !important;
+}
+
+/* line 66, ../../../app/stylesheets/kalpana.scss */
+.grid_3 input[type="search"] {
+  width: 118px;
+}
+
+/* line 67, ../../../app/stylesheets/kalpana.scss */
+input.grid_4 {
+  width: 210px !important;
+}
+
+/* line 68, ../../../app/stylesheets/kalpana.scss */
+input.grid_5 {
+  width: 270px !important;
+}
+
+/* BUTTONS */
+/* line 72, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'], button, .button {
+  font-family: "Liberation Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+  /* for some reason ff3.6 won't inherit from body */
+  font-size: 10px;
+  display: inline-block;
+  background: -moz-linear-gradient(top, #f9f9f9, #f0f0f0, #e5e5e5, #e9e9e9);
+  background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), color-stop(0.9, #e5e5e5), to(#e9e9e9));
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border: 1px solid #aaaaaa;
+  color: #221e1f;
+  cursor: pointer;
+  margin: 4px;
+  padding: 4px 12px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow: 0 1px 0 white;
+  -moz-text-shadow: 0 1px 0 white;
+  -webkit-text-shadow: 0 1px 0 white;
+  min-height: 14px;
+}
+/* line 87, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'] .nomargin, button .nomargin, .button .nomargin {
+  margin: 0;
+}
+/* line 90, ../../../app/stylesheets/kalpana.scss */
+input[type='submit']:hover, button:hover, .button:hover {
+  background: -moz-linear-gradient(top, white, white, #cfcfcf);
+  background: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(0.6, white), to(#cfcfcf));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  color: black;
+}
+/* line 97, ../../../app/stylesheets/kalpana.scss */
+input[type='submit']:active, button:active, .button:active {
+  background: -moz-linear-gradient(top, #c2c3c0, #e4e5e4);
+  background: -webkit-gradient(linear, left top, left bottom, from(#c2c3c0), to(#e4e5e4));
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  padding: 5px 12px 3px;
+  text-decoration: none;
+}
+/* line 106, ../../../app/stylesheets/kalpana.scss */
+input[type='submit']:focus, button:focus, .button:focus {
+  text-decoration: none;
+  color: #000;
+  border-width: 2px;
+  padding: 3px 11px;
+}
+/* line 112, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].dialogbutton, button.dialogbutton, .button.dialogbutton {
+  float: right;
+  margin-left: 3px;
+  margin: 40px 4px 4px;
+}
+/* line 117, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].formbutton, button.formbutton, .button.formbutton {
+  display: inline-block;
+  margin-left: 3px;
+  margin: 40px 4px 4px;
+}
+/* line 122, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].actionlink, button.actionlink, .button.actionlink {
+  margin: 40px 0 0;
+}
+/* line 125, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].disabled, input[type='submit'][disabled], button.disabled, button[disabled], .button.disabled, .button[disabled] {
+  cursor: default;
+  background: transparent;
+  opacity: 0.4;
+  /* @include no-box-shadow; */
+}
+/* line 130, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].disabled:hover, input[type='submit'][disabled]:hover, button.disabled:hover, button[disabled]:hover, .button.disabled:hover, .button[disabled]:hover {
+  background: transparent;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+/* line 135, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].iconbutton, button.iconbutton, .button.iconbutton {
+  display: inline-block;
+}
+/* line 138, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].tiny, button.tiny, .button.tiny {
+  padding: 4px;
+  margin: 0;
+}
+/* line 141, ../../../app/stylesheets/kalpana.scss */
+input[type='submit'].tiny:active, input[type='submit'].tiny:focus, button.tiny:active, button.tiny:focus, .button.tiny:active, .button.tiny:focus {
+  margin: 0;
+  padding: 3px;
+}
+
+/* line 148, ../../../app/stylesheets/kalpana.scss */
+h1, h2, h3, h4, h5 {
+  color: #333333;
+  font-weight: bold;
+  margin-top: 1em;
+}
+/* line 152, ../../../app/stylesheets/kalpana.scss */
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child {
+  margin-top: 0;
+}
+
+/* line 157, ../../../app/stylesheets/kalpana.scss */
+h1 {
+  font-size: 140%;
+}
+
+/* line 158, ../../../app/stylesheets/kalpana.scss */
+h2 {
+  font-size: 130%;
+}
+
+/* line 159, ../../../app/stylesheets/kalpana.scss */
+h3 {
+  font-size: 120%;
+}
+/* line 161, ../../../app/stylesheets/kalpana.scss */
+h3.gap {
+  margin-top: 3em;
+}
+
+/* line 165, ../../../app/stylesheets/kalpana.scss */
+h4 {
+  font-size: 110%;
+}
+/* line 167, ../../../app/stylesheets/kalpana.scss */
+h4.legend {
+  margin-bottom: 4px;
+}
+
+/* line 171, ../../../app/stylesheets/kalpana.scss */
+h5 {
+  font-size: 80%;
+}
+
+/* line 173, ../../../app/stylesheets/kalpana.scss */
+.clear {
+  clear: both;
+}
+
+/* line 177, ../../../app/stylesheets/kalpana.scss */
+.wrap {
+  /* wrapper around floated elements */
+  overflow: hidden;
+  margin-bottom: 2em;
+}
+
+/* line 182, ../../../app/stylesheets/kalpana.scss */
+.nomargin {
+  margin: none;
+}
+
+/* text align left */
+/* line 187, ../../../app/stylesheets/kalpana.scss */
+.la {
+  text-align: left;
+}
+
+/* text align right */
+/* line 189, ../../../app/stylesheets/kalpana.scss */
+.ra {
+  text-align: right;
+}
+
+/* text align right */
+/* line 191, ../../../app/stylesheets/kalpana.scss */
+.ca {
+  text-align: center;
+}
+
+/* float  right */
+/* line 193, ../../../app/stylesheets/kalpana.scss */
+.fr {
+  float: right;
+}
+
+/* float left */
+/* line 195, ../../../app/stylesheets/kalpana.scss */
+.fl {
+  float: left;
+}
+
+/* "float", center */
+/* line 197, ../../../app/stylesheets/kalpana.scss */
+.fc {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+/* line 199, ../../../app/stylesheets/kalpana.scss */
+.twocolumn {
+  -moz-column-count: 2;
+  -o-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 10px;
+  -o-column-gap: 10px;
+  -webkit-column-gap: 10px;
+  column-gap: 10px;
+}
+
+/* line 204, ../../../app/stylesheets/kalpana.scss */
+.placeholder {
+  margin-bottom: 2em;
+}
+
+/* line 205, ../../../app/stylesheets/kalpana.scss */
+.disabled {
+  opacity: 0.4;
+}
+
+/* line 206, ../../../app/stylesheets/kalpana.scss */
+.nomargin {
+  margin: 0;
+}
+
+/* line 208, ../../../app/stylesheets/kalpana.scss */
+div, section, fieldset {
+  display: block;
+}
+
+/* TABLES */
+/* line 214, ../../../app/stylesheets/kalpana.scss */
+table {
+  border-collapse: collapse;
+  border: 1px solid #dddddd !important;
+  margin: 10px 0 40px;
+  width: 100%;
+  font-size: 95%;
+}
+/* line 219, ../../../app/stylesheets/kalpana.scss */
+table thead {
+  background-color: #f1f1f1;
+}
+/* line 221, ../../../app/stylesheets/kalpana.scss */
+table thead th {
+  font-size: 95%;
+  padding: 2px 6px;
+  font-family: "FreeWay Bold", FreeWay, Interstate Bold, sans-serif;
+  color: #666666;
+  text-transform: uppercase;
+  border-right: 1px dotted #aaaaaa;
+}
+/* line 228, ../../../app/stylesheets/kalpana.scss */
+table thead th:last-child {
+  border-right: 0 none;
+}
+/* line 232, ../../../app/stylesheets/kalpana.scss */
+table thead th.active.desc {
+  background: white url(/images/order-desc.png) no-repeat center right;
+}
+/* line 235, ../../../app/stylesheets/kalpana.scss */
+table thead th.active.asc {
+  background: white url(/images/order-asc.png) no-repeat center right;
+}
+/* line 239, ../../../app/stylesheets/kalpana.scss */
+table thead th a, table thead th a:hover, table thead th a:active {
+  display: block;
+  margin: 0;
+  color: inherit;
+  text-decoration: none;
+}
+/* line 247, ../../../app/stylesheets/kalpana.scss */
+table td {
+  padding: 4px;
+  vertical-align: top;
+  min-height: 16px;
+}
+/* line 252, ../../../app/stylesheets/kalpana.scss */
+table.noborder {
+  border: none;
+}
+/* line 254, ../../../app/stylesheets/kalpana.scss */
+table.noborder thead {
+  background-color: transparent;
+}
+/* line 256, ../../../app/stylesheets/kalpana.scss */
+table.noborder thead th {
+  border: none;
+}
+/* line 258, ../../../app/stylesheets/kalpana.scss */
+table.noborder thead th span {
+  color: gray;
+}
+/* line 263, ../../../app/stylesheets/kalpana.scss */
+table.noborder td {
+  color: #888;
+}
+/* line 265, ../../../app/stylesheets/kalpana.scss */
+table.noborder td .percentBlock {
+  border: 1px solid #909090;
+  padding: 0;
+  width: 100px;
+  font-size: 9px;
+  text-align: center;
+  color: #555;
+}
+/* line 274, ../../../app/stylesheets/kalpana.scss */
+table.noborder td .percentBlock .gradGreen {
+  background-color: #bfcc29;
+}
+/* line 278, ../../../app/stylesheets/kalpana.scss */
+table.noborder td .min {
+  background: url(/images/arrow-min.png) no-repeat top center;
+  float: left;
+  padding-top: 5px;
+  width: 50%;
+}
+/* line 284, ../../../app/stylesheets/kalpana.scss */
+table.noborder td .max {
+  background: url(/images/arrow-max.png) no-repeat top center;
+  float: right;
+  padding-top: 5px;
+  width: 50%;
+}
+/* line 292, ../../../app/stylesheets/kalpana.scss */
+table.gap {
+  margin-bottom: 7em;
+}
+
+/* line 297, ../../../app/stylesheets/kalpana.scss */
+.action {
+  background: url(/images/icons/action-icons.png) no-repeat 0 0;
+}
+/* line 299, ../../../app/stylesheets/kalpana.scss */
+.action:hover {
+  background: url(/images/icons/action-icons.png) no-repeat 0 0;
+}
+/* line 302, ../../../app/stylesheets/kalpana.scss */
+.action:active {
+  background: url(/images/icons/action-icons.png) no-repeat 0 0;
+}
+
+/* line 307, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar {
+  border-right: 1px solid #d9d9d9;
+  width: 159px !important;
+}
+/* line 310, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar img {
+  margin: 7px 0px 0px 0px;
+}
+/* line 313, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dt {
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #d9d9d9;
+  border-top: 1px solid #d9d9d9;
+  color: #333333;
+  font-family: "FreeWay Bold", FreeWay, Interstate Bold, sans-serif;
+  font-size: 110%;
+  font-weight: bold;
+  margin: 3px 0 20px;
+  padding: 14px 10px 12px;
+  text-transform: uppercase;
+}
+/* line 325, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dd {
+  margin: 0 0 0 10px;
+  font-size: 110%;
+  position: relative;
+}
+/* line 329, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dd a {
+  display: block;
+  padding: 4px 4px 4px 20px;
+}
+/* line 332, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dd a.selected {
+  background: url("/images/actionsidebar-bullet.png") no-repeat left center;
+  font-weight: bold;
+  color: #03689e;
+}
+/* line 338, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dd h5 {
+  margin: 3em 0 .5em 0;
+}
+/* line 340, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dd h5:first-child {
+  margin: 0 0 .5em 0;
+}
+/* line 344, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dd ul {
+  display: block;
+}
+/* line 346, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar dd ul li {
+  display: block;
+  margin: 0;
+  padding: 0 0 0 16px;
+  position: relative;
+}
+/* line 354, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar form.buttononly {
+  display: inline-block;
+}
+/* line 357, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar input[type='submit'].icon {
+  border: none;
+  background: transparent;
+  font-size: 100%;
+  padding: 0;
+}
+/* line 362, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar input[type='submit'].icon:hover {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  color: #03689e;
+}
+/* line 365, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar input[type='submit'].icon:hover[disabled] {
+  color: #000;
+}
+/* line 370, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar span {
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 0;
+  top: 50%;
+  margin-top: -8px;
+  background: url(/images/icons/action-icons.png) no-repeat 0 0;
+}
+/* line 377, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar .edit span {
+  background-position: -16px 0;
+}
+/* line 378, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar .delete span {
+  background-position: -32px 0;
+}
+/* line 379, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar .rename span {
+  background-position: -80px 0;
+}
+/* line 380, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar .copy span {
+  background-position: -48px 0;
+}
+/* line 381, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar .build span {
+  background-position: -64px 0;
+}
+/* line 382, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar .add span {
+  background-position: -48px 0;
+}
+/* line 383, ../../../app/stylesheets/kalpana.scss */
+.actionsidebar label {
+  font-weight: normal;
+}
+
+/* line 389, ../../../app/stylesheets/kalpana.scss */
+.actions span {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  margin: 2px 2px 0px 6px;
+  background: url(/images/icons/action-icons.png) no-repeat 0 0;
+  float: left;
+}
+/* line 396, ../../../app/stylesheets/kalpana.scss */
+.actions span.edit {
+  background-position: -16px 0;
+}
+/* line 397, ../../../app/stylesheets/kalpana.scss */
+.actions span.delete {
+  background-position: -32px 0;
+}
+/* line 398, ../../../app/stylesheets/kalpana.scss */
+.actions span.rename {
+  background-position: -80px 0;
+}
+/* line 399, ../../../app/stylesheets/kalpana.scss */
+.actions span.copy {
+  background-position: -48px 0;
+}
+/* line 400, ../../../app/stylesheets/kalpana.scss */
+.actions span.build {
+  background-position: -64px 0;
+}
+/* line 401, ../../../app/stylesheets/kalpana.scss */
+.actions span.add {
+  background-position: -48px 0;
+}
+/* line 402, ../../../app/stylesheets/kalpana.scss */
+.actions span:first-child {
+  margin-left: 2px;
+}
+/* line 404, ../../../app/stylesheets/kalpana.scss */
+.actions label {
+  font-weight: normal;
+  float: left;
+  border-right: 2px solid #BEBEBE;
+  padding-right: 6px;
+}
+/* line 409, ../../../app/stylesheets/kalpana.scss */
+.actions label:last-child {
+  border-right: none 0;
+}
+
+/* ICONS */
+/* line 417, ../../../app/stylesheets/kalpana.scss */
+img.icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  background: url(/images/icons/statusicons.png) no-repeat 0 0;
+}
+/* line 421, ../../../app/stylesheets/kalpana.scss */
+img.icon.large {
+  width: 48px;
+  height: 16px;
+}
+/* line 424, ../../../app/stylesheets/kalpana.scss */
+img.icon.yes {
+  background-position: -16px 0;
+}
+/* line 425, ../../../app/stylesheets/kalpana.scss */
+img.icon.no {
+  background-position: -32px 0;
+}
+/* line 426, ../../../app/stylesheets/kalpana.scss */
+img.icon.platform {
+  background: url(/images/icons/platformicons.png) no-repeat 0 0;
+}
+/* line 428, ../../../app/stylesheets/kalpana.scss */
+img.icon.platform.rhel {
+  background-position: 0 0;
+}
+
+/* line 435, ../../../app/stylesheets/kalpana.scss */
+#notification > div {
+  padding: 10px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  margin-bottom: 2em;
+}
+/* line 439, ../../../app/stylesheets/kalpana.scss */
+#notification > div ul {
+  display: block;
+  margin: 0;
+}
+/* line 442, ../../../app/stylesheets/kalpana.scss */
+#notification > div ul li {
+  display: block;
+  margin: 0;
+}
+/* line 448, ../../../app/stylesheets/kalpana.scss */
+#notification .success {
+  background-color: #f2f5cc;
+  border: 1px solid #bfcc29;
+}
+/* line 452, ../../../app/stylesheets/kalpana.scss */
+#notification .error {
+  background-color: #ffcccc;
+  border: 1px solid red;
+}
+/* line 456, ../../../app/stylesheets/kalpana.scss */
+#notification .close {
+  display: block;
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0;
+  right: 0;
+  background: url(../../images/icons/close.png) no-repeat 0 0;
+  cursor: pointer;
+}
+
+/* line 466, ../../../app/stylesheets/kalpana.scss */
+ul.block {
+  display: block;
+  margin: 0;
+}
+/* line 469, ../../../app/stylesheets/kalpana.scss */
+ul.block li {
+  display: block;
+  margin: 0;
+}
+
+/* line 475, ../../../app/stylesheets/kalpana.scss */
+#head {
+  background-color: #03689e;
+  border-bottom: 2px solid #70abca;
+  overflow: hidden;
+  text-shadow: 0 1px 0 black;
+  -moz-text-shadow: 0 1px 0 black;
+  -webkit-text-shadow: 0 1px 0 black;
+  /* BUTTONS */
+}
+/* line 479, ../../../app/stylesheets/kalpana.scss */
+#head header {
+  display: block;
+}
+/* line 481, ../../../app/stylesheets/kalpana.scss */
+#head header h1 {
+  text-transform: uppercase;
+  font-size: 110%;
+  color: #fff;
+  margin: 2px 0 4px 0;
+  padding: 6px 0 4px 77px;
+  background: url(/images/rh_logo.png) no-repeat 10px center;
+  position: relative;
+  float: left;
+  height: 16px;
+}
+/* line 491, ../../../app/stylesheets/kalpana.scss */
+#head header h1 img.kp {
+  position: absolute;
+  left: 43px;
+  top: 7px;
+}
+/* line 497, ../../../app/stylesheets/kalpana.scss */
+#head header ul {
+  display: block;
+  float: right;
+  margin: 0 10px 0 0;
+  padding: 8px 0 0;
+}
+/* line 502, ../../../app/stylesheets/kalpana.scss */
+#head header ul li {
+  display: inline-block;
+  margin: 0 5px;
+}
+/* line 505, ../../../app/stylesheets/kalpana.scss */
+#head header ul li.hello {
+  margin-left: 30px;
+}
+/* line 508, ../../../app/stylesheets/kalpana.scss */
+#head header ul li a {
+  color: #fff;
+}
+/* line 516, ../../../app/stylesheets/kalpana.scss */
+#head input[type='submit'], #head button, #head .button {
+  font-family: "Liberation Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 10px;
+  display: inline-block;
+  background: -moz-linear-gradient(top, #059aeb, #035987);
+  background: -webkit-gradient(linear, left top, left bottom, from(#059aeb), to(#035987));
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  border: 0 none;
+  color: #FFF;
+  cursor: pointer;
+  margin: 4px;
+  padding: 4px 12px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow: 0 1px 0 black;
+  -moz-text-shadow: 0 1px 0 black;
+  -webkit-text-shadow: 0 1px 0 black;
+  min-height: 14px;
+}
+/* line 532, ../../../app/stylesheets/kalpana.scss */
+#head input[type='submit'] .nomargin, #head button .nomargin, #head .button .nomargin {
+  margin: 0;
+}
+/* line 535, ../../../app/stylesheets/kalpana.scss */
+#head input[type='submit']:hover, #head button:hover, #head .button:hover {
+  background: -moz-linear-gradient(top, #0fa8fa, #047ab9);
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fa8fa), to(#047ab9));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  color: #fff;
+}
+/* line 542, ../../../app/stylesheets/kalpana.scss */
+#head input[type='submit']:active, #head button:active, #head .button:active {
+  background: -moz-linear-gradient(top, #0fa8fa, #047ab9);
+  background: -webkit-gradient(linear, left top, left bottom, from(#0fa8fa), to(#047ab9));
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  text-decoration: none;
+  text-shadow: 0 2px 2px black;
+  -moz-text-shadow: 0 2px 2px black;
+  -webkit-text-shadow: 0 2px 2px black;
+}
+/* line 551, ../../../app/stylesheets/kalpana.scss */
+#head input[type='submit']:focus, #head button:focus, #head .button:focus {
+  text-decoration: none;
+  color: #FFF;
+}
+/* line 555, ../../../app/stylesheets/kalpana.scss */
+#head input[type='submit'].disabled, #head input[type='submit'][disabled], #head button.disabled, #head button[disabled], #head .button.disabled, #head .button[disabled] {
+  cursor: default;
+  background: transparent;
+  opacity: 0.4;
+  /* @include no-box-shadow; */
+}
+/* line 560, ../../../app/stylesheets/kalpana.scss */
+#head input[type='submit'].disabled:hover, #head input[type='submit'][disabled]:hover, #head button.disabled:hover, #head button[disabled]:hover, #head .button.disabled:hover, #head .button[disabled]:hover {
+  background: transparent;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+/* line 568, ../../../app/stylesheets/kalpana.scss */
+#subheader {
+  background: #a3defd url(/images/subheader-shade.png) repeat-x 0 0;
+  position: relative;
+  min-height: 58px;
+}
+/* line 572, ../../../app/stylesheets/kalpana.scss */
+#subheader #s {
+  font-size: 80%;
+  text-align: right;
+  overflow: hidden;
+  padding: 10px 0 0;
+}
+/* line 577, ../../../app/stylesheets/kalpana.scss */
+#subheader #s p {
+  margin: 0;
+}
+/* line 580, ../../../app/stylesheets/kalpana.scss */
+#subheader #s div {
+  position: relative;
+  margin-bottom: 0;
+}
+/* line 583, ../../../app/stylesheets/kalpana.scss */
+#subheader #s div button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  text-indent: -200em;
+  right: 8px;
+  top: 50%;
+  margin: -8px 0 0;
+  background-position: 0 0;
+  border: none;
+  padding: 0;
+}
+/* line 592, ../../../app/stylesheets/kalpana.scss */
+#subheader #s div button:hover {
+  box-shadow: none;
+  -webkit-shadow: none;
+  -moz-box-shadow: none;
+}
+/* line 598, ../../../app/stylesheets/kalpana.scss */
+#subheader #s div input[type="search"] {
+  border-color: #03689e;
+  width: 80%;
+}
+/* line 603, ../../../app/stylesheets/kalpana.scss */
+#subheader #s a {
+  color: #fff;
+  margin-right: 10px;
+}
+/* line 608, ../../../app/stylesheets/kalpana.scss */
+#subheader hr {
+  /* stroke on the bottom to be overdrawn by tabs */
+  position: absolute;
+  display: block;
+  margin: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  color: #9F9F9F;
+  background-color: #9F9F9F;
+  z-index: 1;
+  border-style: none;
+}
+
+/* line 621, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav {
+  display: block;
+  font-weight: normal;
+  font-family: "FreeWay Bold", FreeWay, Interstate Bold, sans-serif;
+}
+/* line 625, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav > ul {
+  background: #dddddd url(/images/tab-bg.png) repeat-x 0 0;
+  background-position: 0 -140px;
+  border-left: 1px solid  #9F9F9F;
+  border-right: 1px solid  #9F9F9F;
+  border-top: 1px solid  #9F9F9F;
+  bottom: -1px;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  padding: 5px;
+  position: absolute;
+  z-index: 2;
+}
+/* line 638, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav > ul.selected {
+  color: black;
+}
+/* line 641, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav > ul > li {
+  display: block;
+  float: left;
+  margin: 0 10px;
+}
+/* line 645, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav > ul > li > a {
+  display: block;
+  color: rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+}
+/* line 649, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav > ul > li > a:hover, nav.tab_nav > ul > li > a:active {
+  color: rgba(0, 0, 0, 0.7);
+}
+/* line 652, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav > ul > li > a.selected {
+  color: black;
+  text-decoration: underline;
+}
+/* line 657, ../../../app/stylesheets/kalpana.scss */
+nav.tab_nav > ul > li.selected {
+  position: relative;
+  botton: -1px;
+}
+
+/* line 666, ../../../app/stylesheets/kalpana.scss */
+nav {
+  display: block;
+}
+/* line 668, ../../../app/stylesheets/kalpana.scss */
+nav > ul {
+  display: block;
+  padding: 3px;
+}
+/* line 671, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li {
+  display: block;
+  float: left;
+  margin: 0 2px;
+}
+/* line 675, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > a {
+  display: block;
+}
+/* line 677, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > a:hover, nav > ul > li > a:active {
+  color: #0da8fa;
+  text-decoration: none;
+}
+/* line 681, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > a.selected {
+  color: black;
+}
+/* line 685, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li.selected > ul {
+  /* generic selected tabs */
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+}
+/* line 689, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > ul {
+  /* generic background tabs */
+  display: block;
+  margin: 0;
+  background-color: #ddd;
+  overflow: hidden;
+  border-left: 1px solid #9F9F9F;
+  border-right: 1px solid #9F9F9F;
+  border-bottom: 1px solid #9F9F9F;
+}
+/* line 697, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > ul li {
+  /* tab items */
+  font-size: 80%;
+  margin: 0;
+  padding: 0px 8px;
+  text-align: center;
+  font-family: "FreeWay Bold", FreeWay, Interstate Bold, sans-serif;
+  display: block;
+  float: left;
+  max-width: 110px;
+}
+/* line 705, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > ul li a {
+  display: table-cell;
+  vertical-align: middle;
+  height: 38px;
+  /* easy click targets */
+  padding: 2px 6px;
+  margin: 0;
+}
+/* line 712, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > ul li.selected a {
+  color: #000;
+}
+/* line 717, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > ul li.disabled a {
+  color: rgba(0, 0, 0, 0.1);
+  cursor: default;
+}
+/* line 720, ../../../app/stylesheets/kalpana.scss */
+nav > ul > li > ul li.disabled a:hover {
+  text-decoration: none;
+}
+/* line 730, ../../../app/stylesheets/kalpana.scss */
+nav #help {
+  float: right;
+  margin-right: 10px;
+}
+/* line 733, ../../../app/stylesheets/kalpana.scss */
+nav #help a {
+  display: block;
+  color: #fff;
+  cursor: pointer;
+  width: 48px;
+  height: 37px;
+  margin: 20px 0 0;
+  background: url(/images/help-bubble.png) no-repeat 0 0;
+  text-align: center;
+  padding: 8px 0 0;
+}
+/* line 745, ../../../app/stylesheets/kalpana.scss */
+nav.subnav {
+  /* subnavigation */
+  position: relative;
+  background: #888888 url(/images/subnav-bg.png) repeat-x 0 0;
+  /* fallback */
+  border-top: 3px solid #fff;
+  border-bottom: 1px solid #666;
+  overflow: visible;
+  min-height: 6px;
+}
+/* line 752, ../../../app/stylesheets/kalpana.scss */
+nav.subnav > ul {
+  /*
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  */
+  width: 960px;
+  margin: 0 auto;
+  padding: 4px;
+  overflow: visible;
+  height: 22px;
+}
+/* line 763, ../../../app/stylesheets/kalpana.scss */
+nav.subnav > ul li a {
+  height: 20px;
+  cursor: pointer;
+  font-family: "Liberation Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+  text-transform: none;
+  display: inline-block;
+  color: #fff;
+  margin: 2px 6px;
+}
+/* line 771, ../../../app/stylesheets/kalpana.scss */
+nav.subnav > ul li a.selected {
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.9);
+  -moz-text-shadow: 0 2px 2px rgba(0, 0, 0, 0.9);
+  -webkit-text-shadow: 0 2px 2px rgba(0, 0, 0, 0.9);
+  height: 32px;
+  background: url(/images/selected-subnav.png) no-repeat bottom center;
+}
+/* line 780, ../../../app/stylesheets/kalpana.scss */
+nav.subsubnav {
+  /* in page tabs */
+  position: static;
+  overflow: hidden;
+  bottom: inherit;
+  left: inherit;
+  right: inherit;
+  margin-bottom: 2em;
+}
+/* line 787, ../../../app/stylesheets/kalpana.scss */
+nav.subsubnav > ul {
+  display: block;
+}
+/* line 789, ../../../app/stylesheets/kalpana.scss */
+nav.subsubnav > ul li {
+  display: block;
+  float: left;
+}
+/* line 792, ../../../app/stylesheets/kalpana.scss */
+nav.subsubnav > ul li a {
+  cursor: pointer;
+  font-family: "Liberation Sans", "Droid Sans", Helvetica, Arial, sans-serif;
+  text-transform: none;
+  font-weight: normal;
+  color: black;
+  display: block;
+  padding: 6px 12px;
+  margin-right: 10px;
+}
+/* line 800, ../../../app/stylesheets/kalpana.scss */
+nav.subsubnav > ul li a.selected {
+  color: #fff;
+  background-color: #03689e;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+/*end nav*/
+/* color coding for the subnav */
+/* line 812, ../../../app/stylesheets/kalpana.scss */
+#loginpage .subnav {
+  background-color: #a7b40a;
+}
+
+/* line 813, ../../../app/stylesheets/kalpana.scss */
+#dashboard .subnav {
+  background-color: #00a5dd;
+}
+
+/* line 814, ../../../app/stylesheets/kalpana.scss */
+#contents .subnav {
+  background-color: #dddd0d;
+}
+
+/* line 815, ../../../app/stylesheets/kalpana.scss */
+#orgs .subnav {
+  background-color: #d83e40;
+}
+
+/*#contents nav>ul>li>ul>li>a.selected { color: $operationbg; }*/
+/* line 817, ../../../app/stylesheets/kalpana.scss */
+#systems .subnav {
+  background-color: #008489;
+}
+
+/* line 818, ../../../app/stylesheets/kalpana.scss */
+#operations .subnav {
+  background-color: #dddd0d;
+}
+
+/* line 819, ../../../app/stylesheets/kalpana.scss */
+#dashboard .subnav > ul > li a.selected {
+  background: url(/images/selected-subnav-op.png) no-repeat bottom center;
+}
+
+/* line 822, ../../../app/stylesheets/kalpana.scss */
+#contents .subnav > ul > li a.selected,
+#systems .subnav > ul > li a.selected,
+#loginpage .subnav > ul > li a.selected {
+  background: url(/images/selected-subnav-ad.png) no-repeat bottom center;
+}
+
+/* line 823, ../../../app/stylesheets/kalpana.scss */
+#operations .subnav > ul > li a.selected {
+  background: url(/images/selected-subnav-bu.png) no-repeat bottom center;
+}
+
+/* line 824, ../../../app/stylesheets/kalpana.scss */
+#orgs .subnav > ul > li a.selected {
+  background: url(/images/selected-subnav-ru.png) no-repeat bottom center;
+}
+
+/* image backgrounds for tabs 
+nav.tab_nav>ul>li{
+  background: #ddd url(/images/tab-bg.png) repeat-x 0 0;
+  background-position: 0 -140px;
+}
+*/
+/* line 833, ../../../app/stylesheets/kalpana.scss */
+.modalbox {
+  margin: 130px auto;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+  width: 550px;
+  overflow: hidden;
+}
+/* line 838, ../../../app/stylesheets/kalpana.scss */
+.modalbox h2 {
+  background-color: #eeeeee;
+  color: #333333;
+  text-transform: uppercase;
+  font-size: 120%;
+  padding: 10px;
+}
+/* line 845, ../../../app/stylesheets/kalpana.scss */
+.modalbox .kalpana_form {
+  margin: 40px;
+  overflow: hidden;
+}
+/* line 850, ../../../app/stylesheets/kalpana.scss */
+.modalbox .errorExplanation h2 {
+  text-transform: none;
+}
+
+/* line 856, ../../../app/stylesheets/kalpana.scss */
+#content {
+  margin-top: 1.3em;
+  /*margin-bottom: 60px;*/
+  overflow: hidden;
+  min-height: 200px;
+}
+/* line 861, ../../../app/stylesheets/kalpana.scss */
+#content a {
+  cursor: pointer;
+  cursor: hand;
+}
+
+/* FORMS */
+/* generic */
+/* line 868, ../../../app/stylesheets/kalpana.scss */
+label {
+  text-align: right;
+  font-weight: bold;
+}
+/* line 871, ../../../app/stylesheets/kalpana.scss */
+label.header {
+  text-align: left;
+  font-weight: normal;
+  font-size: 90%;
+  margin-bottom: 1em;
+}
+/* line 877, ../../../app/stylesheets/kalpana.scss */
+label.big {
+  text-align: left;
+  text-transform: uppercase;
+  font-family: "FreeWay Bold", FreeWay, Interstate Bold, sans-serif;
+  font-size: 110%;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* line 887, ../../../app/stylesheets/kalpana.scss */
+legend {
+  font-size: 130%;
+  font-family: "FreeWay Bold", FreeWay, Interstate Bold, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333333;
+}
+
+/* simple two column label + input pairs */
+/* line 898, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form fieldset {
+  overflow: hidden;
+  margin: 10px 0 0;
+  text-align: right;
+}
+/* line 902, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form fieldset label {
+  display: inline-block;
+  font-weight: bold;
+  padding: 4px 10px 0 0;
+  max-width: 10em;
+}
+/* line 908, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form fieldset input {
+  display: inline-block;
+  width: 20em;
+}
+/* line 912, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form fieldset .fieldWithErrors {
+  display: inline-block;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+/* line 915, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form fieldset .fieldWithErrors input {
+  background-color: #f9e1e1;
+  color: #cb292b;
+}
+/* line 919, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form fieldset .fieldWithErrors label {
+  color: #cb292b;
+}
+/* line 924, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form .indented {
+  margin: 10px 0 0;
+  text-align: right;
+}
+/* line 927, ../../../app/stylesheets/kalpana.scss */
+.kalpana_form .indented input[type="text"], .kalpana_form .indented label, .kalpana_form .indented a, .kalpana_form .indented div, .kalpana_form .indented p {
+  text-align: left;
+  display: inline-block;
+  width: 20em;
+}
+
+/* search forms */
+/* line 937, ../../../app/stylesheets/kalpana.scss */
+.search {
+  position: relative;
+}
+/* line 939, ../../../app/stylesheets/kalpana.scss */
+.search button {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  text-indent: -200em;
+  right: 8px;
+  top: 50%;
+  margin: -8px 0 0;
+  background-position: 0 0;
+  border: none;
+  padding: 0;
+}
+/* line 948, ../../../app/stylesheets/kalpana.scss */
+.search button:hover {
+  box-shadow: none;
+  -webkit-shadow: none;
+  -moz-box-shadow: none;
+}
+/* line 954, ../../../app/stylesheets/kalpana.scss */
+.search input[type="search"] {
+  float: right;
+  /* webkit adds an extra padding and makes the widget narrower */
+}
+
+/* WIZARD TILES */
+/* line 960, ../../../app/stylesheets/kalpana.scss */
+ul.tiles {
+  overflow: hidden;
+  margin: 2em 0 0;
+}
+/* line 963, ../../../app/stylesheets/kalpana.scss */
+ul.tiles li.grid_8 {
+  margin-bottom: 30px;
+  padding-left: 60px;
+  width: 400px !important;
+  position: relative;
+}
+/* line 968, ../../../app/stylesheets/kalpana.scss */
+ul.tiles li.grid_8 img {
+  position: absolute;
+  background: url(/images/icons/config-icons.png) no-repeat 0 0;
+  width: 48px;
+  height: 48px;
+  top: 0;
+  left: 0;
+}
+/* line 975, ../../../app/stylesheets/kalpana.scss */
+ul.tiles button, ul.tiles a.button {
+  float: right;
+}
+/* line 978, ../../../app/stylesheets/kalpana.scss */
+ul.tiles .disabled {
+  opacity: 0.2;
+}
+/* line 980, ../../../app/stylesheets/kalpana.scss */
+ul.tiles .disabled button {
+  pointer: default;
+}
+
+/* GRAPHS */
+/* line 990, ../../../app/stylesheets/kalpana.scss */
+.graphkey li {
+  padding: 2px 4px 2px 32px;
+  background: url(/images/graph-key.png) no-repeat 0 0;
+  height: 18px;
+  overflow: hidden;
+}
+/* line 995, ../../../app/stylesheets/kalpana.scss */
+.graphkey .instances {
+  background-position: 0 0;
+}
+/* line 996, ../../../app/stylesheets/kalpana.scss */
+.graphkey .requests {
+  background-position: 0 -18px;
+}
+/* line 997, ../../../app/stylesheets/kalpana.scss */
+.graphkey .ttl {
+  background-position: 0 -36px;
+}
+/* line 998, ../../../app/stylesheets/kalpana.scss */
+.graphkey .failures {
+  background-position: 0 -54px;
+}
+/* line 999, ../../../app/stylesheets/kalpana.scss */
+.graphkey .retries {
+  background-position: 0 -72px;
+}
+
+/* line 1002, ../../../app/stylesheets/kalpana.scss */
+footer {
+  font-size: 90%;
+  margin: 20px 0 0;
+  padding: 20px 10px 10px 10px;
+  display: block;
+  background: transparent url(/images/footer-shade.png) repeat-x 0 0;
+}
+/* line 1008, ../../../app/stylesheets/kalpana.scss */
+footer ul {
+  display: block;
+  padding: 10px 10px 0 0;
+  min-height: 50px;
+}
+/* line 1012, ../../../app/stylesheets/kalpana.scss */
+footer ul li {
+  display: block;
+  float: right;
+}
+/* line 1018, ../../../app/stylesheets/kalpana.scss */
+footer.fixed {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* RIGHT SIDEBAR */
+/* line 1025, ../../../app/stylesheets/kalpana.scss */
+.sidebarcontainer {
+  /* height: 300px; overflow: scroll; */
+  display: block;
+}
+/* line 1028, ../../../app/stylesheets/kalpana.scss */
+.sidebarcontainer li {
+  display: block;
+  margin: 0;
+}
+/* line 1032, ../../../app/stylesheets/kalpana.scss */
+.sidebarcontainer h5 {
+  text-transform: none;
+  margin-top: 3em;
+}
+
+/* PAGE SPECIFIC */
+/* GRINDS */
+/* line 1042, ../../../app/stylesheets/kalpana.scss */
+.status span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url(/images/icons/status.png) no-repeat 0 0;
+}
+/* line 1047, ../../../app/stylesheets/kalpana.scss */
+.status span.good {
+  background-position: 0 0;
+}
+/* line 1050, ../../../app/stylesheets/kalpana.scss */
+.status span.ok {
+  background-position: 0 -10px;
+}
+/* line 1053, ../../../app/stylesheets/kalpana.scss */
+.status span.bad {
+  background-position: 0 -20px;
+}
+
+/* line 1059, ../../../app/stylesheets/kalpana.scss */
+a.iconbutton {
+  padding: 4px 4px 4px 24px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+/* line 1064, ../../../app/stylesheets/kalpana.scss */
+a.iconbutton:active {
+  padding: 4px 4px 4px 24px;
+}
+/* line 1067, ../../../app/stylesheets/kalpana.scss */
+a.iconbutton:focus {
+  padding: 3px 3px 3px 23px;
+}
+/* line 1070, ../../../app/stylesheets/kalpana.scss */
+a.iconbutton img {
+  position: absolute;
+  width: 18px;
+  height: 54px;
+  left: 0;
+  top: 50%;
+  margin-top: -27px;
+  background: url(/images/icons/launchinstance.png) no-repeat 0 0;
+}
+
+/* IE and other horror browser workarounds */
+/* basic image styling for buttons in older browsers */
+/* line 1083, ../../../app/stylesheets/kalpana.scss */
+.no-cssgradients input[type='submit'], .no-cssgradients button, .no-cssgradients .button {
+  /* FIXME image based buttons */
+}
+
+/* when modalbox miss dropshadow set some border */
+/* line 1088, ../../../app/stylesheets/kalpana.scss */
+.no-boxshadow .modalbox {
+  border: 2px solid #dddddd;
+}
+
+/* DEBUG GRID */
+/* line 1091, ../../../app/stylesheets/kalpana.scss */
+#grid {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1020px;
+  margin-left: -510px;
+  background: url(/images/960.png) repeat-y top center;
+}
+
+/* line 1101, ../../../app/stylesheets/kalpana.scss */
+.org {
+  margin-left: 100px;
+  float: left;
+}
+
+/* line 1106, ../../../app/stylesheets/kalpana.scss */
+.actions {
+  /* BUTTONS */
+}
+/* line 1108, ../../../app/stylesheets/kalpana.scss */
+.actions input[type='submit'], .actions button, .actions .button {
+  margin: 0px 4px 4px;
+}
+
+/* line 1113, ../../../app/stylesheets/kalpana.scss */
+.outlined {
+  outline: 2px solid #3465A4;
+}

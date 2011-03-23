@@ -1,0 +1,34 @@
+<div id="notification"
+- if flash[:error]
+  class="error-align"
+>
+- if flash[:error]
+  - if !flash[:error][:successes].nil? && !flash[:error][:successes].empty?
+    .success
+      %h4 The following items were successful:
+      %ul
+        - flash[:error][:successes].each {|item|
+        %li= item
+        - }
+  .warning
+    %h4= flash[:error][:summary]
+  - if !flash[:error][:failures].nil? && !flash[:error][:failures].empty?
+    .error
+      %ul
+        - flash[:error][:failures].each {|key, value|
+        %li
+          = key
+          \: #{value}
+        - }
+  - if flash[:error].is_a? String
+    .error
+      %div
+        = flash[:error]
+- if flash[:warning]
+  .warning
+    %h4= flash[:warning]
+- if flash[:notice]
+  .success
+    %ul
+      %li= flash[:notice]
+</div>

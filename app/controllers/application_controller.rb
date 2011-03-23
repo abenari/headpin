@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  layout 'kalpana'
 
   def errors summary, failures = [], successes = []
     flash[:error] ||= {}

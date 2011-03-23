@@ -2,7 +2,7 @@ require 'pp'
 require 'candlepin_api'
 
 class OrganizationsController < ApplicationController
-  #navigation :organizations
+  navigation :organizations
 
   def initialize
     @cp = OauthCandlepinApi.new('admin', 'admin', 'kalpana', 'shhhh')

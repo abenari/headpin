@@ -31,6 +31,7 @@ GEM
     arel (2.0.7)
     bson_ext (1.2.0)
     builder (2.1.2)
+    closure-compiler (1.0.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fast_gettext (0.5.10)
@@ -45,6 +46,9 @@ GEM
     i18n (0.5.0)
     i18n_data (0.2.7)
       activesupport
+    jammit (0.6.0)
+      closure-compiler (>= 0.1.0)
+      yui-compressor (>= 0.9.1)
     json (1.5.1)
     macaddr (1.0.0)
     mail (2.2.15)
@@ -108,6 +112,7 @@ GEM
       macaddr (~> 1.0)
     vegas (0.1.8)
       rack (>= 1.0.0)
+    yui-compressor (0.9.3)
 
 PLATFORMS
   ruby
@@ -118,6 +123,7 @@ DEPENDENCIES
   haml (>= 3.0.16)
   haml-rails
   i18n_data (>= 0.2.6)
+  jammit
   json
   oauth
   rails (= 3.0.3)

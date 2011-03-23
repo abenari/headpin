@@ -511,7 +511,7 @@ class Candlepin
   end
 
   def post_file(uri, file=nil)
-    response = @client[URI.escape(uri)].post(:import => file, :accept => :json)
+    response = get_client(uri, Net::HTTP::Post[URI.escape(uri)].post(:import => file, :accept => :json)
     return JSON.parse(response.body) unless response.body.empty?
   end
 
@@ -578,7 +578,7 @@ end
 
 class OauthCandlepinApi < Candlepin
 
-  def initialize(username, oauth_consumer_key, oauth_consumer_secret, params={})
+  def initialize(username, password, oauth_consumer_key, oauth_consumer_secret, params={})
 
     @oauth_consumer_key = oauth_consumer_key
     @oauth_consumer_secret = oauth_consumer_secret
@@ -586,7 +586,7 @@ class OauthCandlepinApi < Candlepin
     host = params[:host] || 'localhost'
     port = params[:port] || 8443
     lang = params[:lang] || nil
-    super(username, nil, nil, nil, host, port, lang, nil, false)
+    super(username, password, nil, nil, host, port, lang, nil, false)
   end
 
   protected

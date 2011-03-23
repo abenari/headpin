@@ -5,7 +5,7 @@ class OrganizationsController < ApplicationController
   #navigation :organizations
 
   def initialize
-    @cp = OauthCandlepinApi.new('admin', 'kalpana', 'shhhh')
+    @cp = OauthCandlepinApi.new('admin', 'admin', 'kalpana', 'shhhh')
     super
   end
 
@@ -79,19 +79,21 @@ class OrganizationsController < ApplicationController
   def subscriptions
     @organization = @cp.get_owner params[:id]
 #    if !params[:kalpana_model_provider].blank? and params[:kalpana_model_provider].has_key? :contents
-#      temp_file = nil
-#      begin
-#        temp_file = File.new(File.join("#{Rails.root}/tmp", "import_#{SecureRandom.hex(10)}.zip"), 'w+', 0600)
-#        temp_file.write params[:kalpana_model_provider][:contents].read
-#        temp_file.close
-#        Kalpana::Glue::Provider.import_manifest params[:id], File.expand_path(temp_file.path)
-#        notice _("Subscription uploaded successfully")
-#      rescue Exception => error
-#        notice _("There was a format error with your Subscription Manifest")
-#        Rails.logger.error "error uploading subscriptions."
-#        Rails.logger.error error
-#      end
-#    end
+    if params.has_key? :contents
+      Rails.logger.info "Uploading a subscription manifest."
+      temp_file = nil
+      begin
+        temp_file = File.new(File.join("#{Rails.root}/tmp", "import_#{SecureRandom.hex(10)}.zip"), 'w+', 0600)
+        temp_file.write params[:contents].read
+        temp_file.close
+        @cp.import(@organization['key'], File.expand_path(temp_file.path))
+        #notice _("Subscription uploaded successfully")
+      rescue Exception => error
+        #notice _("There was a format error with your Subscription Manifest")
+        Rails.logger.error "error uploading subscriptions."
+        Rails.logger.error error
+      end
+    end
 
 #    @providers = Kalpana::Model::Provider.find(:all)
 #    @provider = Kalpana::Model::Provider.find(params[:id])

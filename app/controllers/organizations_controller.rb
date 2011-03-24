@@ -4,11 +4,6 @@ require 'candlepin_api'
 class OrganizationsController < ApplicationController
   navigation :organizations
 
-  def initialize
-    @cp = OauthCandlepinApi.new('admin', 'admin', 'kalpana', 'shhhh')
-    super
-  end
-
   def section_id
     'orgs'
   end
@@ -22,6 +17,13 @@ class OrganizationsController < ApplicationController
 
     # TODO: example of RBAC protection (will turn this into Rails filters soon)
     #deny_access unless current_user.allowed_to? 'show', 'organization', "org_name:#{@organization.name}"
+  end
+
+  def use
+    @organization = @cp.get_owner(params[:id])
+    current_organization = @organization
+    flash[:notice] = N_("Now using organization '#{@organization["displayName"]}'.")
+    redirect_to organization_path(@organization['key'])
   end
 
   def new
@@ -106,5 +108,5 @@ class OrganizationsController < ApplicationController
       Rails.logger.error error
     end
   end
-  
+
 end

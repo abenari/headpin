@@ -9,6 +9,9 @@ ComplianceManager::Application.routes.draw do
     end
   end
 
+  # Temp route for "using" a particular org:
+  match 'organizations/:id/use', :to => 'organizations#use'
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

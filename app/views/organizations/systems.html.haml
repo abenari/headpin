@@ -23,6 +23,6 @@
       #{_("+ New System")}
     %br.clear      
     /%h5 #{_("Search Filter")}
-    - 25.times do |i|
-      .block{:id => i}
-        hp0#{i}.redhat.com
+    - for consumer in @consumers
+      .block{:id => consumer['uuid']}
+        = consumer['name']

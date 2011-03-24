@@ -6,6 +6,7 @@ ComplianceManager::Application.routes.draw do
     member do
       get :subscriptions
       post :subscriptions
+      get :systems
     end
   end
 

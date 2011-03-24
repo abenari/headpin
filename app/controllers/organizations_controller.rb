@@ -55,6 +55,9 @@ class OrganizationsController < ApplicationController
     @organization = @cp.get_owner(params[:id])
   end
 
+  def systems
+  end
+
   def update
     begin
       @organization = Kalpana::Glue::Organization.update(params[:id], params[:kalpana_model_organization])

@@ -1,0 +1,28 @@
+= include_javascripts :systems, :panel
+#container
+  / begin panel
+  .right
+    %h4
+      This is the right side below the panel.
+    %br
+    %br
+    %h4
+    Select Result:
+    %br
+    #select-result
+  #panel-frame
+    #panel
+      .head
+        %a.close{:href => "#"} #{_("Close")}
+      .data
+        asdfasfd
+        
+  .left
+    %h2.fl #{_("Systems")}
+    %a.fr{:href => "#", :class => "block", :onclick =>"$(this).addClass('active'); return false;"} 
+      #{_("+ New System")}
+    %br.clear      
+    /%h5 #{_("Search Filter")}
+    - 25.times do |i|
+      .block{:id => i}
+        hp0#{i}.redhat.com

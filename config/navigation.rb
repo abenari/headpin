@@ -9,6 +9,7 @@ SimpleNavigation::Configuration.run do |navigation|
     top_level.item :organizations, _("Organizations"), {:controller => 'organizations'}, :class=>'organizations' do |orgs_sub|
       #orgs_sub.item :sub_orgs,  _("Sub-Organizations"), '#', :class => 'disabled'
       orgs_sub.item :subscriptions, _("Subscriptions"), @organization.nil? ? "" : subscriptions_organization_path(@organization['key'])
+      orgs_sub.item :systems, _("Systems"), @organization.nil? ? "" : systems_organization_path(@organization['key'])
       #orgs_sub.item :create, _("Create"), '#', :class => 'disabled'
     end #end operations
     

@@ -3,6 +3,10 @@ ComplianceManager::Application.routes.draw do
   # first created -> highest priority.
 
   resources :systems do
+    member do
+      get :subscriptions
+      post :subscriptions
+    end
   end
 
   resources :organizations do

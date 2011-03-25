@@ -13,3 +13,4 @@
         %li{:class => cycle(nil, 'alt')}
           %span{:alt => "#{consumer['uuid']}", :title => "#{consumer['uuid']}"}
             = link_to "#{consumer['name']}", :action => "show", :controller => "systems", :id => "#{consumer['uuid']}"
+

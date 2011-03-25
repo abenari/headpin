@@ -17,6 +17,9 @@
     = @consumer['uuid']
 
   %p
+    #{_("Organization")}:
+    = link_to @owner['displayName'], organization_path(@owner['key'])
+  %p
     #{_("Type")}:
     = @consumer['type']['label']
 
@@ -27,6 +30,10 @@
   %p
     #{_("Last Checkin")}:
     = @consumer['lastCheckin']
+
+  %p
+    #{_("Registered By")}:
+    = @consumer['username']
 
   %p
     #{_("Facts")}:

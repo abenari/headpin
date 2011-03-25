@@ -1,0 +1,14 @@
+List of all files/directories copied from Kalpana:
+
+- app/controllers/application_controller.rb (only snippets copied but needs to be monitored for changes)
+- app/views/layouts/ (heavily modified, needs careful merging)
+- app/views/organizations/ (modified, needs careful merging)
+- config/assets.yml 
+- config/initializers/simple_navigation.rb
+- config/navigation.rb (modified)
+- public/ (huge copy here, everything mostly identical for now but will diverge over time)
+- Gemfile / Gemfile.lock (we don't use everything Kalpana does, but what we do needs to remain the same version)
+
+Files copied from Candlepin:
+
+- lib/candlepin_api.rb (should be kept identical until packaged as a library)

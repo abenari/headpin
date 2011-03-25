@@ -1,0 +1,37 @@
+#systems.grid_3.actionsidebar
+  %dl
+    %dt #{_("Actions")}
+  %dd.edit
+    -#%span
+      -#= link_to _("Edit"), :action => "edit", :controller => "organizations", :id =>@organization['key']
+  %dd.delete
+    %span
+      = link_to _("Delete"), { :controller => "systems", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@consumer['uuid']
+    
+    
+.grid_13#main
+  %h2
+    = @consumer['name']
+  %p
+    #{_("UUID")}:
+    = @consumer['uuid']
+
+  %p
+    #{_("Type")}:
+    = @consumer['type']['label']
+
+  %p
+    #{_("Registered")}:
+    = @consumer['created']
+
+  %p
+    #{_("Last Checkin")}:
+    = @consumer['lastCheckin']
+
+  %p
+    #{_("Facts")}:
+    = @consumer['facts']
+
+
+
+

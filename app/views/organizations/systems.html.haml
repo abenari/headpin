@@ -1,28 +1,16 @@
-= include_javascripts :systems, :panel
-#container
-  / begin panel
-  .right
-    %h4
-      This is the right side below the panel.
-    %br
-    %br
-    %h4
-    Select Result:
-    %br
-    #select-result
-  #panel-frame
-    #panel
-      .head
-        %a.close{:href => "#"} #{_("Close")}
-      .data
-        asdfasfd
-        
-  .left
-    %h2.fl #{_("Systems")}
-    %a.fr{:href => "#", :class => "block", :onclick =>"$(this).addClass('active'); return false;"} 
-      #{_("+ New System")}
-    %br.clear      
-    /%h5 #{_("Search Filter")}
-    - for consumer in @consumers
-      .block{:id => consumer['uuid'], :name => consumer['name']}
-        = consumer['name']
+#systems
+  #systems.grid_3.actionsidebar
+    %dl
+      %dt #{_("Systems")}
+    %dd.add
+      %span
+      -#= link_to _("New Organization"), :action => "new", :controller => "organizations"
+
+  .grid_13#main
+    %h2 #{_("Systems")}
+
+    %ul
+      -for consumer in @consumers
+        %li{:class => cycle(nil, 'alt')}
+          %span{:alt => "#{consumer['uuid']}", :title => "#{consumer['uuid']}"}
+            = link_to "#{consumer['name']}", :action => "show", :controller => "systems", :id => "#{consumer['uuid']}"

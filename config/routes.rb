@@ -8,6 +8,7 @@ ComplianceManager::Application.routes.draw do
       post :subscriptions
     end
   end
+  match 'systems/:id/available_subscriptions', :to => 'systems#available_subscriptions'
 
   resources :organizations do
     member do

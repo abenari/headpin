@@ -13,7 +13,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     top_level.item :systems, _("Systems"), {:controller => 'systems'}, :class=>'systems' do |systems_sub|
       systems_sub.item :show, _("Details"), @consumer.nil? ? "" : system_path(@consumer['uuid'])
-      systems_sub.item :subscriptions, _("Subscriptions"), @consumer.nil? ? "" : subscriptions_system_path(@consumer['uuid'])
+      systems_sub.item :subscriptions, _("Current Subscriptions"), @consumer.nil? ? "" : subscriptions_system_path(@consumer['uuid'])
+      systems_sub.item :subscriptions, _("Available Subscriptions"), @consumer.nil? ? "" : "/systems/#{@consumer['uuid']}/available_subscriptions"
     end
     
     

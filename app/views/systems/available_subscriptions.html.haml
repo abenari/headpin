@@ -1,0 +1,24 @@
+
+%h2
+  = @consumer['name']
+
+%h3 Available Subscriptions
+#providers
+  .grid_13#provider
+    %table
+      %thead
+        %th Product
+        %th Available
+        %th Contract 
+        %th Expires
+      - @pools.each do |pool|
+        %tr{:class => cycle(nil, 'alt')}
+          %td
+            = pool["productName"]
+          %td
+            = pool["quantity"].to_i - pool["consumed"].to_i
+          %td
+            = pool["contractNumber"]
+          %td
+            = pool["endDate"]
+

@@ -20,5 +20,12 @@ class SystemsController < ApplicationController
     @entitlements = @cp.list_entitlements({:uuid => params[:id]})
   end
 
+  def available_subscriptions
+    @consumer = @cp.get_consumer(params[:id])
+    @pools = @cp.list_pools({:consumer => params[:id]})
+    @entitlements = @cp.list_entitlements({:uuid => params[:id]})
+  end
+
+
 end
 

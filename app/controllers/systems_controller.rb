@@ -1,4 +1,10 @@
+require 'candlepin_api'
+
 class SystemsController < ApplicationController
+
+  def section_id
+    'systems'
+  end
 
   def index
     @consumers = @cp.list_consumers
@@ -6,12 +12,13 @@ class SystemsController < ApplicationController
 
   def show
     @consumer = @cp.get_consumer(params[:id])
-    pp @consumer
     @owner = @cp.get_owner @consumer['owner']['href']
   end
 
-  def section_id
-    'systems'
+  def subscriptions
+    @consumer = @cp.get_consumer(params[:id])
+    @entitlements = @cp.list_entitlements({:uuid => params[:id]})
   end
+
 end
 

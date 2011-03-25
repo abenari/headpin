@@ -1,0 +1,20 @@
+
+%h2
+  = @consumer['name']
+
+%h3 Current Subscriptions
+#providers
+  .grid_13#provider
+    %table
+      %thead
+        %th Name
+        %th Contract Number
+        %th Expires
+      - @entitlements.each do |ent|
+        %tr{:class => cycle(nil, 'alt')}
+          %td
+            = ent["id"]
+          %td
+            = ent["contractNumber"]
+          %td
+            = ent["endDate"]

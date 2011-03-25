@@ -44,7 +44,7 @@ $(document).ready(function() {
                 $('.block.active').length + " items selected."
          );
         
-        $('.data').html(activeBlockId);
+        $('.data').html(activeBlockId + " Name: " + activeBlock.attr('name'));
         return false;
     });
     $('.close').click(function() {

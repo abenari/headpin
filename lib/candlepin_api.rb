@@ -283,15 +283,19 @@ class Candlepin
   end
 
   # TODO: Should we change these to bind to better match terminology?
-  def consume_pool(pool, quantity=nil)
-    path = "/consumers/#{@uuid}/entitlements?pool=#{pool}"
+  def consume_pool(pool, params={})
+    quantity = params[:quantity] || nil
+    uuid = params[:uuid] || @uuid
+    path = "/consumers/#{uuid}/entitlements?pool=#{pool}"
     path << "&quantity=#{quantity}" if quantity
 
     post(path)
   end
 
-  def consume_product(product, quantity=nil)
-    path = "/consumers/#{@uuid}/entitlements?product=#{product}"
+  def consume_product(product, params={})
+    quantity = params[:quantity] || nil
+    uuid = params[:uuid] || @uuid
+    path = "/consumers/#{uuid}/entitlements?product=#{product}"
     path << "&quantity=#{quantity}" if quantity
     post(path)
   end
@@ -329,11 +333,6 @@ class Candlepin
     query = "/consumers?"
     query << "username=#{args[:username]}&" if args[:username]
     query << "type=#{args[:type]}" if args[:type]
-    get(query)
-  end
-
-  def list_owner_consumers(owner_key)
-    query = "/owners/#{owner_key}/consumers"
     get(query)
   end
 

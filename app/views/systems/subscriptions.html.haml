@@ -10,6 +10,7 @@
         %th Product
         %th Contract Number
         %th Expires
+        %th Actions
       - @entitlements.each do |ent|
         %tr{:class => cycle(nil, 'alt')}
           %td
@@ -18,3 +19,5 @@
             = ent["contractNumber"]
           %td
             = ent["endDate"]
+          %td
+            = link_to _("Remove"), {:controller => "systems", :action => "unbind", :entitlement_id => ent['id']}, :confirm => _('Are you sure?')

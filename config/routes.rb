@@ -6,9 +6,12 @@ ComplianceManager::Application.routes.draw do
     member do
       get :subscriptions
       post :subscriptions
+      delete :subscriptions
       get :available_subscriptions
     end
   end
+
+  match 'systems/:id/unbind/:entitlement_id', :to => 'systems#unbind'
 
   resources :organizations do
     member do

@@ -26,5 +26,5 @@
             = form_tag subscriptions_system_path(@consumer['uuid']) do
               = hidden_field_tag("pool_id", pool['id'])
               .actions
-                = submit_tag "Subscribe"
+                = submit_tag _("Subscribe")
 

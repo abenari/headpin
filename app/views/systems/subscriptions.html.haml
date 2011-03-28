@@ -7,13 +7,13 @@
   .grid_13#provider
     %table
       %thead
-        %th Name
+        %th Product
         %th Contract Number
         %th Expires
       - @entitlements.each do |ent|
         %tr{:class => cycle(nil, 'alt')}
           %td
-            = ent["id"]
+            = @cp.get_pool(ent['pool']['id'])['productName']
           %td
             = ent["contractNumber"]
           %td

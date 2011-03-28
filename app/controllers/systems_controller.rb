@@ -47,6 +47,12 @@ class SystemsController < ApplicationController
     redirect_to subscriptions_system_path(params['id'])
   end
 
+  def destroy
+    @consumer = @cp.get_consumer(params[:id])
+    @cp.unregister(params[:id])
+    flash[:notice] = _("Deleted system #{@consumer['name']}.")
+    redirect_to systems_path
+  end
 
 end
 

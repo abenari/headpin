@@ -37,8 +37,13 @@
 
   %p
     #{_("Facts")}:
-    = @consumer['facts']
 
-
-
+  %table
+    %thead
+      %th= _("Fact")
+      %th= _("Value")
+    - @consumer['facts'].sort.each do |fact, value|
+      %tr{:class => cycle(nil, 'alt')}
+        %td= fact
+        %td= value
 

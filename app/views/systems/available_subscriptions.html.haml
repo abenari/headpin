@@ -21,7 +21,7 @@
           %td
             = pool["contractNumber"]
           %td
-            = pool["endDate"]
+            = l Date.parse(pool["endDate"])
           %td
             = form_tag subscriptions_system_path(@consumer['uuid']) do
               = hidden_field_tag("pool_id", pool['id'])

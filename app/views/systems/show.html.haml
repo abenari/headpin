@@ -25,11 +25,11 @@
 
   %p
     #{_("Registered")}:
-    = @consumer['created']
+    = l Date.parse(@consumer['created']), :format => :long
 
   %p
     #{_("Last Checkin")}:
-    = @consumer['lastCheckin']
+    = l Date.parse(@consumer['lastCheckin']), :format => :long
 
   %p
     #{_("Registered By")}:

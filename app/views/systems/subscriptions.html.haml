@@ -18,6 +18,6 @@
           %td
             = ent["contractNumber"]
           %td
-            = ent["endDate"]
+            = l Date.parse(ent["endDate"])
           %td
             = link_to _("Remove"), {:controller => "systems", :action => "unbind", :entitlement_id => ent['id']}, :confirm => _('Are you sure?')

@@ -3,25 +3,22 @@
     %dt #{_("Actions")}
   %dd.delete
     %span
-    = link_to _("Delete"), { :controller => "organizations", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@organization['key']
+    = link_to _("Delete"), { :controller => "organizations", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@organization.key
 
 
 .grid_13#main
   %h2
-    = @organization['key']
-  = form_for @organization, :url => {:action => "update",  :controller => "organizations"},  :method => "put" do |f|
+    = @organization.key
+  = form_for @organization, 
+             :url => { :action => 'update' }, 
+             :html => { :method => 'put' } do |f|
     .grid_16
       %fieldset.clearfix
         %b
-          %label.grid_5 #{_("Description")}:
+          %label.grid_5 #{_("Name")}:
         .grid_7
-          = f.text_area :displayName, :class=>'grid_6'
-      %fieldset.clearfix
-        %b
-          %label.grid_5 #{_("Owner")}:
-        .grid_7
-          %select{:disabled => true, :class => 'grid_5'}
-            %option #{_("Select")} #{_("Owner")}
-          %button.submit.linkbutton.grid_1 #{_("New")}
+          = f.hidden_field :id
+          = f.hidden_field :key
+          = f.text_field :name, :class=>'grid_6'
     .grid_12
       = f.submit "#{_("Update")}", :class => "submit dialogbutton", :style=>"float:right;"

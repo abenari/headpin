@@ -17,7 +17,7 @@
           %td
             = sub["quantity"]
     %h4 Upload Subscription Manifest
-    = form_tag "/organizations/#{@organization['key']}/subscriptions", :multipart => true do
+    = form_tag "/organizations/#{@organization.key}/subscriptions", :multipart => true do
       %fieldset
         = label_tag :upload, "Specify Local Manifest"
         = file_field_tag :contents

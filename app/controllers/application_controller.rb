@@ -18,10 +18,10 @@ class ApplicationController < ActionController::Base
   
   def current_organization
     if session.has_key? :current_organization_id
-      @current_org =  @cp.get_owner(session[:current_organization_id])
+      @current_org =  Organziation.new @cp.get_owner(session[:current_organization_id])
     else
       # Temp hack until we have auth, and users logging in:
-      @current_org = @cp.get_owner('admin')
+      @current_org = Organization.new @cp.get_owner('admin')
     end
     return @current_org
   end

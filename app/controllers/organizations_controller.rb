@@ -13,17 +13,17 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization = @cp.get_owner(params[:id])
+    @organization = Organization.new @cp.get_owner(params[:id])
 
     # TODO: example of RBAC protection (will turn this into Rails filters soon)
     #deny_access unless current_user.allowed_to? 'show', 'organization', "org_name:#{@organization.name}"
   end
 
   def use
-    @organization = @cp.get_owner(params[:id])
+    @organization = Organization.new @cp.get_owner(params[:id])
     current_organization = @organization
-    flash[:notice] = N_("Now using organization '#{@organization["displayName"]}'.")
-    redirect_to organization_path(@organization['key'])
+    flash[:notice] = N_("Now using organization '#{@organization.name}'.")
+    redirect_to organization_path(@organization.key)
   end
 
   def new
@@ -52,7 +52,7 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-    @organization = @cp.get_owner(params[:id])
+    @organization = Organization.new @cp.get_owner(params[:id])
   end
 
   def systems
@@ -63,12 +63,17 @@ class OrganizationsController < ApplicationController
 
   def update
     begin
-      @organization = Kalpana::Glue::Organization.update(params[:id], params[:kalpana_model_organization])
-      flash[:notice] = N_("Organization '#{@organization["name"]}' was updated.")
+      @organization = @Organization.new cp.get_owner(params[:id])
+
+      # TODO:  This conversion should be done on the model!
+      org = {:key => params[:key], :displayName => params[:name]}
+      @cp.update_owner(@organization.key, org)
+
+      flash[:notice] = N_("Organization '#{@organization.name}' was updated.")
       redirect_to :action => 'index' and return
     rescue Exception => error
       errors error.to_s
-      redirect_to :action => 'show', :id => params[:id]      
+      redirect_to :action => 'show', :id => params[:id]
     end
   end
 
@@ -85,7 +90,7 @@ class OrganizationsController < ApplicationController
 
   # Based on the Kalpana code in providers controller:
   def subscriptions
-    @organization = @cp.get_owner params[:id]
+    @organization = Organization.new @cp.get_owner params[:id]
 #    if !params[:kalpana_model_provider].blank? and params[:kalpana_model_provider].has_key? :contents
     if params.has_key? :contents
       Rails.logger.info "Uploading a subscription manifest."
@@ -94,7 +99,7 @@ class OrganizationsController < ApplicationController
         temp_file = File.new(File.join("#{Rails.root}/tmp", "import_#{SecureRandom.hex(10)}.zip"), 'w+', 0600)
         temp_file.write params[:contents].read
         temp_file.close
-        @cp.import(@organization['key'], File.expand_path(temp_file.path))
+        @cp.import(@organization.key, File.expand_path(temp_file.path))
         #notice _("Subscription uploaded successfully")
       rescue Exception => error
         #notice _("There was a format error with your Subscription Manifest")
@@ -108,7 +113,7 @@ class OrganizationsController < ApplicationController
     # We default to none imported until we can properly poll Candlepin for status of the import
     @subscriptions = [{'productName' => _("None Imported"), "consumed" => "0", "quantity" => "0"}]
     begin
-      @subscriptions = @cp.list_pools({:owner => @organization['id']})
+      @subscriptions = @cp.list_pools({:owner => @organization.id})
     rescue Exception => error
       Rails.logger.error "Error fetching subscriptions from Candlepin"
       Rails.logger.error error

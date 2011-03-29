@@ -63,10 +63,11 @@ class OrganizationsController < ApplicationController
 
   def update
     begin
-      @organization = @Organization.new cp.get_owner(params[:id])
+      @organization = Organization.new @cp.get_owner(params[:id])
 
       # TODO:  This conversion should be done on the model!
-      org = {:key => params[:key], :displayName => params[:name]}
+      org = {:key => params[:organization][:key], 
+        :displayName => params[:organization][:name]}
       @cp.update_owner(@organization.key, org)
 
       flash[:notice] = N_("Organization '#{@organization.name}' was updated.")

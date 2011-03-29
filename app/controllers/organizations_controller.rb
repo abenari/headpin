@@ -9,6 +9,7 @@ class OrganizationsController < ApplicationController
   end
 
   def index
+    # TODO: use model
     @organizations = @cp.list_owners()
   end
 
@@ -33,14 +34,15 @@ class OrganizationsController < ApplicationController
 
   def create
     begin
-      @organization = @cp.create_owner params[:name]
+      @organization = Organization.new @cp.create_owner(params[:key], 
+        {:name => params[:name]})
 
 #      @organization = Kalpana::Glue::Organization.create! params
 #      @organization = {
 #        :name => params[:name], 
 #        :description => params[:description]}
 #      Candlepin::Owner.create @organization
-      flash[:notice] = N_("Organization '#{@organization["displayName"]}' was created.")
+      flash[:notice] = N_("Organization '#{@organization.name}' was created.")
       # TODO: example - create permission for the organization
       #current_user.role.first.allow 'show', 'organization', "org_name:#{@organization.name}"
     rescue Exception => error
@@ -48,7 +50,7 @@ class OrganizationsController < ApplicationController
       Rails.logger.info error.backtrace.join("\n")
       redirect_to :action => 'new' and return
     end
-    redirect_to :action => 'show', :id => @organization["displayName"]
+    redirect_to :action => 'show', :id => @organization.key
   end
 
   def edit
@@ -56,9 +58,9 @@ class OrganizationsController < ApplicationController
   end
 
   def systems
-    @organization = @cp.get_owner(params[:id])
+    @organization = Organization.new @cp.get_owner(params[:id])
     @consumers = @cp.list_owner_consumers(params[:id])
-    Rails.logger.debug("Found #{@consumers.size} consumers for owner: #{@organization['key']}")
+    Rails.logger.debug("Found #{@consumers.size} consumers for owner: #{@organization.key}")
   end
 
   def update
@@ -70,7 +72,7 @@ class OrganizationsController < ApplicationController
         :displayName => params[:organization][:name]}
       @cp.update_owner(@organization.key, org)
 
-      flash[:notice] = N_("Organization '#{@organization.name}' was updated.")
+      flash[:notice] = N_("Organization '#{params[:organization][:name]}' was updated.")
       redirect_to :action => 'index' and return
     rescue Exception => error
       errors error.to_s

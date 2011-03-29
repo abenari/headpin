@@ -3,14 +3,14 @@
   .grid_16
     %fieldset.clearfix
       %b
-        %label.grid_5 #{_("Name")}:
+        %label.grid_5 #{_("Label")}:
       .grid_7
-        = text_field_tag :name, params[:name], :class=>'grid_6'
+        = text_field_tag :key, params[:key], :class=>'grid_6'
     %fieldset.clearfix
       %b
-        %label.grid_5 #{_("Description")}:
+        %label.grid_5 #{_("Name")}:
       .grid_7
-        = text_area_tag :description, params[:description], :class=>'grid_6'
+        = text_area_tag :name, params[:name], :class=>'grid_6'
   .grid_12
     = submit_tag "#{_('Create')}", :class => "submit dialogbutton", :style=>"float:right;"
     %button.formbutton{:disabled => true, :style=>"float:right;"} #{_("Reset")}

@@ -29,7 +29,7 @@
 
   %p
     #{_("Last Checkin")}:
-    = l Date.parse(@consumer['lastCheckin']), :format => :long
+    = l(Date.parse(@consumer['lastCheckin']), :format => :long) if !@consumer['lastCheckin'].nil?
 
   %p
     #{_("Registered By")}:

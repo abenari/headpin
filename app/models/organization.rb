@@ -7,14 +7,14 @@ class Organization
   attr_accessor :key, :name
 
   validates_presence_of :key
-  validates_format_of :key, 
+  validates_format_of :name, 
     :with => /\A[^\/#]*\Z/, 
     :message => 'cannot contain / or #'
 
   def initialize(hash)
     @id = hash['id']
     @key = hash['key']
-    @name = hash['displayName']
+    @name = hash['displayName'] || hash['name']
   end
 
   def persisted?

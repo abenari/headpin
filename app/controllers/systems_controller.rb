@@ -12,7 +12,7 @@ class SystemsController < ApplicationController
 
   def show
     @consumer = @cp.get_consumer(params[:id])
-    @owner = @cp.get_owner @consumer['owner']['href']
+    @organization = Organization.new @cp.get_owner @consumer['owner']['href']
   end
 
   def subscriptions

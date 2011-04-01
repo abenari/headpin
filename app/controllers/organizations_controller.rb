@@ -9,21 +9,17 @@ class OrganizationsController < ApplicationController
   end
 
   def index
-    # TODO: use model
-    @organizations = @cp.list_owners()
+    @organizations = Organization.find(:all)
   end
 
   def show
-    @organization = Organization.new @cp.get_owner(params[:id])
-
-    # TODO: example of RBAC protection (will turn this into Rails filters soon)
-    #deny_access unless current_user.allowed_to? 'show', 'organization', "org_name:#{@organization.name}"
+    @organization = Organization.find(params[:id])
   end
 
   def use
-    @organization = Organization.new @cp.get_owner(params[:id])
+    @organization = Organization.find(params[:id])
     current_organization = @organization
-    flash[:notice] = N_("Now using organization '#{@organization.name}'.")
+    flash[:notice] = N_("Now using organization '#{@organization.displayName}'.")
     redirect_to organization_path(@organization.key)
   end
 
@@ -37,14 +33,7 @@ class OrganizationsController < ApplicationController
       @organization = Organization.new @cp.create_owner(params[:key], 
         {:name => params[:name]})
 
-#      @organization = Kalpana::Glue::Organization.create! params
-#      @organization = {
-#        :name => params[:name], 
-#        :description => params[:description]}
-#      Candlepin::Owner.create @organization
       flash[:notice] = N_("Organization '#{@organization.name}' was created.")
-      # TODO: example - create permission for the organization
-      #current_user.role.first.allow 'show', 'organization', "org_name:#{@organization.name}"
     rescue Exception => error
       errors error.to_s
       Rails.logger.info error.backtrace.join("\n")
@@ -54,39 +43,46 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
-    @organization = Organization.new @cp.get_owner(params[:id])
+    @organization = Organization.find(params[:id])
   end
 
   def systems
-    @organization = Organization.new @cp.get_owner(params[:id])
+    @organization = Organization.find(params[:id])
     @consumers = @cp.list_owner_consumers(params[:id])
     Rails.logger.debug("Found #{@consumers.size} consumers for owner: #{@organization.key}")
   end
 
   def update
-    begin
-      @organization = Organization.new params[:organization]
+#    begin
+      @organization = Organization.find(params[:id])
+      #@organization.update_attributes(params[:organization])
 
-      if @organization.invalid?
-        render :edit
-        return
-      end
+#      if @organization.invalid?
+#        render :edit
+#        return
+#      end
+
+      pp "hi"
+      pp "##################################"
+      pp @organization
+      @organization.save()
 
       # TODO:  This conversion should be done on the model!
-      org = {:key => params[:organization][:key], 
-        :displayName => params[:organization][:name]}
+#      org = {:key => params[:organization][:key],
+#        :displayName => params[:organization][:name]}
+#      @cp.update_owner(@organization.key, org)
 
-      @cp.update_owner(@organization.key, org)
-
-      flash[:notice] = N_("Organization '#{params[:organization][:name]}' was updated.")
+      flash[:notice] = N_("Organization '#{@organization.displayName}' was updated.")
       redirect_to :action => 'index' and return
-    rescue Exception => error
-      errors error.to_s
-      redirect_to :action => 'show', :id => params[:id]
-    end
+#    rescue Exception => error
+#      Rails.logger.error error
+#      errors error.to_s
+#      redirect_to :action => 'show', :id => params[:id]
+#    end
   end
 
   def destroy
+    @organization = Organization.find(params[:id])
     begin
       @cp.delete_owner(params[:id])
       flash[:notice] = N_("Organization '#{params[:id]}' was deleted.")
@@ -99,8 +95,9 @@ class OrganizationsController < ApplicationController
 
   # Based on the Kalpana code in providers controller:
   def subscriptions
-    @organization = Organization.new @cp.get_owner params[:id]
-#    if !params[:kalpana_model_provider].blank? and params[:kalpana_model_provider].has_key? :contents
+    @organization = Organization.find(params[:id])
+
+    # Check if this request is a manifest upload:
     if params.has_key? :contents
       Rails.logger.info "Uploading a subscription manifest."
       temp_file = nil
@@ -117,9 +114,6 @@ class OrganizationsController < ApplicationController
       end
     end
 
-#    @providers = Kalpana::Model::Provider.find(:all)
-#    @provider = Kalpana::Model::Provider.find(params[:id])
-    # We default to none imported until we can properly poll Candlepin for status of the import
     @subscriptions = [{'productName' => _("None Imported"), "consumed" => "0", "quantity" => "0"}]
     begin
       @subscriptions = @cp.list_pools({:owner => @organization.id})

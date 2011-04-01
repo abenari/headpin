@@ -34,8 +34,8 @@ class CandlepinObject < ActiveResource::Base
   end
 
   def encode(options={})
+    pp self.class.format.encode(attributes, options)
     self.class.format.encode(attributes, options)
   end
-
 
 end

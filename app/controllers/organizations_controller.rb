@@ -55,17 +55,14 @@ class OrganizationsController < ApplicationController
   def update
 #    begin
       @organization = Organization.find(params[:id])
-      #@organization.update_attributes(params[:organization])
+      @organization.update_attributes(params[:organization])
 
 #      if @organization.invalid?
 #        render :edit
 #        return
 #      end
 
-      pp "hi"
-      pp "##################################"
-      pp @organization
-      @organization.save()
+      #@organization.save()
 
       # TODO:  This conversion should be done on the model!
 #      org = {:key => params[:organization][:key],

@@ -1,29 +1,26 @@
 class Organization < CandlepinObject
+
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
+  # Candlepin calls this resource an owner:
   self.element_name = "owner"
-  #self.attrs :key, :displayName, :upstreamUuid
 
-#  attr_reader :id
-#  attr_accessor :key, :displayName
+  # Candlepin API expects an owner key as the ID:
+  self.primary_key = :key
 
   validates_presence_of :key
   validates_format_of :displayName,
-    :with => /\A[^\/#]*\Z/, 
+    :with => /\A[^\/#]*\Z/,
     :message => 'cannot contain / or #'
 
-
-#  def initialize(hash)
-#    @id = hash['id']
-#    @key = hash['key']
-#    @name = hash['displayName'] || hash['name']
-#  end
-
-
-  def id
-    return self.key
+  # ActiveResource assumes anything with an ID is a pre-existing
+  # resource, ID in our case is key, and key is manually assigned at creation,
+  # so we must override the new check to force active record to persist our
+  # new org.
+  def new?
+    return (not (@attributes.has_key?(:id) and not @attributes[:id].nil?))
   end
 
 end

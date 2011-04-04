@@ -24,16 +24,17 @@ class OrganizationsController < ApplicationController
   end
 
   def new
-    # TODO: example of RBAC protection (will turn this into Rails filters soon)
-    #deny_access unless current_user.allowed_to?({:controller => "organizations", :action => "new"})
+    @organization = Organization.new
+    @organization.displayName = nil
+    @organization.key = nil
   end
 
   def create
     begin
-      @organization = Organization.new @cp.create_owner(params[:key], 
-        {:name => params[:name]})
+      @organization = Organization.new(params[:organization])
+      @organization.save
 
-      flash[:notice] = N_("Organization '#{@organization.name}' was created.")
+      flash[:notice] = N_("Organization '#{@organization.displayName}' was created.")
     rescue Exception => error
       errors error.to_s
       Rails.logger.info error.backtrace.join("\n")

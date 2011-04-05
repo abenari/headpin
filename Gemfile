@@ -22,6 +22,9 @@ gem 'simple-navigation', '3.1.0'
 # Stuff for i18n
 gem 'gettext_i18n_rails'
 gem 'i18n_data', '>= 0.2.6', :require => 'i18n_data'
+# for gettext rake tasks
+gem 'gettext', '>= 1.9.3', :require => false
+gem 'ruby_parser', :require => false
 
 
 # Bundle edge Rails instead:

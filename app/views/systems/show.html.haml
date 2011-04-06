@@ -6,34 +6,34 @@
       -#= link_to _("Edit"), :action => "edit", :controller => "organizations", :id =>@organization['key']
   %dd.delete
     %span
-      = link_to _("Delete"), { :controller => "systems", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@consumer['uuid']
+      = link_to _("Delete"), { :controller => "systems", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@system.uuid
     
     
 .grid_13#main
   %h2
-    = @consumer['name']
+    = @system.name
   %p
     #{_("UUID")}:
-    = @consumer['uuid']
+    = @system.uuid
 
   %p
     #{_("Organization")}:
     = link_to @organization.displayName, organization_path(@organization.id)
   %p
     #{_("Type")}:
-    = @consumer['type']['label']
+    = @system.type
 
   %p
     #{_("Registered")}:
-    = l Date.parse(@consumer['created']), :format => :long
+    = l Date.parse(@system.created), :format => :long
 
   %p
     #{_("Last Checkin")}:
-    = l(Date.parse(@consumer['lastCheckin']), :format => :long) if !@consumer['lastCheckin'].nil?
+    = l(Date.parse(@system.lastCheckin), :format => :long) if !@system.lastCheckin.nil?
 
   %p
     #{_("Registered By")}:
-    = @consumer['username']
+    = @system.username
 
   %p
     #{_("Facts")}:
@@ -42,7 +42,7 @@
     %thead
       %th= _("Fact")
       %th= _("Value")
-    - @consumer['facts'].sort.each do |fact, value|
+    - @system.facts.attributes.sort.each do |fact, value|
       %tr{:class => cycle(nil, 'alt')}
         %td= fact
         %td= value

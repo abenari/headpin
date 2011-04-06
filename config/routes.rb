@@ -14,6 +14,7 @@ ComplianceManager::Application.routes.draw do
   match 'systems/:id/unbind/:entitlement_id', :to => 'systems#unbind'
 
   resources :organizations do
+    #resources :systems
     member do
       get :subscriptions
       post :subscriptions

@@ -1,6 +1,6 @@
 
 %h2
-  = @consumer['name']
+  = @system.name
 
 %h3 Available Subscriptions
 #providers
@@ -23,7 +23,7 @@
           %td
             = l Date.parse(pool["endDate"])
           %td
-            = form_tag subscriptions_system_path(@consumer['uuid']) do
+            = form_tag subscriptions_system_path(@system.uuid) do
               = hidden_field_tag("pool_id", pool['id'])
               .actions
                 = submit_tag _("Subscribe")

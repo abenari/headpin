@@ -49,8 +49,8 @@ class OrganizationsController < ApplicationController
 
   def systems
     @organization = Organization.find(params[:id])
-    @consumers = @cp.list_owner_consumers(params[:id])
-    Rails.logger.debug("Found #{@consumers.size} consumers for owner: #{@organization.key}")
+    @systems = System.find(:all, :params => { :owner => @organization.key })
+    Rails.logger.debug("Found #{@systems.size} consumers for owner: #{@organization.key}")
   end
 
   def update

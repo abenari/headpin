@@ -9,8 +9,8 @@
     %h2 #{_("Systems")}
 
     %ul
-      -for consumer in @consumers
+      -for system in @systems
         %li{:class => cycle(nil, 'alt')}
-          %span{:alt => "#{consumer['uuid']}", :title => "#{consumer['uuid']}"}
-            = link_to "#{consumer['name']}", :action => "show", :controller => "systems", :id => "#{consumer['uuid']}"
+          %span{:alt => "#{system.id}", :title => "#{system.id}"}
+            = link_to "#{system.name}", system
 

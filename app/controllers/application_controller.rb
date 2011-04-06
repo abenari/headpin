@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'kalpana'
   helper_method :current_organization
+  before_filter :set_gettext_locale, :set_locale
 
   # This is a fairly giant hack to make the request
   # available to the Models for active record
@@ -65,4 +66,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def set_locale
+    I18n.locale = extract_locale_from_accept_language_header
+  end
+  
+  # XXX like in kalpana, this is temporary. we need a more robust method,
+  # such rack middleware or a rails plugin
+  def extract_locale_from_accept_language_header
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
 end

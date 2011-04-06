@@ -1,4 +1,4 @@
-class System < CandlepinObject
+class System < Base
 
   include ActiveModel::Validations
   include ActiveModel::Conversion

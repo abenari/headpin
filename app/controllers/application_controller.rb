@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
   layout 'kalpana'
   helper_method :current_organization
 
+  # This is a fairly giant hack to make the request
+  # available to the Models for active record
+  before_filter :store_request_in_thread
+
+  def store_request_in_thread
+      Thread.current[:request] = request
+  end
+
   def errors summary, failures = [], successes = []
     flash[:error] ||= {}
     flash[:error][:successes] = successes
@@ -20,9 +28,5 @@ class ApplicationController < ActionController::Base
   
   def current_organization=(org)
     session[:current_organization_id] = org.try(:key)
-  end
-
-  def current_user
-    env['warden'].user
   end
 end

@@ -10,7 +10,7 @@ class OrganizationsController < ApplicationController
   end
 
   def index
-    @organizations = Organization.find(:all)
+    @organizations = user.superAdmin? ? Organization.find(:all) : [Organization.find(user.owner.key)]
   end
 
   def show
@@ -65,11 +65,6 @@ class OrganizationsController < ApplicationController
 #      end
 
       #@organization.save()
-
-      # TODO:  This conversion should be done on the model!
-#      org = {:key => params[:organization][:key],
-#        :displayName => params[:organization][:name]}
-#      @cp.update_owner(@organization.key, org)
 
       flash[:notice] = N_("Organization '#{@organization.displayName}' was updated.")
       redirect_to :action => 'index' and return

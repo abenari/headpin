@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     session[:current_organization_id] = org.try(:key)
   end
 
+  def user
+    @user ||= User.find(current_user) unless current_user.nil?
+  end
+
   private
 
   def require_user

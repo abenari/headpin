@@ -29,4 +29,36 @@ class ApplicationController < ActionController::Base
   def current_organization=(org)
     session[:current_organization_id] = org.try(:key)
   end
+
+  private
+
+  def require_user
+    if current_user
+      #user logged in
+
+      #redirect to originally requested page
+      if session[:original_uri] != nil
+        redirect_to session[:original_uri]
+        session[:original_uri] = nil  
+      end
+
+      return true
+    else
+      #user not logged
+      flash[:notice] = _("You must be logged in to access that page.")
+
+      #save original uri and redirect to login page
+      session[:original_uri] = request.request_uri
+      redirect_to new_login_url and return false
+    end
+  end
+
+  def require_no_user
+    if current_user
+      flash[:notice] = _("Welcome Back!") + ", " + current_user
+      redirect_to dashboard_index_url
+      return false
+    end
+  end
+
 end

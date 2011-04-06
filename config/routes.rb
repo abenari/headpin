@@ -24,6 +24,8 @@ ComplianceManager::Application.routes.draw do
 
   resources :login
 
+  match 'logout', :to => 'login#destroy'
+
   # Temp route for "using" a particular org:
   match 'organizations/:id/use', :to => 'organizations#use'
 

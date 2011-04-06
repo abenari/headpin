@@ -3,6 +3,7 @@ require 'candlepin_api'
 
 class OrganizationsController < ApplicationController
   navigation :organizations
+  before_filter :require_user
 
   def section_id
     'orgs'

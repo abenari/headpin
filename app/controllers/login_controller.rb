@@ -1,5 +1,5 @@
 class LoginController < ApplicationController
-  #before_filter :require_no_user, :only => [:new, :create]
+  before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
   skip_before_filter :authorize, :only => [:new, :create, :destroy]
 
@@ -17,8 +17,8 @@ class LoginController < ApplicationController
     if logged_in?
       flash[:notice] = _("Login Successful")
 
-      # TODO:  This should be our dashboard
-      redirect_to systems_url
+      # TODO:  Come up with a better default redirect!
+      redirect_to(session.delete(:original_uri) || systems_url)
     end
   end
 

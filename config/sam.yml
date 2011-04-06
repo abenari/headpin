@@ -1,0 +1,15 @@
+# Satellite configuration
+#
+# :vim:sw=2:ts=2:et:
+#
+# Setup your candlepin environment here
+# url: refers to the url of the candlepin
+#     example https://localhost:8443/candlepin
+# oauth_key and oauth_secre :Specify your oauth key and secret
+#   used to authenticate with Candlepin
+candlepin:
+  host: localhost
+  port: 8443
+  prefix: /candlepin
+  oauth_key: kalpana
+  oauth_secret: shhhh

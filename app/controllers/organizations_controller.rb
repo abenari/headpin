@@ -82,7 +82,7 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization = Organization.find(params[:id])
     begin
-      @cp.delete_owner(params[:id])
+      candlepin.delete_owner(params[:id])
       flash[:notice] = N_("Organization '#{params[:id]}' was deleted.")
     rescue Exception => error
       errors error.to_s
@@ -103,7 +103,7 @@ class OrganizationsController < ApplicationController
         temp_file = File.new(File.join("#{Rails.root}/tmp", "import_#{SecureRandom.hex(10)}.zip"), 'w+', 0600)
         temp_file.write params[:contents].read
         temp_file.close
-        @cp.import(@organization.key, File.expand_path(temp_file.path))
+        candlepin.import(@organization.key, File.expand_path(temp_file.path))
         #notice _("Subscription uploaded successfully")
       rescue Exception => error
         #notice _("There was a format error with your Subscription Manifest")
@@ -114,7 +114,7 @@ class OrganizationsController < ApplicationController
 
     @subscriptions = [{'productName' => _("None Imported"), "consumed" => "0", "quantity" => "0"}]
     begin
-      @subscriptions = @cp.list_pools({:owner => @organization.id})
+      @subscriptions = candlepin.list_pools({:owner => @organization.id})
     rescue Exception => error
       Rails.logger.error "Error fetching subscriptions from Candlepin"
       Rails.logger.error error

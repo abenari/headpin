@@ -29,28 +29,28 @@ class SystemsController < ApplicationController
       flash[:notice] = _("Subscribed to #{product_name}.")
     end
 
-    @entitlements = @cp.list_entitlements({:uuid => params[:id]})
+    @entitlements = candlepin.list_entitlements({:uuid => params[:id]})
   end
 
   def available_subscriptions
     @system = System.find(params[:id])
-    @pools = @cp.list_pools({:consumer => params[:id]})
+    @pools = candlepin.list_pools({:consumer => params[:id]})
   end
 
   def unbind
     ent_id = params['entitlement_id']
-    ent = @cp.get_entitlement(ent_id)
+    ent = candlepin.get_entitlement(ent_id)
     @system = System.find(params[:id])
     Rails.logger.info "#{@system.uuid} unbinding entitlement #{ent_id}"
-    @cp.unbind_entitlement(ent_id, {:uuid => @system.uuid})
-    product_name = @cp.get_pool(ent['pool']['id'])['productName']
+    candlepin.unbind_entitlement(ent_id, {:uuid => @system.uuid})
+    product_name = candlepin.get_pool(ent['pool']['id'])['productName']
     flash[:notice] = _("Unsubscribed from #{product_name}.")
     redirect_to subscriptions_system_path(params['id'])
   end
 
   def destroy
     @system = System.find(params[:id])
-    @cp.unregister(params[:id])
+    candlepin.unregister(params[:id])
     flash[:notice] = _("Deleted system #{@system.name}.")
     redirect_to systems_path
   end

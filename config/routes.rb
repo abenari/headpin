@@ -22,6 +22,8 @@ ComplianceManager::Application.routes.draw do
     end
   end
 
+  resources :login
+
   # Temp route for "using" a particular org:
   match 'organizations/:id/use', :to => 'organizations#use'
 

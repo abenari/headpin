@@ -3,7 +3,19 @@
     %h1
       %img.kp{:src => '/images/rh_logo.png'}
       %img{:src => '/images/name.png'}
+.grid_13
+  - if current_user
+    %div.org
+      = render :partial => '/layouts/org'
+  %ul
+    %li.hello
+      = link_to '/logout' do
+        - if current_user
+          %b
+            = current_user
+          %li.logout
+            %a{ :href => "/logout"}
+              #{_("Logout")}
 .grid_30
   %div.org
     = render :partial => '/layouts/org'
-

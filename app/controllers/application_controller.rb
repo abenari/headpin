@@ -3,9 +3,12 @@ class ApplicationController < ActionController::Base
   layout 'kalpana'
   helper_method :current_organization
 
-  def initialize
-    @cp = OauthCandlepinApi.new('admin', 'admin', 'kalpana', 'shhhh')
-    super
+  # This is a fairly giant hack to make the request
+  # available to the Models for active record
+  before_filter :store_request_in_thread
+
+  def store_request_in_thread
+      Thread.current[:request] = request
   end
 
   def errors summary, failures = [], successes = []
@@ -14,20 +17,16 @@ class ApplicationController < ActionController::Base
     flash[:error][:failures] = failures
     flash[:error][:summary] = summary
   end
-
   
   def current_organization
     if session.has_key? :current_organization_id
-      @current_org =  Organziation.new @cp.get_owner(session[:current_organization_id])
-    else
-      # Temp hack until we have auth, and users logging in:
-      @current_org = Organization.new @cp.get_owner('admin')
+      @current_org =  Organziation.new candlepin.get_owner(session[:current_organization_id])
     end
-    return @current_org
+
+    @current_org
   end
   
   def current_organization=(org)
     session[:current_organization_id] = org.try(:key)
   end
-
 end

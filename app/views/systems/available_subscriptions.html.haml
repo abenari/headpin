@@ -12,19 +12,19 @@
         %th Contract 
         %th Expires
         %th Actions
-      - @pools.each do |pool|
+      - @subscriptions.each do |sub|
         %tr{:class => cycle(nil, 'alt')}
           %td
-            = pool["productName"]
+            = sub.productName
           %td
-            = pool["quantity"].to_i - pool["consumed"].to_i
+            = sub.quantity.to_i - sub.consumed.to_i
           %td
-            = pool["contractNumber"]
+            = sub.contractNumber
           %td
-            = l Date.parse(pool["endDate"])
+            = l Date.parse(sub.endDate)
           %td
             = form_tag subscriptions_system_path(@system.uuid) do
-              = hidden_field_tag("pool_id", pool['id'])
+              = hidden_field_tag("pool_id", sub.id)
               .actions
                 = submit_tag _("Subscribe")
 

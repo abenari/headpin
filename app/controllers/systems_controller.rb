@@ -29,12 +29,12 @@ class SystemsController < ApplicationController
       flash[:notice] = _("Subscribed to #{product_name}.")
     end
 
-    @entitlements = candlepin.list_entitlements({:uuid => params[:id]})
+    @entitlements = Entitlement.find(:all, :params => {:consumer_id => @system.uuid})
   end
 
   def available_subscriptions
     @system = System.find(params[:id])
-    @pools = candlepin.list_pools({:consumer => params[:id]})
+    @subscriptions = Subscription.find(:all, :params => {:consumer => @system.uuid})
   end
 
   def unbind

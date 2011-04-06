@@ -35,10 +35,10 @@ GEM
     arel (2.0.9)
     bson_ext (1.3.0)
     builder (2.1.2)
-    closure-compiler (1.1.1)
+    closure-compiler (1.0.0)
     compass (0.10.6)
       haml (>= 3.0.4)
-    compass-960-plugin (0.10.0)
+    compass-960-plugin (0.10.1)
       compass (>= 0.10.0)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -68,7 +68,13 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    multipart (0.2.1)
+    multipart-post (1.1.0)
     oauth (0.4.4)
+    oauth-active-resource (0.4.6)
+      activeresource
+      multipart
+      oauth (>= 0.3.6)
     open4 (1.0.1)
     polyglot (0.3.1)
     rack (1.2.2)
@@ -84,6 +90,8 @@ GEM
       activesupport (= 3.0.3)
       bundler (~> 1.0)
       railties (= 3.0.3)
+    rails_warden (0.5.2)
+      warden
     railties (3.0.3)
       actionpack (= 3.0.3)
       activesupport (= 3.0.3)
@@ -127,6 +135,8 @@ GEM
       macaddr (~> 1.0)
     vegas (0.1.8)
       rack (>= 1.0.0)
+    warden (1.0.3)
+      rack (>= 1.0.0)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
 
@@ -144,8 +154,10 @@ DEPENDENCIES
   i18n_data (>= 0.2.6)
   jammit
   json
-  oauth
+  multipart-post
+  oauth-active-resource
   rails (= 3.0.3)
+  rails_warden
   resque
   resque-status
   rest-client

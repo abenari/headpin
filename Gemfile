@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source :rubygems
 
 gem 'rails', '3.0.3'
 
@@ -10,9 +10,11 @@ gem 'jammit'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'pg'
 gem 'bson_ext', '>= 1.0.4'
-#gem 'rails_warden'
+gem 'rails_warden'
 #gem 'net-ldap'
-gem 'oauth'
+gem 'oauth-active-resource'
+# Dependency of oauth gem - but it lists the wrong one!
+gem 'multipart-post'
 # Stuff for view/display/frontend
 gem 'haml', '>= 3.0.16'
 gem 'haml-rails'
@@ -25,7 +27,6 @@ gem 'i18n_data', '>= 0.2.6', :require => 'i18n_data'
 # for gettext rake tasks
 gem 'gettext', '>= 1.9.3', :require => false
 gem 'ruby_parser', :require => false
-
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

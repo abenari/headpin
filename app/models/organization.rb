@@ -1,5 +1,6 @@
-class Organization < CandlepinObject
+require 'base'
 
+class Candlepin::Organization < Candlepin::Models::Base
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming

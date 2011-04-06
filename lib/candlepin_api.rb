@@ -10,10 +10,8 @@ require 'oauth'
 
 class Candlepin
 
-  attr_accessor :consumer
-  attr_reader :identity_certificate
-  attr_accessor :uuid
-  attr_reader :lang
+  attr_accessor :consumer, :uuid
+  attr_reader :identity_certificate, :lang, :username
 
   # Initialize a connection to candlepin. Can use username/password for
   # basic authentication, or provide an identity certificate and key to
@@ -523,6 +521,7 @@ class Candlepin
   private
 
   def create_basic_client(username=nil, password=nil)
+    @username = username
     @client = RestClient::Resource.new(@base_url,
                                        :user => username, :password => password,
                                        :headers => {:accept_language => @lang})
@@ -559,15 +558,14 @@ end
 
 class OauthCandlepinApi < Candlepin
 
-  def initialize(username, password, oauth_consumer_key, oauth_consumer_secret, params={})
-
+  def initialize(username, oauth_consumer_key, oauth_consumer_secret, params={})
     @oauth_consumer_key = oauth_consumer_key
     @oauth_consumer_secret = oauth_consumer_secret
 
     host = params[:host] || 'localhost'
     port = params[:port] || 8443
     lang = params[:lang] || nil
-    super(username, password, nil, nil, host, port, lang, nil, false)
+    super(username, nil, nil, nil, host, port, lang, nil, true)
   end
 
   protected
@@ -582,7 +580,6 @@ class OauthCandlepinApi < Candlepin
       :request_token_path => "",
       :authorize_path => "",
       :access_token_path => ""}
-    #params[:ca_file] = self.ca_cert_file unless self.ca_cert_file.nil?
 
     consumer = OAuth::Consumer.new(@oauth_consumer_key,
       @oauth_consumer_secret, params)
@@ -591,13 +588,11 @@ class OauthCandlepinApi < Candlepin
     headers = {
       'Authorization' => request['Authorization'],
       'accept_language' => @lang,
-      'cp-user' => 'admin'
+      'cp-user' => @username
     }
 
     # Creating a new client for every request:
-    client = RestClient::Resource.new(@base_url,
-      :headers => headers)
-    return client
+    RestClient::Resource.new(@base_url, :headers => headers)
   end
 
 end

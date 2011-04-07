@@ -55,36 +55,29 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-#    begin
-      @organization = Organization.find(params[:id])
-      @organization.update_attributes(params[:organization])
+    @organization = Organization.find(params[:id])
+    @organization.update_attributes(params[:organization])
 
-#      if @organization.invalid?
-#        render :edit
-#        return
-#      end
-
-      #@organization.save()
-
+    if @organization.save
       flash[:notice] = N_("Organization '#{@organization.displayName}' was updated.")
-      redirect_to :action => 'index' and return
-#    rescue Exception => error
-#      Rails.logger.error error
-#      errors error.to_s
-#      redirect_to :action => 'show', :id => params[:id]
-#    end
+      redirect_to :action => 'index'
+    else
+      errors N_('There were errors updating the organization:'), @organization.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
     @organization = Organization.find(params[:id])
+
     begin
-      candlepin.delete_owner(params[:id])
-      flash[:notice] = N_("Organization '#{params[:id]}' was deleted.")
-    rescue Exception => error
-      errors error.to_s
-      redirect_to :action => 'show', :id => params[:id] and return
+      @organization.destroy
+      flash[:notice] = N_("Organization '#{@organization.displayName}' was deleted.")
+      redirect_to :action => 'index'
+    rescue ActiveResource::ForbiddenAccess => error
+      errors error.message
+      render :show
     end
-    redirect_to :action => 'index'
   end  
 
   # Based on the Kalpana code in providers controller:

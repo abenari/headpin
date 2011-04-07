@@ -14,10 +14,6 @@
              :html => { :method => 'put' } do |f|
     .grid_16
       %fieldset.clearfix
-        = if @organization.errors.any?
-          %ul.errors
-            = @organization.errors.full_messages.each do |error|
-              %li= error
         %b
           %label.grid_5 #{_("Name")}:
         .grid_7

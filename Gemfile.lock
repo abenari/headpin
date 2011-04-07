@@ -40,6 +40,7 @@ GEM
       haml (>= 3.0.4)
     compass-960-plugin (0.10.1)
       compass (>= 0.10.0)
+    diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fast_gettext (0.5.11)
@@ -115,6 +116,19 @@ GEM
       uuid (>= 2.0.2)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    rspec (2.5.0)
+      rspec-core (~> 2.5.0)
+      rspec-expectations (~> 2.5.0)
+      rspec-mocks (~> 2.5.0)
+    rspec-core (2.5.1)
+    rspec-expectations (2.5.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.5.0)
+    rspec-rails (2.5.0)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.5.0)
     ruby_parser (2.0.6)
       sexp_processor (~> 3.0)
     sexp_processor (3.0.5)
@@ -161,6 +175,7 @@ DEPENDENCIES
   resque
   resque-status
   rest-client
+  rspec-rails
   ruby_parser
   simple-navigation (= 3.1.0)
   sqlite3-ruby

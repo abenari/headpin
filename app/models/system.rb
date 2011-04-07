@@ -20,9 +20,5 @@ class System < Base
     return ent
   end
 
-  def post(custom_method_name, options = {}, body = '')
-    # Overriding the default to trim the .format off the end of the URLs:
-    pp options
-  end
 end
 

@@ -31,6 +31,7 @@ class Base < OAuthActiveResource::Resource
       return "#{prefix(prefix_options)}#{collection_name}/#{id}" << \
         "#{query_string(query_options)}"
     end
+
     def collection_path(prefix_options = {}, query_options = nil)
       prefix_options, query_options = split_options(prefix_options) \
         if query_options.nil?
@@ -38,10 +39,14 @@ class Base < OAuthActiveResource::Resource
         "#{query_string(query_options)}"
     end
 
+    def new_element_path(prefix_options = {})
+      # TODO: This new doesn't look like it matches anything in Candlepin:
+      "#{prefix(prefix_options)}#{collection_name}/new"
+    end
+
   end
 
   def encode(options={})
-    pp self.class.format.encode(attributes, options)
     self.class.format.encode(attributes, options)
   end
 end

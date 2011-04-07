@@ -24,8 +24,8 @@ class SystemsController < ApplicationController
     if params.has_key?("pool_id")
       pool_id = params['pool_id']
       Rails.logger.info "#{@system.uuid} binding to pool #{pool_id}"
-      ent = @cp.consume_pool(pool_id, {:uuid => @system.uuid})[0]
-      product_name = @cp.get_pool(ent['pool']['id'])['productName']
+      ent = @system.bind(pool_id)
+      product_name = Subscription.find(ent.pool.id).productName
       flash[:notice] = _("Subscribed to #{product_name}.")
     end
 

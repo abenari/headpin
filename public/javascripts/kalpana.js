@@ -4,6 +4,9 @@
  * Date: 09/01/2010
  */
 
+//i18n global variable
+var i18n = {};
+
 /**
  * Document Ready function
  */
@@ -15,6 +18,10 @@ $(document).ready(function (){
 	}).blur(function() {
 		onInputField = false;
 	});
+
+        //Add a handler for helptips
+        $(".helptip-open").bind('click', helptip.handle_close); 
+        $(".helptip-close").bind('click', helptip.handle_open);
 });
 
 /**
@@ -22,6 +29,13 @@ $(document).ready(function (){
  */
 $(window).ready(function(){
     $('.fc').parent().css({"text-align":"center"});
+    //all purpose display loading icon for ajax calls
+    $("#loading").bind("ajaxSend", function(){
+      $(this).show();
+    }).bind("ajaxComplete", function(){
+      $(this).hide();
+    });
+    $().UItoTop({ easingType: 'easeOutQuart' });
 });
 
 /**
@@ -37,6 +51,14 @@ var svc = (function() {
 		}
 	};
 })();
+
+
+function localize(data) {
+	for (var key in data) {
+		i18n[key] =  data[key];
+	}
+}
+
 
 function update_status() {
   var statusElement = $(".status");
@@ -66,6 +88,38 @@ function log(msg) {
         throw new Error(msg);
     }, 0);
 }
+
+var helptip =  {
+        handle_close: function(){
+          var key = this.id.split("helptip-opened_")[1];
+          $("#helptip-opened_" + key).hide();
+          $("#helptip-closed_" + key).show();
+          helptip.disable(key); 
+        },
+        handle_open: function(){
+          var key = this.id.split("helptip-closed_")[1];
+          $("#helptip-opened_" + key).show();
+          $("#helptip-closed_" + key).hide();
+          helptip.enable(key);
+        },
+        enable: function(key) {
+          $.ajax({
+            type: "POST",
+            url: "/users/enable_helptip",
+            data: { "key":key},
+            cache: false,
+           });
+        },
+        disable: function(key) {
+          $.ajax({
+            type: "POST",
+            url: "/users/disable_helptip",
+            data: { "key":key},
+            cache: false,
+           });
+        }
+}
+
 
 var common = (function() {
     return {

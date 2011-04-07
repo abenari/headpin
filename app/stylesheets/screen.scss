@@ -6,6 +6,10 @@
 @import "compass/reset";
 @import "base";
 
+body {
+  background:  #F5FAFA url(/images/centered-bg.png) no-repeat center top;
+}
+
 #main {
 	ul {
    margin: 0;
@@ -25,8 +29,18 @@
     cursor: hand;
 }
 
-/* edit icon for in place editing */
-.edit
+#spinner {
+  margin-top: 30%;
+  height: 16px;
+  display: block;
+  /*display: none;*/
+  position: relative;
+  z-index: 1000;
+  padding-left: 47%;
+}
+
+/* editable icon for in place editing */
+.editable
 {
   padding: 4px 26px 4px 2px;
   background: url("/images/icons/edit.png") no-repeat scroll 98% 6px transparent;
@@ -38,6 +52,13 @@
   }
 }
 
+#loading {
+  display: none; 
+  position: relative;
+  width: 16px;
+  padding: 6px 0 0 0;
+}
+
 fieldset {
   label {
     font-weight: bold;
@@ -46,14 +67,16 @@ fieldset {
     padding: 4px 0;
   }
 }
-/* end edit icon for in place editing*/
+/* end editable icon for in place editing*/
 
 /* 2 pane css */
 #container {
-  width:960px;
+  width:  100%;
   margin:0 auto;
-  background-color:#fff;
   min-height:500px;
+  h1,h2,h3,h4,h5 {
+    margin-left: 10px;
+  }
 }
 /* right side of 2 pane below the sliding pane */
 .right {
@@ -67,36 +90,68 @@ fieldset {
   width:480px;
   min-height:500px;
   position:relative;
-  @include box-shadow(3px, 4px, 5px, rgba(0,0,0,0.4));
   z-index: 100;
+  #new {
+    border-bottom: 0 none;
+    padding: 15px;
+    position: relative;
+    margin: 0;
+    right: 0;
+    display: inline-block;
+    width: 8em;
+    text-align: center;
+  }
 }
 .block {
-  border-bottom:dashed 1px #999;
-  padding:15px;
-  border-right:solid 1px #999;
+  border-bottom: solid 1px #F2F2F2;
+  padding:  6px 17px 6px 16px;
   cursor:pointer;
-}
-.block:hover {
-  background-color:lighten($kprimary, 67%);
-}
-.block.active {
-  background-color:lighten($kprimary, 65%);
+  position: relative;
+  width: 93%;
+  height: 17px;
+  &.active {
+    background-color: $listhover;
+    color: #FFF;
+    .arrow-right {
+      border-bottom: 15px solid transparent;
+      border-left: 15px solid $listhover;
+      border-top: 15px solid transparent;
+      float: right;
+      height: 0;
+      margin: 0;
+      position: absolute;
+      right: -15px;
+      top: 0px;
+      width: 0;
+    }
+  }
+  &:hover {
+      background-color:lighten($listhover, 10%);
+      color: #FFF;
+      .arrow-right {
+        @include opacity(.3)
+      }
+  }
+
 }
 #panel-frame {
   position:absolute;
   max-width:700px;
-  top: 11.4em;
+  top: 13em;
 }
 #panel {
-  background-color:#f2f2f2;
+  background-color:#F5FAFA;
   width:479px;
   height:490px;
   margin-top:0;
   position:relative;
   left:0;
-  @include box-shadow(3px, 4px, 5px, rgba(0, 0, 0, 0.4));
-  @include border-radius(9px);
+  @include box-shadow(3px, 4px, 5px, rgba(0, 0, 0, 0.2));
   @include opacity(0);
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid #D1D1D2;
+  border-bottom: 1px solid #D1D1D2;
 }
 .data  {
   padding-left: 18px;
@@ -104,8 +159,26 @@ fieldset {
 .head {
   background-color:lighten($kprimary, 65%);
   padding:10px;
-  text-align:right;
+  position: absolute;
+  right: 0;
   @include border-top-r-radius(9px);
+}
+#list {
+  margin-top: -3px;
+  min-height:450px;
+  border: 1px solid #000;
+  .column_1 {
+    width: 100%;
+    float: left;
+  }
+  .column_2 {
+    width: 50%;
+    float: left;
+  }
+  .column_3 {
+    width: 33%;
+    float: left;
+  }
 }
 
 
@@ -265,4 +338,74 @@ fieldset {
 }
 /* end content locker custom css */
 
+/* begin helptip */
+.helptip-open {
+  background-color: #EEE;
+  display: block; 
+  padding: 12px;
+  border: 1px solid #DDD;
+  margin-bottom: 5px;
+}
+
+.helptip-open-button {
+  background: url(/images/icons/action-icons.png) no-repeat 0 0;
+  background-position: -336px 0; 
+}
+
+.helptip-close-button {
+  position: relative; 
+  float: right;
+  height: 16px;
+  width: 16px; 
+  margin: 0px;
+  background-image: url(/images/icons/close.png);
+  
+}
+/* end helptip */
+
+/* begin simple pass meter css */
+.simplePassMeter {
+  border: 1px solid #aaa;
+  background-color: #f3f3f3;
+  color: #666;
+  font-size: 0.8em;
+  padding: 1px 5px 0 5px;
+  margin: 0;
+  width: 19em;
+  margin-bottom: 10px;
+}
+  
+.meterFail { border: 1px solid #daa; background-color: #fdd; }
+.meterWarn { border: 1px solid #fd6; background-color: #feb; }
+.meterGood { border: 1px solid #ada; background-color: #dfd; }
+.meterExcel { border: 1px solid #aad; background-color: #ddf; }
+
+.simplePassMeterBar { background-color: #ddd; }
+.meterFail .simplePassMeterProgress  { background-color: #f66; }
+.meterWarn .simplePassMeterProgress  { background-color: #fd6; }
+.meterGood .simplePassMeterProgress  { background-color: #ada; }
+.meterExcel .simplePassMeterProgress { background-color: #88f; }
+
+.simplePassMeter p { margin: 0; }
+.simplePassMeterIcon { height: 16px; width: 16px; float: left; }
+.meterFail .simplePassMeterIcon,
+.meterWarn .simplePassMeterIcon,
+.meterGood .simplePassMeterIcon,
+.meterExcel .simplePassMeterIcon {
+  background-image: url('/images/simplePassMeterSprite.png');
+  background-repeat: no-repeat;
+}
+.meterExcel .simplePassMeterIcon { background-position: 0 0; }
+.meterFail .simplePassMeterIcon { background-position: 0 -17px; }
+.meterGood .simplePassMeterIcon { background-position: 0 -34px; }
+.meterWarn .simplePassMeterIcon { background-position: 0 -51px; }
+
+.simplePassMeterText { margin-left: 2px; }
+/* end  simple pass meter css */
+  
+.permission {
+  display: inline-block;
+  margin-bottom:10px;
+  margin-top:10px;
+}
 

@@ -4,6 +4,9 @@
 html {
 }
 
+body {
+}
+
 a {
   color: $kprimary;
   text-decoration: none;
@@ -147,28 +150,12 @@ input[type='submit'],button,.button {
 
 h1,h2,h3,h4,h5 {
   color: $headercl;
-  font-weight: bold;
+  font-weight: bold !important;
   margin-top: 1em;
   &:first-child {
     margin-top: 0;
   }
 }
-
-h1 { font-size: 140%; }
-h2 { font-size: 130%; }
-h3 {
-  font-size: 120%;
-  &.gap {
-    margin-top: 3em;
-  }
-}
-h4 {
-  font-size: 110%;
-  &.legend {
-    margin-bottom: 4px;
-  }
-}
-h5 { font-size: 80%; }
 
 .clear {
   clear: both;
@@ -474,30 +461,19 @@ ul.block {
 
 #head {
     background-color: $headerbg;
+    padding: 4px 0 0 0;
     border-bottom: 2px solid desaturate(lighten($headerbg,30%),50%);
     overflow: hidden;
+    @include text-shadow(0, 1px, 0, #000);
+  .kp {
+    padding-top: 2px;
+  }
   header {
     display: block;
-    h1 {
-      text-transform: uppercase;
-      font-size: 110%;
-      color: #fff;
-      margin: 2px 0 4px 0;
-      padding: 6px 0 4px 77px;
-      position: relative;
-      float: left;
-      height: 16px;
-      img.kp {
-        position: absolute;
-        left: 43px;
-        top: 7px;
-      }
-    }
     ul {
       display: block;
       float: right;
-      margin: 0 10px 0 0;
-      padding: 8px 0 0;
+      margin: 4px 5px 0 0;
       li {
         display: inline-block;
         margin: 0 5px;
@@ -510,7 +486,7 @@ ul.block {
       }
     }
   }
-  @include text-shadow(0, 1px, 0, #000);
+  
   /* BUTTONS */
   input[type='submit'],button,.button {
     font-family: $screenfont;
@@ -523,8 +499,6 @@ ul.block {
     border: 0 none;
     color: #FFF;
     cursor: pointer;
-    margin: 4px;
-    padding: 4px 12px;
     @include border-radius(5px);
     @include text-shadow(0, 1px, 0, #000);
      min-height: 14px;
@@ -620,42 +594,44 @@ ul.block {
 nav.tab_nav{
   display: block;
   font-weight: normal;
-  font-family: $headlinefont;  
+  font-family: $headlinefont;
+  font-size: 120%;
   &>ul {
-    background: #ddd url(/images/tab-bg.png) repeat-x 0 0;
-    background-position: 0 -140px;        
-    border-left:1px solid  #9F9F9F;
-    border-right:1px solid  #9F9F9F;
-    border-top:1px solid  #9F9F9F;
-    bottom: -1px;
+   bottom: -3px;
     display: block;
     margin: 0;
     overflow: hidden;
-    padding:  5px;
     position: absolute;
     z-index: 2;
+    font-weight: bold;
     &.selected {
       color: rgba(0, 0, 0, 1);
     }
     &>li {
+      padding: 8px 10px;
+      bottom: -1px;
+      border-left:1px solid  #9F9F9F;
+      border-right:1px solid  #9F9F9F;  
+      background: #ddd url(/images/navtab_off.png) repeat-x 0 0;
       display: block;
       float: left;
-      margin: 0 10px;
+      margin: 0 2px;
+      text-shadow: #fff 1px 1px 0;
       &>a{
         display: block;
-        color: rgba(0, 0, 0, .4);
+        color: rgba(0, 0, 0, .3);
         text-decoration: none;
         &:hover, &:active {
           color: rgba(0, 0, 0, .7);
         }
         &.selected { 
-          color: rgba(0, 0, 0, 1);
-          text-decoration: underline;
+          color: $kprimary;
         }
       }
       &.selected {
         position: relative;
-        botton: -1px;
+        bottom: -1px;
+        background: #ddd url(/images/navtab_on.png) repeat-x 0 0;
       }
     }
   }
@@ -784,7 +760,10 @@ nav {
     right: inherit;
     margin-bottom: 2em;
     &>ul {
-      display: block;
+      display: inline-block;
+      height: 2.7em;
+      background-color: lighten($kprimary, 65%);
+      @include border-radius(5px);
       li {
         display: block;
         float: left;
@@ -814,7 +793,7 @@ nav {
 #orgs .subnav { background-color: $orgsbg; }
 /*#contents nav>ul>li>ul>li>a.selected { color: $operationbg; }*/
 #systems .subnav { background-color: $systemsbg; }
-#operations .subnav { background-color: $operationsbg; }
+#operations .subnav { background-color: $administrationbg; }
 #dashboard .subnav>ul>li a.selected { background: url(/images/selected-subnav-op.png) no-repeat bottom center; }
 #contents .subnav>ul>li a.selected,
 #systems .subnav>ul>li a.selected,
@@ -891,6 +870,11 @@ legend {
   color: $headercl;
 }
 
+/* When you need to seperate items within a fieldset */
+.fielditem {
+   margin-top: 5px;
+   margin-bottom: 5px;
+}
 
 /* simple two column label + input pairs */
 .kalpana_form {
@@ -997,7 +981,7 @@ ul.tiles {
   .failures { background-position: 0 -54px; }
   .retries { background-position: 0 -72px; }
 }
-
+/*footer*/
 footer {
   font-size: 90%;
   margin: 20px 0 0;
@@ -1019,6 +1003,36 @@ footer {
     bottom: 0; left: 0; right: 0;
   }
 }
+#toTop {
+  display:none;
+  text-decoration:none;
+  position:fixed;
+  bottom:10px;
+  left:10px;
+  overflow:hidden;
+  width:32px;
+  height:32px;
+  border:none;
+  text-indent:-999px;
+  background:url(/images//ui.totop.png) no-repeat left top;
+}
+
+#toTopHover {
+  background:url(/images//ui.totop.png) no-repeat left -32px;
+  width:32px;
+  height:32px;
+  display:block;
+  overflow:hidden;
+  float:left;
+  opacity: 0;
+  -moz-opacity: 0;
+  filter:alpha(opacity=0);
+}
+
+#toTop:active, #toTop:focus {
+  outline:none;
+}
+/* end footer */
 
 /* RIGHT SIDEBAR */
 .sidebarcontainer {
@@ -1095,11 +1109,6 @@ a.iconbutton {
   width: 1020px;
   margin-left: -510px;
   background: url(/images/960.png) repeat-y top center;
-}
-
-.org {
-  margin-left: 100px;
-  float: left;
 }
 
 .actions {

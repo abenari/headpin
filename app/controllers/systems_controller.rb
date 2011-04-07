@@ -1,4 +1,3 @@
-require 'candlepin_api'
 
 class SystemsController < ApplicationController
 

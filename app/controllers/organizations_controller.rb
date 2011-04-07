@@ -1,5 +1,4 @@
 require 'pp'
-require 'candlepin_api'
 
 class OrganizationsController < ApplicationController
   navigation :organizations

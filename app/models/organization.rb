@@ -19,7 +19,7 @@ class Organization < Base
   # so we must override the new check to force active record to persist our
   # new org.
   def new?
-    return (not (@attributes.has_key?(:id) and not @attributes[:id].nil?))
+    @attributes[:id].nil?
   end
 
 end

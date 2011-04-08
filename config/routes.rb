@@ -22,7 +22,7 @@ ComplianceManager::Application.routes.draw do
     end
   end
 
-  resources :login
+  resources :login, :dashboard
 
   match 'logout', :to => 'login#destroy'
 
@@ -75,7 +75,7 @@ ComplianceManager::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "organizations#index"
+  root :to => "dashboard#index"
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,3 +1,4 @@
+require 'net/https'
 
 Rails.configuration.middleware.use RailsWarden::Manager do |manager|
   manager.default_strategies :candlepin

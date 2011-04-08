@@ -5,6 +5,7 @@ gem 'rails', '3.0.3'
 gem 'json'
 gem 'bson_ext', '>= 1.0.4'
 gem 'rails_warden'
+gem 'rest-client', :require => 'rest_client'
 gem 'oauth-active-resource'
 # Dependency of oauth gem - but it lists the wrong one!
 gem 'multipart-post'

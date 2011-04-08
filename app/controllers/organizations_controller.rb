@@ -93,10 +93,12 @@ class OrganizationsController < ApplicationController
       @organization.import(File.expand_path(temp_file.path))
     end
 
-    @subscriptions = [{'productName' => _("None Imported"), "consumed" => "0", "quantity" => "0"}]
+    @subscriptions = [Subscription.new(:productName => _("None Imported"),
+                                       :consumed => 0,
+                                       :quantity => 0)]
     begin
-      # Going to attributes here as we've overloaded key as id in the model:
-      @subscriptions = Subscription.find(:all, :params => { :owner => @organization.attributes['id']})
+      @subscriptions = Subscription.find(:all, :owner => @organization.id)
+      @imports = ImportRecord.find_for_org(@organization.key)
     rescue Exception => error
       Rails.logger.error "Error fetching subscriptions from Candlepin"
       Rails.logger.error error

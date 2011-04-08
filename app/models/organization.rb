@@ -22,4 +22,20 @@ class Organization < Base
     @attributes[:id].nil?
   end
 
+  def import(manifest_zip_path)
+    puts "Uploading manifest: #{manifest_zip_path}"
+
+    # TODO: not sure why this isn't working! Part of the OAuth plugin should
+    # let us do this:
+    #
+    #resp = Base.send_multipart_request(:post, "/candlepin/owners/#{key}/imports",
+    #  [['export.zip', File.new(manifest_zip_path)]])
+    #pp resp
+
+    # Using the Candlepin API module until we can figure out the above:
+    cp = Base.candlepin_api
+    cp.import key, manifest_zip_path
+  end
+
+
 end

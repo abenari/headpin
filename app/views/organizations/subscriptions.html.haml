@@ -11,11 +11,11 @@
       - @subscriptions.each do |sub|
         %tr{:class => cycle(nil, 'alt')}
           %td
-            = sub["productName"]
+            = sub.productName
           %td
-            = sub["consumed"]
+            = sub.consumed
           %td
-            = sub["quantity"]
+            = sub.quantity
     %h4 Upload Subscription Manifest
     = form_tag "/organizations/#{@organization.key}/subscriptions", :multipart => true do
       %fieldset

@@ -87,22 +87,16 @@ class OrganizationsController < ApplicationController
     if params.has_key? :contents
       Rails.logger.info "Uploading a subscription manifest."
       temp_file = nil
-      begin
-        temp_file = File.new(File.join("#{Rails.root}/tmp", "import_#{SecureRandom.hex(10)}.zip"), 'w+', 0600)
-        temp_file.write params[:contents].read
-        temp_file.close
-        candlepin.import(@organization.key, File.expand_path(temp_file.path))
-        #notice _("Subscription uploaded successfully")
-      rescue Exception => error
-        #notice _("There was a format error with your Subscription Manifest")
-        Rails.logger.error "error uploading subscriptions."
-        Rails.logger.error error
-      end
+      temp_file = File.new(File.join("#{Rails.root}/tmp", "import_#{SecureRandom.hex(10)}.zip"), 'w+', 0600)
+      temp_file.write params[:contents].read
+      temp_file.close
+      @organization.import(File.expand_path(temp_file.path))
     end
 
     @subscriptions = [{'productName' => _("None Imported"), "consumed" => "0", "quantity" => "0"}]
     begin
-      @subscriptions = candlepin.list_pools({:owner => @organization.id})
+      # Going to attributes here as we've overloaded key as id in the model:
+      @subscriptions = Subscription.find(:all, :params => { :owner => @organization.attributes['id']})
     rescue Exception => error
       Rails.logger.error "Error fetching subscriptions from Candlepin"
       Rails.logger.error error

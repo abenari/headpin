@@ -16,6 +16,21 @@
             = sub.consumed
           %td
             = sub.quantity
+    %h4 Recent Imports
+    %table
+      %thead
+        %th Message
+        %th Status
+        %th Import Time
+      - @imports.each do |import|
+        %tr{:class => cycle(nil, 'alt')}
+          %td
+            = import.statusMessage
+          %td
+            = import.status
+          %td
+            = relative_time_in_words import.timestamp
+
     %h4 Upload Subscription Manifest
     = form_tag "/organizations/#{@organization.key}/subscriptions", :multipart => true do
       %fieldset

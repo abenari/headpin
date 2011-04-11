@@ -11,9 +11,7 @@ class SystemsController < ApplicationController
 
   def show
     @system = System.find(params[:id])
-    # Owner hateoas form is giving us a bad ID (we need key), so splitting the
-    # href to get at it.
-    @organization = Organization.find(@system.owner.href.split('/')[-1])
+    @organization = Organization.find @system.owner.key
   end
 
   def subscriptions

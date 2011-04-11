@@ -16,16 +16,14 @@ class LoginController < ApplicationController
 
     if logged_in?
       flash[:notice] = _("Login Successful")
-
-      # TODO:  Come up with a better default redirect!
-      redirect_to(session.delete(:original_uri) || systems_url)
+      redirect_to(session.delete(:original_uri) || '/dashboard')
     end
   end
 
   def destroy
     logout
     flash[:notice] = _("Logout Successful")
-    redirect_to root_url
+    redirect_to new_login_url
   end
 
   def unauthenticated

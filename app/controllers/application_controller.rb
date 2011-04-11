@@ -21,16 +21,12 @@ class ApplicationController < ActionController::Base
   
   def current_organization
     if session.has_key? :current_organization_id
-      @current_org =  Organziation.new candlepin.get_owner(session[:current_organization_id])
+      current_org =  Organization.find(session[:current_organization_id])
     end
 
-    @current_org
+    current_org
   end
   
-  def current_organization=(org)
-    session[:current_organization_id] = org.try(:key)
-  end
-
   def user
     @user ||= User.find(current_user) unless current_user.nil?
   end

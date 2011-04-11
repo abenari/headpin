@@ -18,7 +18,7 @@ class OrganizationsController < ApplicationController
 
   def use
     @organization = Organization.find(params[:id])
-    current_organization = @organization
+    session[:current_organization_id] = @organization.key
     flash[:notice] = N_("Now using organization '#{@organization.displayName}'.")
     redirect_to organization_path(@organization.key)
   end

@@ -5,7 +5,8 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.id_generator = Proc.new {|key| "kp-#{key}"}
   
   navigation.items do |top_level|
-    
+
+    top_level.item :dashboard, _("Dashboard"), {:controller => 'dashboard'}
     top_level.item :organizations, _("Organizations"), {:controller => 'organizations'}, :class=>'organizations' do |orgs_sub|
       orgs_sub.item :subscriptions, _("Subscriptions"), (@organization.nil? || @organization.id.nil?) ? "" : subscriptions_organization_path(@organization.id)
       orgs_sub.item :systems, _("Systems"), (@organization.nil? || @organization.id.nil?) ? "" : systems_organization_path(@organization.key)

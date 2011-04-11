@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_filter :require_user
+  navigation :dashboard
 
   def section_id
     'dashboard'

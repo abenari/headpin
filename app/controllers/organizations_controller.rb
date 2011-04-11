@@ -47,12 +47,6 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
   end
 
-  def systems
-    @organization = Organization.find(params[:id])
-    @systems = System.find(:all, :params => { :owner => @organization.key })
-    Rails.logger.debug("Found #{@systems.size} consumers for owner: #{@organization.key}")
-  end
-
   def update
     @organization = Organization.find(params[:id])
     @organization.update_attributes(params[:organization])

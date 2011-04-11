@@ -16,11 +16,6 @@ SimpleNavigation::Configuration.run do |navigation|
           subscriptions_organization_path(@organization.id),
           :if => Proc.new { not @organization.nil? }
       
-      orgs_sub.item :systems, _("Systems"), 
-        (@organization.nil? || @organization.id.nil?) ? "" : 
-          systems_organization_path(@organization.key),
-          :if => Proc.new { not @organization.nil? }
-
     end 
 
     top_level.item :systems, _("Systems"), {:controller => 'systems'}, 

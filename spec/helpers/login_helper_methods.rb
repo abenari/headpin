@@ -2,8 +2,10 @@ module LoginHelperMethods
 
   # Mock a logged in warden user:
   def login_user user=nil
-    @mock_user = user || "admin"
-    request.env['warden'] = mock(Warden, :user => @mock_user, :authenticate => @mock_user, :authenticate! => @mock_user)
+    @username = user || "admin"
+    stub_user = stub(Warden, :user => @username, :authenticate => @username, :authenticate! => @username)
+    request.env['warden'] = stub_user
+    Thread.current[:request] = request
   end
 
 end

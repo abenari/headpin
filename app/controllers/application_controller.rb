@@ -73,6 +73,9 @@ class ApplicationController < ActionController::Base
   # XXX like in kalpana, this is temporary. we need a more robust method,
   # such rack middleware or a rails plugin
   def extract_locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    locale = "en_US"
+    locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first \
+      if not request.env['HTTP_ACCEPT_LANGUAGE'].nil?
+    return locale
   end
 end

@@ -23,6 +23,15 @@ describe OrganizationsController do
 
   end
 
+  describe "use" do
+    it 'should set the current organization in the session' do
+      org = mock_org()
+      Organization.should_receive(:find).with(org.key).and_return(org)
+      get :use, :id => org.key
+      session[:current_organization_id].should == org.key
+    end
+  end
+
   describe "GET new" do
     it 'should be successful' do
       get 'new'

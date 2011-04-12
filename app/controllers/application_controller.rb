@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
       flash[:notice] = _('Please select an organization')
 
-      session[:original_uri] = request.request_uri
+      session[:original_uri] = request.fullpath
       redirect_to admin_organizations_url
 
       return false

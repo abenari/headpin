@@ -14,28 +14,16 @@ class Organization < Base
     :with => /\A[^\/#]*\Z/,
     :message => 'cannot contain / or #'
 
+  def org_id
+    @attributes[:id]
+  end
+
   # ActiveResource assumes anything with an ID is a pre-existing
   # resource, ID in our case is key, and key is manually assigned at creation,
   # so we must override the new check to force active record to persist our
   # new org.
   def new?
-    @attributes[:id].nil?
+    org_id.nil?
   end
-
-  def import(manifest_zip_path)
-    puts "Uploading manifest: #{manifest_zip_path}"
-
-    # TODO: not sure why this isn't working! Part of the OAuth plugin should
-    # let us do this:
-    #
-    #resp = Base.send_multipart_request(:post, "/candlepin/owners/#{key}/imports",
-    #  [['export.zip', File.new(manifest_zip_path)]])
-    #pp resp
-
-    # Using the Candlepin API module until we can figure out the above:
-    cp = Base.candlepin_api
-    cp.import key, manifest_zip_path
-  end
-
 
 end

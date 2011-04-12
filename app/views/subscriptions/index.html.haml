@@ -3,7 +3,7 @@
 #providers
   .grid_13#provider
     %h4= _('Current Subscriptions')
-    - if @subscriptions.empty?
+    - if @subscriptions.nil? || @subscriptions.empty?
       %p= _('No Subscriptions Available')
     - else
       %table
@@ -29,7 +29,7 @@
           %td= relative_time_in_words import.timestamp
 
     %h4= _('Upload Subscription Manifest')
-    = form_tag "/organizations/#{organization.key}/subscriptions", :multipart => true do
+    = form_tag '', :multipart => true do
       %fieldset
         = label_tag :upload, "Specify Local Manifest"
         = file_field_tag :contents

@@ -1,5 +1,4 @@
 require 'oauth_active_resource'
-require 'candlepin_api'
 
 # See http://www.quarkruby.com/2008/3/11/consume-non-rails-style-rest-apis
 # for much of the detils behind this method
@@ -10,15 +9,6 @@ class Base < OAuthActiveResource::Resource
   self.format = :json
 
   class << self
-
-    # Returns a Candlepin API object from the Ruby client API we use. Useful
-    # for some odd situations but try to lean on the Active Resource models
-    # and connection instead, whenever possible.
-    def candlepin_api
-      OauthCandlepinApi.new(Thread.current[:request].env['warden'].user,
-        AppConfig.candlepin.oauth_key, AppConfig.candlepin.oauth_secret,
-        {:host => AppConfig.candlepin.host, :port => AppConfig.candlepin.port})
-    end
 
     def oauth_connection
       consumer_token = OAuth::Consumer.new(AppConfig.candlepin.oauth_key,

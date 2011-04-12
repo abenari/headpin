@@ -4,7 +4,8 @@ class SubscriptionsController < ApplicationController
   before_filter :require_org
 
   def index
-    @subscriptions = Subscription.find(:all, :owner => organization.id)
+    @subscriptions = Subscription.find(:all, 
+      :params => {:owner => organization.attributes['id']})
     @imports = ImportRecord.find_for_org(organization.key)
   end
 

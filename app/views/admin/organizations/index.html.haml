@@ -13,6 +13,6 @@
       -for org in @organizations
         %li{:class => cycle(nil, 'alt')}
           %span{:alt => "#{org.id}", :title => "#{org.id}"}
-            = link_to "#{org.displayName}", org
-            = link_to "(use)", :action => "use", :controller => "organizations", :id => "#{org.key}"
+            = link_to "#{org.displayName}", admin_organization_path(org)
+            = link_to "(use)", :action => "use", :controller => "admin/organizations", :id => "#{org.key}"
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe OrganizationsController do
+describe Admin::OrganizationsController do
 
   include LoginHelperMethods
   include MockHelperMethods
@@ -47,7 +47,7 @@ describe OrganizationsController do
       Organization.stub!(:new).and_return org
 
       post 'create', :organization => {:key => '', :displayName => ''}
-      response.should redirect_to("http://test.host/organizations/#{org.key}")
+      response.should redirect_to("http://test.host/admin/organizations/#{org.key}")
     end
   end
 

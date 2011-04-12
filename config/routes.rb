@@ -13,12 +13,13 @@ ComplianceManager::Application.routes.draw do
 
   match 'systems/:id/unbind/:entitlement_id', :to => 'systems#unbind'
 
-  resources :organizations do
-    #resources :systems
-    member do
-      get :subscriptions
-      post :subscriptions
-      get :systems
+  namespace "admin" do
+    resources :organizations do
+      member do
+        get :subscriptions
+        post :subscriptions
+        get :systems
+      end
     end
   end
 
@@ -27,7 +28,9 @@ ComplianceManager::Application.routes.draw do
   match 'logout', :to => 'login#destroy'
 
   # Temp route for "using" a particular org:
-  match 'organizations/:id/use', :to => 'organizations#use'
+  match 'admin/organizations/:id/use', :to => 'admin/organizations#use'
+
+  match 'admin', :to => 'admin/organizations#index'
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

@@ -1,6 +1,6 @@
 require 'pp'
 
-class OrganizationsController < ApplicationController
+class Admin::OrganizationsController < ApplicationController
   navigation :organizations
   before_filter :require_user
 
@@ -20,7 +20,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     session[:current_organization_id] = @organization.key
     flash[:notice] = N_("Now using organization '#{@organization.displayName}'.")
-    redirect_to organization_path(@organization.key)
+    redirect_to admin_organization_path(@organization.key)
   end
 
   def new

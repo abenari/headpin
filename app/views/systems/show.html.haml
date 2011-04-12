@@ -18,7 +18,7 @@
 
   %p
     #{_("Organization")}:
-    = link_to @organization.displayName, organization_path(@organization.id)
+    = link_to @organization.displayName, admin_organization_path(@organization.id)
   %p
     #{_("Type")}:
     = @system.type

@@ -6,19 +6,9 @@ SimpleNavigation::Configuration.run do |navigation|
   
   navigation.items do |top_level|
 
-    top_level.item :dashboard, _("Dashboard"), {:controller => 'dashboard'}
+    top_level.item :dashboard, _("Dashboard"), "/dashboard"
     
-    top_level.item :organizations, _("Organizations"), 
-      {:controller => 'organizations'}, :class=>'organizations' do |orgs_sub|
-
-      orgs_sub.item :subscriptions, _("Subscriptions"), 
-        (@organization.nil? || @organization.id.nil?) ? "" : 
-          subscriptions_organization_path(@organization.id),
-          :if => Proc.new { not @organization.nil? }
-      
-    end 
-
-    top_level.item :systems, _("Systems"), {:controller => 'systems'}, 
+    top_level.item :systems, _("Systems"), systems_path, 
       :class=>'systems' do |systems_sub|
 
       systems_sub.item :show, _("Details"), @system, 
@@ -33,6 +23,14 @@ SimpleNavigation::Configuration.run do |navigation|
         :if => Proc.new { not @system.nil? }
 
     end
+
+    top_level.item :administration, _("Admin"), "/admin" do |admin_sub|
+
+      admin_sub.item :organizations, _("Organizations"), 
+        {:controller => 'admin/organizations'}, :class => 'organizations' 
+
+    end 
+
     
     
   end 

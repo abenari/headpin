@@ -1,12 +1,7 @@
 require 'pp'
 
 class OrganizationsController < ApplicationController
-  navigation :organizations
   before_filter :require_user
-
-  def section_id
-    'orgs'
-  end
 
   def index
     @organizations = user.superAdmin? ? Organization.find(:all) : [Organization.find(user.owner.key)]
@@ -20,7 +15,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     session[:current_organization_id] = @organization.key
     flash[:notice] = N_("Now using organization '#{@organization.displayName}'.")
-    redirect_to organization_path(@organization.key)
+    redirect_to session.delete(:original_uri) || organization_path(@organization.key)
   end
 
   def new

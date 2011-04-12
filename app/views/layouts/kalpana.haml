@@ -15,10 +15,6 @@
       = javascript_include_tag "html5.js"
 
     = yield :scripts
-  - if controller.respond_to?(:section_id)
-    - section_id = controller.section_id
-  - else
-    - section_id = "generic"
   %body{:id => controller.section_id}
     %div#head
       %header.container_16

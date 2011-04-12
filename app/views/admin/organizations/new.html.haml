@@ -1,5 +1,5 @@
 %h1 #{_("Create Organization")}
-= form_for @organization do |f|
+= form_for [:admin, @organization] do |f|
   .grid_16
     %fieldset.clearfix
       %b

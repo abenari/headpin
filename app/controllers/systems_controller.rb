@@ -1,12 +1,15 @@
 
 class SystemsController < ApplicationController
 
+  before_filter :require_user 
+  before_filter :require_org
+
   def section_id
     'systems'
   end
 
   def index
-    @systems = System.find(:all)
+    @systems = System.find(:all, :params => {:owner => organization.key})
   end
 
   def show

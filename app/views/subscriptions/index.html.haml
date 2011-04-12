@@ -1,0 +1,41 @@
+
+%h3 Manage Subscriptions
+#providers
+  .grid_13#provider
+    %h4= _('Current Subscriptions')
+    - if @subscriptions.empty?
+      %p= _('No Subscriptions Available')
+    - else
+      %table
+        %thead
+          %th= _('Product')
+          %th= _('Consumed Subscriptions')
+          %th= _('Quantity Available')
+        - @subscriptions.each do |sub|
+          %tr{:class => cycle(nil, 'alt')}
+            %td= sub.productName
+            %td= sub.consumed
+            %td= sub.quantity
+    %h4= _('Recent Imports')
+    %table
+      %thead
+        %th= _('Message')
+        %th= _('Status')
+        %th= _('Import Time')
+      - @imports.each do |import|
+        %tr{:class => cycle(nil, 'alt')}
+          %td= import.statusMessage
+          %td= import.status
+          %td= relative_time_in_words import.timestamp
+
+    %h4= _('Upload Subscription Manifest')
+    = form_tag "/organizations/#{organization.key}/subscriptions", :multipart => true do
+      %fieldset
+        = label_tag :upload, "Specify Local Manifest"
+        = file_field_tag :contents
+        .actions
+          = submit_tag "Upload"
+-#    = form_for @organization, :html => {:multipart => true, :method => :post}, :url => subscriptions_organization_path do |f|
+
+
+  

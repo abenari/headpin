@@ -1,4 +1,4 @@
-= unless current_organization.nil?
+= unless organization.nil?
   %button{:class=>"linkbutton grid_4",
-  :onClick=>"location.href='#{admin_organization_path(current_organization)}';return false"} #{current_organization.displayName}
+  :onClick=>"location.href='#{admin_organization_path(organization)}';return false"} #{organization.displayName}
 

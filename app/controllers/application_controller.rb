@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'kalpana'
-  helper_method :current_organization
+  helper_method :organization
   before_filter :set_gettext_locale, :set_locale
 
   # This is a fairly giant hack to make the request
@@ -12,6 +12,12 @@ class ApplicationController < ActionController::Base
       Thread.current[:request] = request
   end
 
+  # Override this in subclasses to specify the
+  # controller's section_id
+  def section_id
+    'generic'
+  end
+
   def errors summary, failures = [], successes = []
     flash[:error] ||= {}
     flash[:error][:successes] = successes
@@ -19,12 +25,9 @@ class ApplicationController < ActionController::Base
     flash[:error][:summary] = summary
   end
   
-  def current_organization
-    if session.has_key? :current_organization_id
-      current_org =  Organization.find(session[:current_organization_id])
-    end
-
-    current_org
+  def organization
+    org_id = session[:current_organization_id]
+    @org ||= Organization.find(org_id) unless org_id.nil?
   end
   
   def user
@@ -33,25 +36,35 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # TODO:  Refactor these two methods!
+  def require_org
+    if organization.nil?
+      # TODO:  Check if there is only a single org
+
+      flash[:notice] = _('Please select an organization')
+
+      session[:original_uri] = request.request_uri
+      redirect_to organizations_url
+
+      return false
+    end
+
+    true
+  end
+
   def require_user
-    if current_user
-      #user logged in
-
-      #redirect to originally requested page
-      if session[:original_uri] != nil
-        redirect_to session[:original_uri]
-        session[:original_uri] = nil  
-      end
-
-      return true
-    else
+    if current_user.nil?
       #user not logged
       flash[:notice] = _("You must be logged in to access that page.")
 
       #save original uri and redirect to login page
       session[:original_uri] = request.request_uri
-      redirect_to new_login_url and return false
+      redirect_to new_login_url
+      
+      return false
     end
+
+    true
   end
 
   def require_no_user

@@ -23,7 +23,7 @@ ComplianceManager::Application.routes.draw do
     end
   end
 
-  resources :login, :dashboard
+  resources :login, :dashboard, :subscriptions
 
   match 'logout', :to => 'login#destroy'
 

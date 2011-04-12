@@ -8,6 +8,8 @@ SimpleNavigation::Configuration.run do |navigation|
 
     top_level.item :dashboard, _("Dashboard"), "/dashboard"
     
+    top_level.item :subscriptions, _('Subscriptions'), subscriptions_path
+
     top_level.item :systems, _("Systems"), systems_path, 
       :class=>'systems' do |systems_sub|
 

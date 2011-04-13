@@ -106,6 +106,9 @@ class ApplicationController < ActionController::Base
       return false
     end
 
+    # Set the user so navigation can detect if tabs for admins should be shown:
+    user
+
     true
   end
 

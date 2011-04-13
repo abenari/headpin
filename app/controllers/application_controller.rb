@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
     @org
   end
   
-  def user
+  def logged_in_user
     @user ||= User.find(current_user) unless current_user.nil?
   end
 
@@ -78,8 +78,8 @@ class ApplicationController < ActionController::Base
 
       # Assume that non-super-admins have a single org
       # and just set that
-      unless user.superAdmin?
-        @org = Organization.find(user.owner.key)
+      unless logged_in_user.superAdmin?
+        @org = Organization.find(logged_in_user.owner.key)
         return true
       end
 
@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
     end
 
     # Set the user so navigation can detect if tabs for admins should be shown:
-    user
+    logged_in_user
 
     true
   end

@@ -5,7 +5,8 @@ class Admin::OrganizationsController < ApplicationController
   before_filter :require_user
 
   def index
-    @organizations = user.superAdmin? ? Organization.find(:all) : [Organization.find(user.owner.key)]
+    @organizations = logged_in_user.superAdmin? ? Organization.find(:all) : 
+      [Organization.find(logged_in_user.owner.key)]
   end
 
   def show

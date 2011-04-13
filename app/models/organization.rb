@@ -12,7 +12,7 @@ class Organization < Base
   validates_presence_of :key
   validates_format_of :displayName,
     :with => /\A[^\/#]*\Z/,
-    :message => 'cannot contain / or #'
+    :message => _("cannot contain / or #")
 
   def org_id
     @attributes[:id]

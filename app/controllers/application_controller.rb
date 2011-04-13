@@ -8,6 +8,39 @@ class ApplicationController < ActionController::Base
   # available to the Models for active record
   before_filter :store_request_in_thread
 
+  # Global error handling, parsed bottom-up so most specific goes at the end:
+  rescue_from Exception, :with =>  :handle_generic_error
+  rescue_from ActiveResource::ServerError, :with =>  :handle_candlepin_server_error
+  rescue_from Errno::ECONNREFUSED, :with => :handle_candlepin_connection_error
+
+  # Generic handler triggered whenever a controller action doesn't explicitly
+  # do it's own error handling:
+  def handle_generic_error ex
+    log_exception(ex)
+    errors _("An unexpected error has occurred, details have been logged.")
+    redirect_to :back
+  end
+
+  # Handle ISE's from Candlepin:
+  def handle_candlepin_server_error ex
+    log_exception(ex)
+    errors _("An error has occurred in the Entitlement Server.")
+    redirect_to :back
+  end
+
+  # Handle ISE's from Candlepin:
+  def handle_candlepin_connection_error ex
+    log_exception(ex)
+    render :text => _("Unable to connect to the Entitlement Server.")
+  end
+
+  # Small helper to keep logging of exceptions consistent:
+  def log_exception ex
+    logger.error ex
+    logger.error ex.class
+    logger.error ex.backtrace.join("\n")
+  end
+
   def store_request_in_thread
       Thread.current[:request] = request
   end

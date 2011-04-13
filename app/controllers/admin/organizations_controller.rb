@@ -26,17 +26,14 @@ class Admin::OrganizationsController < ApplicationController
   end
 
   def create
-    begin
-      @organization = Organization.new(params[:organization])
-      @organization.save
-
+    @organization = Organization.new(params[:organization])
+    if @organization.save
       flash[:notice] = N_("Organization '#{@organization.displayName}' was created.")
-    rescue Exception => error
-      errors error.to_s
-      Rails.logger.info error.backtrace.join("\n")
-      redirect_to :action => 'new' and return
+      redirect_to :action => 'show', :id => @organization.key
+    else
+      errors _('There were errors creating the organization:'), @organization.errors.full_messages
+      render :new
     end
-    redirect_to :action => 'show', :id => @organization.key
   end
 
   def edit

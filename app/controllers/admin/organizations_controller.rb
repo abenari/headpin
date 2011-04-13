@@ -3,6 +3,7 @@ require 'pp'
 class Admin::OrganizationsController < ApplicationController
   navigation :organizations
   before_filter :require_user
+  before_filter :require_admin
 
   def index
     @organizations = logged_in_user.superAdmin? ? Organization.find(:all) : 

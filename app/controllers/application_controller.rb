@@ -120,6 +120,16 @@ class ApplicationController < ActionController::Base
     true
   end
 
+  def require_admin
+    unless logged_in_user.superAdmin?
+      flash[:notice] = _("You must be an administrator to access that page.")
+      redirect_to dashboard_index_url
+      return false
+    end
+
+    true
+  end
+
   def require_no_user
     if current_user
       flash[:notice] = _("Welcome Back!") + ", " + current_user

@@ -21,6 +21,15 @@ describe Admin::OrganizationsController do
 
     end
 
+    context 'as non-admin' do
+      it 'should redirect to dashboard' do
+        mock_user = mock(User, :superAdmin? => false)
+        controller.stub!(:logged_in_user).and_return(mock_user)
+        get 'index'
+        response.should redirect_to '/dashboard'
+      end
+    end
+
   end
 
   describe "use" do

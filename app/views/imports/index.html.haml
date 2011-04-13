@@ -1,0 +1,12 @@
+%h3= _('Recent Imports')
+%table
+  %thead
+    %th= _('Message')
+    %th= _('Status')
+    %th= _('Import Time')
+  - @imports.each do |import|
+    %tr{:class => cycle(nil, 'alt')}
+      %td= import.statusMessage
+      %td= import.status
+      %td= relative_time_in_words import.timestamp
+

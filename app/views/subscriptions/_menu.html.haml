@@ -1,0 +1,11 @@
+.grid_3.actionsidebar
+  %dl
+    %dt #{_('Subscriptions')}
+  %dd.view
+    %span
+    = link_to _('View Subscriptions'), :action => :index, :controller => 'subscriptions'
+  - if !@user.nil? && @user.superAdmin?
+    %dd.add
+      %span
+      = link_to _('Import Manifest'), :action => :new, :controller => 'subscriptions'
+

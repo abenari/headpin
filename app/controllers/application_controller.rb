@@ -20,20 +20,28 @@ class ApplicationController < ActionController::Base
   def handle_generic_error ex
     log_exception(ex)
     errors _("An unexpected error has occurred, details have been logged.")
-    redirect_to :back
+    redirect_back
   end
 
   # Handle ISE's from Candlepin:
   def handle_candlepin_server_error ex
     log_exception(ex)
     errors _("An error has occurred in the Entitlement Server.")
-    redirect_to :back
+    redirect_back
   end
 
   # Handle ISE's from Candlepin:
   def handle_candlepin_connection_error ex
     log_exception(ex)
     render :text => _("Unable to connect to the Entitlement Server.")
+  end
+
+  def redirect_back
+    begin
+      redirect_to :back
+    rescue ActionController::RedirectBackError
+      render :text => _("Error has occurred, unable to redirect to previous page.")
+    end
   end
 
   # Small helper to keep logging of exceptions consistent:

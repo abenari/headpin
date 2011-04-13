@@ -1,3 +1,5 @@
+require 'active_resource/exceptions'
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'kalpana'
@@ -61,6 +63,7 @@ class ApplicationController < ActionController::Base
   def organization
     org_id = session[:current_organization_id]
     @org ||= Organization.find(org_id) unless org_id.nil?
+    @org
   end
   
   def user
@@ -72,13 +75,19 @@ class ApplicationController < ActionController::Base
   # TODO:  Refactor these two methods!
   def require_org
     if organization.nil?
-      # TODO:  Check if there is only a single org
 
+      # Assume that non-super-admins have a single org
+      # and just set that
+      unless user.superAdmin?
+        @org = Organization.find(user.owner.key)
+        return true
+      end
+
+      # Otherwise redirect the user to pick an org
       flash[:notice] = _('Please select an organization')
 
       session[:original_uri] = request.fullpath
       redirect_to admin_organizations_url
-
       return false
     end
 

@@ -6,8 +6,8 @@ class SubscriptionsController < ApplicationController
   before_filter :require_org
 
   def index
-    @subscriptions = Subscription.find(:all, :params => { :owner => organization.org_id })
-    @imports = ImportRecord.find_for_org(organization.key)
+    @subscriptions = Subscription.find(:all, :params => { :owner => working_org.org_id })
+    @imports = ImportRecord.find_for_org(working_org.key)
   end
 
   def create
@@ -22,7 +22,7 @@ class SubscriptionsController < ApplicationController
         temp_file.close
 
         import = params[:contents]
-        post_file "owners/#{organization.key}/imports", 
+        post_file "owners/#{working_org.key}/imports", 
                   File.new(temp_file.path)
       ensure
         File.delete temp_file.path

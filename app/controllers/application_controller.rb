@@ -3,7 +3,7 @@ require 'active_resource/exceptions'
 class ApplicationController < ActionController::Base
   protect_from_forgery
   layout 'kalpana'
-  helper_method :organization
+  helper_method :working_org
   before_filter :set_gettext_locale, :set_locale
 
   # This is a fairly giant hack to make the request
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :store_request_in_thread
 
   # Global error handling, parsed bottom-up so most specific goes at the end:
-  rescue_from Exception, :with =>  :handle_generic_error
+  #rescue_from Exception, :with =>  :handle_generic_error
   rescue_from ActiveResource::ServerError, :with =>  :handle_candlepin_server_error
   rescue_from Errno::ECONNREFUSED, :with => :handle_candlepin_connection_error
 
@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
     flash[:error][:summary] = summary
   end
   
-  def organization
+  def working_org
     org_id = session[:current_organization_id]
     @org ||= Organization.find(org_id) unless org_id.nil?
     @org
@@ -82,7 +82,7 @@ class ApplicationController < ActionController::Base
 
   # TODO:  Refactor these two methods!
   def require_org
-    if organization.nil?
+    if working_org.nil?
 
       # Assume that non-super-admins have a single org
       # and just set that

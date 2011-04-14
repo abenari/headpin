@@ -32,6 +32,7 @@ class SubscriptionsController < ApplicationController
         File.delete temp_file.path
       end
     end
+    redirect_to :action => :index
 
   end
 end

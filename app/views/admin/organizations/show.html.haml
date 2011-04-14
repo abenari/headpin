@@ -1,12 +1,15 @@
 #orgs.grid_3.actionsidebar
   %dl
     %dt #{_("Actions")}
-    %dd
-      %ul
-        %li.edit
-          = link_to _("Edit"), :action => "edit", :controller => "organizations", :id =>@organization.key
-        %li.delete
-          = link_to _("Delete"), { :controller => "organizations", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@organization.key
+    %dd.build
+      %span
+      = link_to _("Use"), :action => "use", :controller => "admin/organizations", :id => "#{@organization.key}"
+    %dd.edit
+      %span
+      = link_to _("Edit"), :action => "edit", :controller => "organizations", :id =>@organization.key
+    %dd.delete
+      %span
+      = link_to _("Delete"), { :controller => "organizations", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :id =>@organization.key
     
     
 .grid_13#main

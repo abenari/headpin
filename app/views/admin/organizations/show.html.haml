@@ -18,3 +18,10 @@
   %p
     #{_('Name')}:
     = @organization.displayName
+  %p
+    #{_('Systems')}:
+    = "#{@organization.system_count}"
+  %p
+    #{_('Subscriptions Used')}:
+    = "#{@organization.subscriptions_summary[:used]} / #{@organization.subscriptions_summary[:available]}"
+

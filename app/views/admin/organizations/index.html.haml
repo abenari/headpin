@@ -20,6 +20,6 @@
             %span{:alt => "#{org.id}", :title => "#{org.id}"}
               = link_to "#{org.displayName}", admin_organization_path(org)
               = link_to "(use)", :action => "use", :controller => "admin/organizations", :id => "#{org.key}"
-          %td= org.total_consumers
+          %td= org.system_count
           %td= "#{org.subscriptions_summary[:used]} / #{org.subscriptions_summary[:available]}"
 

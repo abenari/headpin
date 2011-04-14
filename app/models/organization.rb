@@ -33,15 +33,16 @@ class Organization < Base
     @info
   end
 
-  # Return the total consumer count, across all consumer types:
-  def total_consumers
-    info['consumerCounts'].values.inject { |sum, x| sum + x }
+  def system_count
+    info['consumerCounts']['system']
   end
 
   def subscriptions
     @subscriptions ||= Subscription.find(:all, :params => { :owner => org_id })
   end
 
+  # TODO: Fetching all subscriptions for the owner here (active today). This
+  # could be optimized by adding new info to OwnerInfo in Candlepin.
   def subscriptions_summary
     total_ents = 0
     total_used = 0

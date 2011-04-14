@@ -12,6 +12,7 @@ class System < Base
   self.primary_key = :uuid
 
   def bind(pool_id)
+    # TODO: hardcoded app prefix
     path = "/candlepin/consumers/#{uuid}/entitlements?pool=#{pool_id}"
     results = connection.post(path, "", Base.headers)
     attributes = JSON.parse(results.body)[0]

@@ -9,10 +9,17 @@
   .grid_13#main
     %h2 #{_("Organizations")}
 
-    %ul
-      -for org in @organizations
-        %li{:class => cycle(nil, 'alt')}
-          %span{:alt => "#{org.id}", :title => "#{org.id}"}
-            = link_to "#{org.displayName}", admin_organization_path(org)
-            = link_to "(use)", :action => "use", :controller => "admin/organizations", :id => "#{org.key}"
+    %table
+      %thead
+        %th= _('Organization')
+        %th= _('Systems')
+        %th= _('Subscriptions Used')
+      - @organizations.each do |org|
+        %tr{:class => cycle(nil, 'alt')}
+          %td
+            %span{:alt => "#{org.id}", :title => "#{org.id}"}
+              = link_to "#{org.displayName}", admin_organization_path(org)
+              = link_to "(use)", :action => "use", :controller => "admin/organizations", :id => "#{org.key}"
+          %td= org.total_consumers
+          %td= "#{org.subscriptions_summary[:used]} / #{org.subscriptions_summary[:available]}"
 

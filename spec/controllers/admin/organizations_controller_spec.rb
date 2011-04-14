@@ -78,5 +78,23 @@ describe Admin::OrganizationsController do
 
   end
 
+  describe "GET subscriptions" do
+
+    it 'should change the working org' do
+      org = mock_org()
+      Organization.should_receive(:find).with(org.key).and_return(org)
+      get 'subscriptions', :id => org.key
+      session[:current_organization_id].should == org.key
+    end
+
+    it 'should redirect to top-level systems path' do
+      org = mock_org()
+      Organization.should_receive(:find).with(org.key).and_return(org)
+      get 'subscriptions', :id => org.key
+      response.should redirect_to(subscriptions_path)
+    end
+
+  end
+
 end
 

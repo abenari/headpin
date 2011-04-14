@@ -27,4 +27,7 @@
   %p
     #{_('Subscriptions Used')}:
     = "#{@organization.subscriptions_summary[:used]} / #{@organization.subscriptions_summary[:available]}"
+    (
+    = link_to _("View"), subscriptions_admin_organization_path(@organization.key)
+    )
 

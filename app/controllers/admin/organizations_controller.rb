@@ -79,4 +79,10 @@ class Admin::OrganizationsController < ApplicationController
     redirect_to systems_path
   end
 
+  def subscriptions
+    @organization = Organization.find(params[:id])
+    session[:current_organization_id] = @organization.key
+    redirect_to subscriptions_path
+  end
+
 end

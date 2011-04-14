@@ -21,6 +21,9 @@
   %p
     #{_('Systems')}:
     = "#{@organization.system_count}"
+    (
+    = link_to _("View"), systems_admin_organization_path(@organization.key)
+    )
   %p
     #{_('Subscriptions Used')}:
     = "#{@organization.subscriptions_summary[:used]} / #{@organization.subscriptions_summary[:available]}"

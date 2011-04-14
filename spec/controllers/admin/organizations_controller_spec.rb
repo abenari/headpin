@@ -60,5 +60,23 @@ describe Admin::OrganizationsController do
     end
   end
 
+  describe "GET systems" do
+
+    it 'should change the working org' do
+      org = mock_org()
+      Organization.should_receive(:find).with(org.key).and_return(org)
+      get 'systems', :id => org.key
+      session[:current_organization_id].should == org.key
+    end
+
+    it 'should redirect to top-level systems path' do
+      org = mock_org()
+      Organization.should_receive(:find).with(org.key).and_return(org)
+      get 'systems', :id => org.key
+      response.should redirect_to(systems_path)
+    end
+
+  end
+
 end
 

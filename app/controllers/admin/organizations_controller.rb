@@ -73,4 +73,10 @@ class Admin::OrganizationsController < ApplicationController
     end
   end  
 
+  def systems
+    @organization = Organization.find(params[:id])
+    session[:current_organization_id] = @organization.key
+    redirect_to systems_path
+  end
+
 end

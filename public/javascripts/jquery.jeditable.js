@@ -51,6 +51,7 @@
   *             
   * @param Function options[onsubmit] function(settings, original) { ... } called before submit
   * @param Function options[onreset]  function(settings, original) { ... } called before reset
+  * @param Function options[onsuccess] function(result, status, xhr) { ... } called on success
   * @param Function options[onerror]  function(settings, original, xhr) { ... } called on error
   *             
   * @param Hash    options[ajaxoptions]  jQuery Ajax options. See docs.jquery.com.
@@ -94,6 +95,7 @@
         var onedit   = settings.onedit   || function() { }; 
         var onsubmit = settings.onsubmit || function() { };
         var onreset  = settings.onreset  || function() { };
+        var onsuccess = settings.onsuccess || function() { };
         var onerror  = settings.onerror  || reset;
           
         /* show tooltip */
@@ -345,12 +347,13 @@
                                   data    : submitdata,
                                   dataType: 'html',
                                   url     : settings.target,
-                                  success : function(result, status) {
+                                  success : function(result, status, jqXHR) {
                                       if (ajaxoptions.dataType == 'html') {
                                         $(self).html(result);
                                       }
                                       self.editing = false;
                                       callback.apply(self, [result, settings]);
+                                      onsuccess.apply(self, [result, status, jqXHR]);
                                       if (!$.trim($(self).html())) {
                                           $(self).html(settings.placeholder);
                                       }

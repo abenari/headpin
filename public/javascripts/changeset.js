@@ -24,26 +24,21 @@ $(document).ready(function() {
     old_changeset_name = $('.changeset_name').val();
 
     $('body').bind('changeset.update', function(event, environment_id) {
-            change_set.get(environment_id, function(data, status, xhr){ 
-                    $("#changeset").replaceWith(data);
-                }, function(){
-                    //nothin?
-                }
-            )}
+		$.each(change_set.types, function(index, value) {
+			change_set.get(value, environment_id, 
+				function(data, status, xhr){ $("#changeset-" + value + " div").replaceWith(data);}, 
+	            function() {} //nothin for error right now :)?
+				);
+			});
+		}
     );
-
-    $(".changeset_remove_product").live('click', function() {
-        var environment_id = $(this).attr('data-environment_id');
-        var product_id = $(this).attr('data-product_id');
-        remove_product_id(environment_id, product_id);
-    });
-
-    $(".changeset_promote").live('click', function() {
-        var environment_id = $(this).attr('data-environment_id');
-        change_set.promote(environment_id,
-                function(data, status, xhr) { notification(xhr); $('body').trigger('changeset.update', [environment_id]); },
-                function() {});
-    });
+	$.each(change_set.types, function(index, type) {
+	    $(".changeset_remove_" + type).live('click', function() {
+	        var environment_id = $(this).attr('data-environment_id');
+	        var id = $(this).attr(generate_id_key(type));
+	        remove_id(environment_id, id,type);
+	    });	
+	});
 
     $(".changeset_name").change(function() {
       update_changeset_name($(this).attr('data-environment_id'));

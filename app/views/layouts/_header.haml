@@ -1,18 +1,18 @@
 .grid_6
-  %a{ :href => "http://localhost:3000/dashboard"}
-    %h1
-      %img.kp{:src => '/images/rh_logo.png'}
-      %img{:src => '/images/name.png'}
+  %a.fl{ :href => '/dashboard'}
+    %img{:src => '/images/rh_logo.png'}
+    %img.kp{:src => '/images/nav_pipe.png'}
+    %h1 Subscription Asset Manager
+  #loading.fr
+    %img{:src => '/images/spinner_head.gif'}
 .grid_10
   - if current_user
-    %div.org
-      = render :partial => '/layouts/org'
+    %div= render :partial => '/layouts/org'
   %ul
     %li.hello
       = link_to '/logout' do
         - if current_user
-          %b
-            = current_user
+          %b= current_user
           %li.logout
             %a{ :href => "/logout"}
               #{_("Logout")}

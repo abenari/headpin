@@ -16,7 +16,7 @@ class Admin::OrganizationsController < ApplicationController
 
   def use
     @organization = Organization.find(params[:id])
-    session[:current_organization_id] = @organization.key
+    self.working_org = @organization
     flash[:notice] = N_("Now using organization '#{@organization.displayName}'.")
     redirect_to session.delete(:original_uri) || admin_organization_path(@organization.key)
   end
@@ -70,13 +70,13 @@ class Admin::OrganizationsController < ApplicationController
 
   def systems
     @organization = Organization.find(params[:id])
-    session[:current_organization_id] = @organization.key
+    self.working_org = @organization
     redirect_to systems_path
   end
 
   def subscriptions
     @organization = Organization.find(params[:id])
-    session[:current_organization_id] = @organization.key
+    self.working_org = @organization
     redirect_to subscriptions_path
   end
 

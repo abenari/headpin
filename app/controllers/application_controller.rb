@@ -70,8 +70,13 @@ class ApplicationController < ActionController::Base
   
   def working_org
     org_id = session[:current_organization_id]
-    @org ||= Organization.find(org_id) unless org_id.nil?
-    @org
+    @working_org ||= Organization.find(org_id) unless org_id.nil?
+    @working_org
+  end
+
+  def working_org=(org)
+    @working_org = org
+    session[:current_organization_id] = org.key
   end
   
   def logged_in_user

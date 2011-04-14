@@ -1,0 +1,35 @@
+@import "compass/css3";
+@include font-face("LiberationSansRegular",
+                font-files( "/fonts/LiberationSans-Regular-webfont.eot", eot,
+                                 "/fonts/LiberationSans-Regular-webfont.eot?#iefix", eot,
+                                 "/fonts/LiberationSans-Regular-webfont.woff", woff,
+                                 "/fonts/LiberationSans-Regular-webfont.ttf", truetype,
+                                 "/fonts/LiberationSans-Regular-webfont.svg#webfontLfr8h6FA", svg)
+
+);
+
+@include font-face("LiberationSansItalic",
+                font-files( "/fonts/LiberationSans-Italic-webfont.eot", eot,
+                                 "/fonts/LiberationSans-Italic-webfont.eot?#iefix", eot,
+                                 "/fonts/LiberationSans-Italic-webfont.woff", woff,
+                                 "/fonts/LiberationSans-Italic-webfont.ttf", truetype,
+                                 "/fonts/LiberationSans-Italic-webfont.svg#webfont8TmwkzPJ", svg)
+
+);
+
+@include font-face("LiberationSansBold",
+                font-files( "/fonts/LiberationSans-Bold-webfont.eot", eot,
+                                 "/fonts/LiberationSans-Bold-webfont.eot?#iefix", eot,
+                                 "/fonts/LiberationSans-Bold-webfont.woff", woff,
+                                 "/fonts/LiberationSans-Bold-webfont.ttf", truetype,
+                                 "/fonts/LiberationSans-Bold-webfont.svg#webfontHyWb8e07", svg)
+
+);
+
+@include font-face("LiberationSansBoldItalic",
+                font-files( "/fonts/LiberationSans-BoldItalic-webfont.eot", eot,
+                                 "/fonts/LiberationSans-BoldItalic-webfont.eot?#iefix", eot,
+                                 "/fonts/LiberationSans-BoldItalic-webfont.woff", woff,
+                                 "/fonts/LiberationSans-BoldItalic-webfont.ttf", truetype,
+                                 "/fonts/LiberationSans-BoldItalic-webfont.svg#webfont8uGO27Bu", svg)
+);

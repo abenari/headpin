@@ -17,24 +17,22 @@
     = yield :scripts
   %body{:id => controller.section_id}
     %div#head
-      %header.container_16
-        = render :partial => '/layouts/header'
-    - if true
-      #subheader
-        /
-          %form#s.container_16
-            .prefix_10.grid_6
-              %input{ :name => "s", :type => "search", :placeholder => "Search Kalpana Resources"}
-              %button.action{:form => "s"} #{_("Search")}
-            %p.prefix_10.grid_6
-              %a{ :href => "" }
-                #{_("Advanced Search")}
-        %nav.container_16.tab_nav
-          = render_navigation(:expand_all => true, :level => 1)
-        %hr
+      %header.container_16= render :partial => '/layouts/header'
+    #subheader
+      %form#s.container_16
+        .prefix_10.grid_6
+          %input{ :name => "s", :type => "search", :placeholder => "Search Resources"}
+          %button.action{:form => "s"} #{_("Search")}
+        %p.prefix_10.grid_6
+          %a{ :href => "" }
+            #{_("Advanced Search")}
+      %nav.container_16.tab_nav
+        = render_navigation(:expand_all => true, :level => 1)
+      %hr
+    #content
       %nav.subnav
         = render_navigation(:expand_all => true, :level => 2)
-      #content.container_16
+      .inner.container_16
         = render :partial => '/layouts/notification'
         /= render_navigation(:renderer => :breadcrumbs, :join_with => ' &raquo; ')
         = yield

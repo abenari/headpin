@@ -6,4 +6,5 @@ class User < Base
   def persisted?
     false
   end
+
 end

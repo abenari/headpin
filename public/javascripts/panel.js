@@ -3,12 +3,18 @@ $(document).ready(function() {
     thisPanel = $('#panel');
     panel.panelResize(thisPanel);
     var activeBlock = null;
+    var activeBlockId = null;
     var previousBlockId = null;
-    var panelWidth = "476px";
+    var isitnew = false;
+    var panelWidth = "446px";
+    var ajax_url = null;
+    var original_top = $('#panel-frame').css('top');
     $('.block').bind('click', function(e)
     {
         activeBlock = $(this);
-        var activeBlockId = activeBlock.attr('id');
+        ajax_url = activeBlock.attr("data-ajax_url");
+        activeBlockId = activeBlock.attr('id');
+        
         if(e.ctrlKey && !thisPanel.hasClass('opened')) {
             if(activeBlock.hasClass('active')){activeBlock.removeClass('active');}
             else {
@@ -24,6 +30,7 @@ $(document).ready(function() {
                 }).removeClass('closed').addClass('opened').addClass(activeBlockId);
                 activeBlock.addClass('active');
                 previousBlockId = activeBlockId;
+                panel.panelAjax(activeBlockId, ajax_url);
             } else if (thisPanel.hasClass('opened') && !thisPanel.hasClass(activeBlockId)){
                 // Keep the thisPanel open if they click another block
                 // remove previous classes besides opened
@@ -32,6 +39,7 @@ $(document).ready(function() {
                 activeBlock.addClass('active');
                 previousBlockId = activeBlockId;
                 thisPanel.removeClass('closed');
+                panel.panelAjax(activeBlockId, ajax_url);
             } else  if (thisPanel.hasClass('opened') && thisPanel.hasClass(activeBlockId)){
                 // Close the Panel
                 // Remove previous classes besides opened 
@@ -42,13 +50,13 @@ $(document).ready(function() {
         
         $('#select-result').html(
                 $('.block.active').length + " items selected."
-         );
-        
-        $('.data').html(activeBlockId);
+         );      
+
         return false;
     });
     $('.close').click(function() {
         panel.closePanel(thisPanel);
+        return false;
     });
     
     $(window).resize(function(){
@@ -72,7 +80,7 @@ $(document).ready(function() {
                 } else if ( scrollY < bodyY && isfixed ) {
                     floatingPanels.css({
                         position: 'absolute',
-                        top: '11.4em'
+                        top: original_top
                     });
                 }
             }
@@ -83,14 +91,33 @@ $(document).ready(function() {
 
 var panel = (function(){
     return {
+        panelAjax : function(name, ajax_url) {
+            var spinner = $('#spinner');
+            var panelContent = $('#panel-content');
+            spinner.show();
+            panelContent.hide();
+            $.ajax({
+                cache: true,
+                url: ajax_url,
+                dataType: 'html',
+                success: function (data, status, xhr) {
+                    spinner.hide();
+                    panelContent.html(data).fadeIn();
+                },
+                error: function (xhr, status, error) {
+                    spinner.hide();
+                    panelContent.text(jQuery.parseJSON(xhr.responseText).message).fadeIn();
+                }
+            });
+        },
         /* must pass a jQuery object */
         panelResize : function(paneljQ){
-            if ($('#content').height() > 500){
+            if ($('#content').height() > 550){
                 paneljQ.height(common.height() - 155);
-            } else if (common.height() < 700) {
+            } else if (common.height() < 660) {
                 paneljQ.height(common.height() - 155);
             } else {
-                $('#content').height(500);
+                $('#content').height(549);
                 paneljQ.height(490);
             }
             return paneljQ;
@@ -102,7 +129,6 @@ var panel = (function(){
                     opacity: 0
                 }, 400, function(){
                     //call back for the thisPanel being done closing
-                    $('.data').html('');
                 }).removeAttr('class').addClass('closed');
                 return false;
         }

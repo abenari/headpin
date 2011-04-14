@@ -8,11 +8,6 @@ class Admin::OrganizationsController < ApplicationController
   def index
     @organizations = logged_in_user.superAdmin? ? Organization.find(:all) : 
       [Organization.find(logged_in_user.owner.key)]
-    @organizations.each do |o|
-      puts "Info for org: #{o.key}"
-      pp o.info
-      puts "\n"
-    end
   end
 
   def show

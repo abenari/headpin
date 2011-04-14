@@ -8,6 +8,11 @@ class Admin::OrganizationsController < ApplicationController
   def index
     @organizations = logged_in_user.superAdmin? ? Organization.find(:all) : 
       [Organization.find(logged_in_user.owner.key)]
+    @organizations.each do |o|
+      puts "Info for org: #{o.key}"
+      pp o.info
+      puts "\n"
+    end
   end
 
   def show
@@ -67,31 +72,5 @@ class Admin::OrganizationsController < ApplicationController
       render :show
     end
   end  
-
-  # Based on the Kalpana code in providers controller:
-  def subscriptions
-    @organization = Organization.find(params[:id])
-
-    # Check if this request is a manifest upload:
-    if params.has_key? :contents
-      Rails.logger.info "Uploading a subscription manifest."
-      temp_file = nil
-      temp_file = File.new(File.join("#{Rails.root}/tmp", "import_#{SecureRandom.hex(10)}.zip"), 'w+', 0600)
-      temp_file.write params[:contents].read
-      temp_file.close
-      @organization.import(File.expand_path(temp_file.path))
-    end
-
-    @subscriptions = [Subscription.new(:productName => _("None Imported"),
-                                       :consumed => 0,
-                                       :quantity => 0)]
-    begin
-      @subscriptions = Subscription.find(:all, :owner => @organization.id)
-      @imports = ImportRecord.find_for_org(@organization.key)
-    rescue Exception => error
-      Rails.logger.error "Error fetching subscriptions from Candlepin"
-      Rails.logger.error error
-    end
-  end
 
 end

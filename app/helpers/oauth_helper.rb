@@ -7,7 +7,7 @@ module OauthHelper
   def post_file(uri, file)
     uri = "#{AppConfig.candlepin.prefix}/#{uri}"
 
-    response = client(uri)[uri].post(:import => file, :accept => :json)
+    response = client(uri)[uri].post(:import => file)
     JSON.parse(response.body) unless response.body.empty?
   end
 

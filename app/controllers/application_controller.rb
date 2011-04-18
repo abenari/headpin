@@ -93,6 +93,7 @@ class ApplicationController < ActionController::Base
       # and just set that
       unless logged_in_user.superAdmin?
         @org = Organization.find(logged_in_user.owner.key)
+        self.working_org = @org
         return true
       end
 

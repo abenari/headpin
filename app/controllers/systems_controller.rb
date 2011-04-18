@@ -29,7 +29,7 @@ class SystemsController < ApplicationController
       flash[:notice] = _("Subscribed to #{product_name}.")
     end
 
-    @entitlements = Entitlement.find(:all, :system_id => @system.uuid)
+    @entitlements = Entitlement.find(:all, :params => {:consumer => @system.uuid})
   end
 
   def available_subscriptions

@@ -1,16 +1,14 @@
 %h1 #{_("Create Organization")}
 = form_for [:admin, @organization] do |f|
-  .grid_16
+  .grid_8
     %fieldset.clearfix
-      %b
-        %label.grid_5 #{_("Label")}:
-      .grid_7
-        = f.text_field :key, :class=>'grid_6'
+      %label{:for => 'organization_key'}
+        %b= _("Label")
+      = f.text_field :key
     %fieldset.clearfix
-      %b
-        %label.grid_5 #{_("Name")}:
-      .grid_7
-        = f.text_field :displayName, :class=>'grid_6'
-  .grid_12
+      %label{:for => 'organization_displayName'}
+        %b= _("Name")
+      = f.text_field :displayName
+  .grid_6
     = f.submit "#{_('Create')}", :class => "submit dialogbutton", :style=>"float:right;"
     %button.formbutton{:disabled => true, :style=>"float:right;"} #{_("Reset")}

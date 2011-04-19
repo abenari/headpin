@@ -1,25 +1,2 @@
-#orgs
-  #orgs.grid_3.actionsidebar
-    %dl
-      %dt #{_("Organizations")}
-    %dd.add
-      %span
-      = link_to _("New Organization"), :action => "new", :controller => "organizations"
-
-  .grid_13#main
-    %h2 #{_("Organizations")}
-
-    %table
-      %thead
-        %th= _('Organization')
-        %th= _('Systems')
-        %th= _('Subscriptions Used')
-      - @organizations.each do |org|
-        %tr{:class => cycle(nil, 'alt')}
-          %td
-            %span{:alt => "#{org.id}", :title => "#{org.id}"}
-              = link_to "#{org.displayName}", admin_organization_path(org)
-              = link_to "(use)", :action => "use", :controller => "admin/organizations", :id => "#{org.key}"
-          %td= org.system_count
-          %td= "#{org.subscriptions_summary[:used]} / #{org.subscriptions_summary[:available]}"
-
+.grid_16
+  = two_panel(@organizations, :name => _('organization'), :col => ['displayName', 'system_count'])

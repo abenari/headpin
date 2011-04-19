@@ -1,9 +1,18 @@
 $(document).ready(function() {
-	toggle_provider_fields();
-	$('#provider_provider_type').change(toggle_provider_fields);
-	$('form#edit_provider_2').submit(function(){
-	    $('#provider_submit').val("Uploading...").attr("disabled", "true");
-    });
+
+  $('#new_provider').live('submit', function(e) {
+    e.preventDefault();
+    $(this).ajaxSubmit();
+  });
+
+  $('#upload_manifest').live('submit', function(e) {
+    e.preventDefault();
+    $(this).ajaxSubmit();
+  });
+
+  $('form#edit_provider_2').live('submit', function(){
+    $('#provider_submit').val("Uploading...").attr("disabled", "true");
+  });
 });
 
 var toggle_provider_fields = (function() {

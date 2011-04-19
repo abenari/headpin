@@ -35,6 +35,8 @@ javascripts:
     - public/javascripts/user.js
   user_edit:
     - public/javascripts/user_edit.js
+  org_edit:
+    - public/javascripts/org_edit.js
   role:
     - public/javascripts/role.js
   role_edit:

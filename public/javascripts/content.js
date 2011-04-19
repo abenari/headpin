@@ -116,6 +116,8 @@ var content = (function(){
                  pu.stop();
                  updateField.html(data.state);
                  fadeUpdate("#repo_sync_finish_" + data.repo_id, data.finish_time);
+                 fadeUpdate("#repo_sync_size_" + data.repo_id,
+                             data.size + ' (' + data.packages + ')');
                  content.updateProduct(prod_id, true);
                } else if (data.progress.progress < 0) {
                  pu.stop();
@@ -140,10 +142,12 @@ var content = (function(){
                 $('#table_' + prod_id).find('div.productstatus').html(data.state);
                 fadeUpdate("#prod_sync_finish_" + data.product_id, data.finish_time);
                 fadeUpdate("#prod_sync_start_" + data.product_id, data.start_time);
+                fadeUpdate("#prod_size_" + data.product_id, data.size);
               },
               error: function(data) {
                 fadeUpdate("#prod_sync_finish_" + data.product_id, data.finish_time);
                 fadeUpdate("#prod_sync_start_" + data.product_id, data.start_time);
+                fadeUpdate("#prod_size_" + data.product_id, data.size);
                 alert("got a update product error");
               }
             });

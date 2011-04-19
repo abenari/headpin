@@ -86,6 +86,27 @@ $(document).ready(function() {
             }
         });
     }
+
+    // It is possible for the pane (e.g. right) of a panel to contain navigation
+    // links.  When that occurs, it should be possible to click the navigation 
+    // link and only that pane reflect the transition to the new page. The element
+    // below helps to facilitate that by binding to the click event for a navigation
+    // element with the specified id, sending a request to the server using the link
+    // selected and then replacing the content of the pane with the response.
+    $('#navigation_element > a').live('click', function (e)
+    {
+        // if a view is a pane within a panel
+        $.ajax({
+            cache: 'false',
+            type: 'GET',
+            url: $(this).attr('href'),
+            dataType: 'html',
+            success: function(data) {
+            $("#panel-content").html(data);
+            }
+        });
+        return false;
+    });
 //end doc ready
 });
 

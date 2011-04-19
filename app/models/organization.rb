@@ -9,6 +9,10 @@ class Organization < Base
   # Candlepin API expects an owner key as the ID:
   self.primary_key = :key
 
+  schema do
+    string 'key', 'displayName'
+  end
+
   validates_presence_of :key
   validates_format_of :displayName,
     :with => /\A[^\/#]*\Z/,

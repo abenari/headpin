@@ -10,10 +10,6 @@ class Admin::OrganizationsController < ApplicationController
       [Organization.find(logged_in_user.owner.key)]
   end
 
-  def show
-    @organization = Organization.find(params[:id])
-  end
-
   def use
     @organization = Organization.find(params[:id])
     self.working_org = @organization
@@ -23,15 +19,14 @@ class Admin::OrganizationsController < ApplicationController
 
   def new
     @organization = Organization.new
-    @organization.displayName = nil
-    @organization.key = nil
+    render :partial => 'new'
   end
 
   def create
     @organization = Organization.new(params[:organization])
     if @organization.save
       flash[:notice] = N_("Organization '#{@organization.displayName}' was created.")
-      redirect_to :action => 'show', :id => @organization.key
+      redirect_to :action => :index
     else
       errors _('There were errors creating the organization:'), @organization.errors.full_messages
       render :new
@@ -40,6 +35,7 @@ class Admin::OrganizationsController < ApplicationController
 
   def edit
     @organization = Organization.find(params[:id])
+    render :partial => 'edit'
   end
 
   def update

@@ -1,0 +1,22 @@
+= include_javascripts :org_edit
+
+.grid_8
+  %h2= @organization.key
+  .grid_7
+    .subscriptions{:data_progress => @organization.subscriptions_summary[:used].to_i * 100 / [@organization.subscriptions_summary[:available].to_i, 1].max}
+    %div{:style => 'text-align: center;'}
+      #{_('Subscriptions')}:  #{@organization.subscriptions_summary[:used]} / #{@organization.subscriptions_summary[:available]}
+
+    %br
+    %div
+      = form_for @organization, 
+               :url => { :action => 'update' }, 
+               :html => { :method => 'put' } do |f|
+        %fieldset
+          = f.hidden_field :id
+          = f.hidden_field :key
+          %label{:for => 'organization_displayName'}
+            %b= _("Name")
+          = f.text_field :displayName
+        = f.submit _('Update'), :class => 'submit'
+      = button_to _("Remove"), {:action => 'destroy', :controller => 'organizations'}, :method => :delete, :confirm => _('Are you sure?')

@@ -9,7 +9,8 @@ class SystemsController < ApplicationController
   end
 
   def index
-    @systems = System.find(:all, :params => {:owner => working_org.key})
+    @systems = System.find(:all, :params => {:owner => working_org.key, 
+      :type => :system})
   end
 
   def show

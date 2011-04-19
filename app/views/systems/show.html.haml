@@ -19,9 +19,14 @@
   %p
     #{_("Organization")}:
     = link_to @organization.displayName, admin_organization_path(@organization.id)
+
   %p
     #{_("Type")}:
     = @system.type
+
+  %p
+    #{_("Subscription Status")}:
+    = entitlement_status(@system)
 
   %p
     #{_("Registered")}:

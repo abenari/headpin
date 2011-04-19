@@ -50,7 +50,7 @@ class SystemsController < ApplicationController
 
   def destroy
     @system = System.find(params[:id])
-    candlepin.unregister(params[:id])
+    @system.destroy
     flash[:notice] = _("Deleted system #{@system.name}.")
     redirect_to systems_path
   end

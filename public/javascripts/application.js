@@ -3,6 +3,7 @@
 $(document).ready(function() {
 
     $('.error, .warning, .notice').each(function(index, item) {
-        $.jnotify($(item).text(), true);
+        item = $(item);
+        $.jnotify(item.text(), { type: item.attr('class'), sticky: true });
     });
 });

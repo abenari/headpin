@@ -10,6 +10,7 @@ javascripts:
     - public/javascripts/jquery-ujs/rails.js
     - public/javascripts/jquery.jnotify.js
     - public/javascripts/kalpana.js
+    - public/javascripts/application.js
   content:
     - public/javascripts/content.js
     - public/javascripts/jquery.periodicalupdater.js

@@ -34,7 +34,6 @@
         = render_navigation(:expand_all => true, :level => 2)
       .inner.container_16
         = render :partial => '/layouts/notification'
-        /= render_navigation(:renderer => :breadcrumbs, :join_with => ' &raquo; ')
         = yield
     %footer
       = render :partial => "layouts/footer"

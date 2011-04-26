@@ -10,10 +10,11 @@ class Admin::OrganizationsController < ApplicationController
   end
 
   def use
-    @organization = Organization.find(params[:id])
+    @organization = Organization.find(params[:workingorg])
     self.working_org = @organization
     flash[:notice] = N_("Now using organization '#{@organization.displayName}'.")
-    redirect_to session.delete(:original_uri) || admin_organization_path(@organization.key)
+    #redirect_to session.delete(:original_uri) || admin_organization_path(@organization.key)
+    redirect_to :back
   end
 
   def new

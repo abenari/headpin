@@ -3,10 +3,11 @@
     $(function() {
       $('select#workingorgmenu').selectmenu({style:'dropdown', width:200});
     });
-  %form
-    %select{ :name => "workingorgmenu", :id => "workingorgmenu" }
-      %option Hello
-      %option World
+
+  = form_tag '/admin/organizations/use' do
+    %select{ :name => "workingorg", :id => "workingorgmenu", :onChange => "this.form.submit()" }
+      - @visible_orgs.each do |org|
+        %option= org.key
 
 
   /

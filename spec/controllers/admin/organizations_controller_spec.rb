@@ -23,7 +23,10 @@ describe Admin::OrganizationsController do
 
     context 'as non-admin' do
       it 'should redirect to dashboard' do
+        org = mock_org()
+        Organization.should_receive(:find).with(org.key).and_return(org)
         mock_user = mock(User, :superAdmin? => false)
+        mock_user.stub_chain(:owner, :key).and_return(org.key)
         controller.stub!(:logged_in_user).and_return(mock_user)
         get 'index'
         response.should redirect_to '/dashboard'
@@ -36,6 +39,7 @@ describe Admin::OrganizationsController do
     it 'should set the current organization in the session' do
       org = mock_org()
       Organization.should_receive(:find).with(org.key).and_return(org)
+      Organization.should_receive(:find).with(:all).and_return([org])
       get :use, :id => org.key
       session[:current_organization_id].should == org.key
     end
@@ -52,11 +56,12 @@ describe Admin::OrganizationsController do
 
     it 'should create a new organization' do
       org = mock_org()
+      Organization.should_receive(:find).with(:all).and_return([org])
       org.should_receive(:save).and_return(true)
       Organization.stub!(:new).and_return org
 
       post 'create', :organization => {:key => '', :displayName => ''}
-      response.should redirect_to("http://test.host/admin/organizations/#{org.key}")
+      response.should redirect_to admin_organizations_path
     end
   end
 
@@ -64,6 +69,7 @@ describe Admin::OrganizationsController do
 
     it 'should change the working org' do
       org = mock_org()
+      Organization.should_receive(:find).with(:all).and_return([org])
       Organization.should_receive(:find).with(org.key).and_return(org)
       get 'systems', :id => org.key
       session[:current_organization_id].should == org.key
@@ -71,6 +77,7 @@ describe Admin::OrganizationsController do
 
     it 'should redirect to top-level systems path' do
       org = mock_org()
+      Organization.should_receive(:find).with(:all).and_return([org])
       Organization.should_receive(:find).with(org.key).and_return(org)
       get 'systems', :id => org.key
       response.should redirect_to(systems_path)
@@ -83,12 +90,14 @@ describe Admin::OrganizationsController do
     it 'should change the working org' do
       org = mock_org()
       Organization.should_receive(:find).with(org.key).and_return(org)
+      Organization.should_receive(:find).with(:all).and_return([org])
       get 'subscriptions', :id => org.key
       session[:current_organization_id].should == org.key
     end
 
     it 'should redirect to top-level systems path' do
       org = mock_org()
+      Organization.should_receive(:find).with(:all).and_return([org])
       Organization.should_receive(:find).with(org.key).and_return(org)
       get 'subscriptions', :id => org.key
       response.should redirect_to(subscriptions_path)

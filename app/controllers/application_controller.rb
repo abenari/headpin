@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   layout 'kalpana'
   helper_method :working_org
   before_filter :set_gettext_locale, :set_locale
+  #before_filter :set_visible_orgs
 
   # This is a fairly giant hack to make the request
   # available to the Models for active record
@@ -85,6 +86,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Sets a variable listing all orgs the current user can access. We can safely
+  # assume that there is a logged in user at this point.
+  def set_visible_orgs
+    @visible_orgs ||= logged_in_user.superAdmin? ? Organization.find(:all) :
+      [Organization.find(logged_in_user.owner.key)]
+  end
+
   # TODO:  Refactor these two methods!
   def require_org
     if working_org.nil?
@@ -92,8 +100,8 @@ class ApplicationController < ActionController::Base
       # Assume that non-super-admins have a single org
       # and just set that
       unless logged_in_user.superAdmin?
-        @org = Organization.find(logged_in_user.owner.key)
-        self.working_org = @org
+        org = Organization.find(logged_in_user.owner.key)
+        self.working_org = org
         return true
       end
 
@@ -122,6 +130,9 @@ class ApplicationController < ActionController::Base
 
     # Set the user so navigation can detect if tabs for admins should be shown:
     logged_in_user
+
+    # Set the list of visible orgs for this user:
+    set_visible_orgs()
 
     true
   end

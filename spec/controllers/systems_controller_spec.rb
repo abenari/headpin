@@ -13,9 +13,10 @@ describe SystemsController do
 
     it 'should be successful' do
       org = mock_org()
+      Organization.should_receive(:find).with(:all).and_return([org])
       Organization.should_receive(:find).with(org.key).and_return(org)
-      System.should_receive(:find).with(:all, {:params => {:owner => org.key}}).
-        and_return([mock_system])
+      System.should_receive(:find).with(:all, {:params => {:owner => org.key,
+        :type => :system}}).and_return([mock_system])
 
       # Get index, simulate session setting for the current organization:
       get 'index', {}, {:current_organization_id => org.key}

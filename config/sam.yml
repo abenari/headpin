@@ -11,5 +11,5 @@ candlepin:
   host: localhost
   port: 8443
   prefix: /candlepin
-  oauth_key: sam
-  oauth_secret: zeusLovesJustinBieber
+  oauth_key: kalpana
+  oauth_secret: shhhh

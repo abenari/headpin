@@ -4,6 +4,7 @@ ComplianceManager::Application.routes.draw do
 
   resources :systems do
     member do
+      get :facts
       get :subscriptions
       post :subscriptions
       delete :subscriptions

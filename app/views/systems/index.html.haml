@@ -1,25 +1,3 @@
-#systems
-  #systems.grid_3.actionsidebar
-    %dl
-      %dt #{_("Systems")}
-    %dd.add
-      %span
-
-  .grid_13#main
-    %h2 #{_("Systems")}
-
-    %table
-      %thead
-        %th= _("Name")
-        %th= _("Subscriptions")
-        %th= _("Subscription Status")
-        %th= _("Last Check-In")
-      - @systems.each do |sys|
-        %tr{:class => cycle(nil, 'alt')}
-          %td
-            %span{:alt => "#{sys.name}", :title => "#{sys.name}"}
-              = link_to "#{sys.name}", system_path(sys.uuid)
-          %td= sys.entitlementCount
-          %td= entitlement_status(sys)
-          %td= l(Date.parse(sys.lastCheckin), :format => :long) if !sys.lastCheckin.nil?
-
+.grid_16
+  -# TODO put back in the system systats and the last checkin date
+  = two_panel(@systems, :name => _('system'), :col => ['name', 'entitlementCount'])

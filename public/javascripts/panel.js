@@ -8,8 +8,9 @@ $(document).ready(function() {
     var isitnew = false;
     var panelWidth = "446px";
     var ajax_url = null;
-    var original_top = $('#panel-frame').css('top');
-    $('.block').bind('click', function(e)
+    var original_top = $('.left').position(top).top;
+    $('#panel-frame').css({"top" : original_top});
+    $('.block').live('click', function(e)
     {
         activeBlock = $(this);
         ajax_url = activeBlock.attr("data-ajax_url");
@@ -26,7 +27,7 @@ $(document).ready(function() {
             if(!thisPanel.hasClass('opened') && !thisPanel.hasClass(activeBlockId)){
                 // Open the Panel
                 thisPanel.animate({ left: panelWidth, opacity: 1}, 200, function(){
-                    // callback for the thisPanel openeing, should we choose to add one
+                    $(this).css({"z-index":"200"});
                 }).removeClass('closed').addClass('opened').addClass(activeBlockId);
                 activeBlock.addClass('active');
                 previousBlockId = activeBlockId;
@@ -93,7 +94,7 @@ $(document).ready(function() {
     // below helps to facilitate that by binding to the click event for a navigation
     // element with the specified id, sending a request to the server using the link
     // selected and then replacing the content of the pane with the response.
-    $('#navigation_element > a').live('click', function (e)
+    $('.navigation_element > a').live('click', function (e)
     {
         // if a view is a pane within a panel
         $.ajax({
@@ -149,7 +150,7 @@ var panel = (function(){
                     left: 0,
                     opacity: 0
                 }, 400, function(){
-                    //call back for the thisPanel being done closing
+                    $(this).css({"z-index":"0"});
                 }).removeAttr('class').addClass('closed');
                 return false;
         }

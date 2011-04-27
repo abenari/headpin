@@ -1,6 +1,8 @@
 
 class SystemsController < ApplicationController
 
+  respond_to :html, :js
+  
   before_filter :require_user 
   before_filter :require_org
 
@@ -12,6 +14,18 @@ class SystemsController < ApplicationController
     @systems = System.find(:all, :params => {:owner => working_org.key, 
       :type => :system})
   end
+  
+  def edit
+    @system = System.find(params[:id])
+    @organization = Organization.find @system.owner.key
+    render :partial => 'edit'
+  end 
+  
+  def facts
+    @system = System.find(params[:id])
+    @organization = Organization.find @system.owner.key
+    render :partial => 'edit_facts'
+  end  
 
   def show
     @system = System.find(params[:id])
@@ -31,11 +45,14 @@ class SystemsController < ApplicationController
     end
 
     @entitlements = Entitlement.find(:all, :params => {:consumer => @system.uuid})
+    
+    render :partial => "subscriptions"
   end
 
   def available_subscriptions
     @system = System.find(params[:id])
     @subscriptions = Subscription.find(:all, :params => {:consumer => @system.uuid})
+    render :partial => "available_subscriptions"    
   end
 
   def unbind

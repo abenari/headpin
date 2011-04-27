@@ -1,0 +1,36 @@
+.grid_8
+  %h2 
+    = @system.name
+#systems
+  .grid_8
+    %nav.subnav
+      = render_navigation(:expand_all => true, :level => 3)
+  .grid_8#system         
+    %p
+      #{_("UUID")}:
+      = @system.uuid
+  
+    %p
+      #{_("Organization")}:
+      = link_to @organization.displayName, admin_organization_path(@organization.id)
+  
+    %p
+      #{_("Type")}:
+      = @system.type
+  
+    %p
+      #{_("Subscription Status")}:
+      = entitlement_status(@system)
+  
+    %p
+      #{_("Registered")}:
+      = l Date.parse(@system.created), :format => :long
+  
+    %p
+      #{_("Last Checkin")}:
+      = l(Date.parse(@system.lastCheckin), :format => :long) if !@system.lastCheckin.nil?
+  
+    %p
+      #{_("Registered By")}:
+      = @system.username
+

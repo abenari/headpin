@@ -13,20 +13,23 @@ SimpleNavigation::Configuration.run do |navigation|
       sub.item :imports, _('Recent Imports'), imports_path
     end
 
-    top_level.item :systems, _("Systems"), systems_path, 
-      :class=>'systems' do |systems_sub|
-
-      systems_sub.item :show, _("Details"), @system, 
-        :if => Proc.new { not @system.nil? }
-
-      systems_sub.item :subscriptions, _("Current Subscriptions"), 
-        @system.nil? ? "" : subscriptions_system_path(@system.uuid), 
-        :if => Proc.new { not @system.nil? }
-      
-      systems_sub.item :subscriptions, _("Available Subscriptions"), 
-        @system.nil? ? "" : "/systems/#{@system.uuid}/available_subscriptions", 
-        :if => Proc.new { not @system.nil? }
-
+    top_level.item :systems, _("Systems"), systems_path do |systems_sub|
+         
+      systems_sub.item :details, _("Details"), systems_path do |details_sub|
+          if (not @system.nil?)
+            details_sub.item :edit, ("General"),
+              edit_system_path(@system.uuid), :class => 'navigation_element'
+              
+            details_sub.item :facts, ("Facts"),
+              facts_system_path(@system.uuid), :class => 'navigation_element'              
+              
+            details_sub.item :subscriptions, _("Current Subscriptions"), 
+              subscriptions_system_path(@system.uuid), :class => 'navigation_element'
+              
+            details_sub.item :avail_subscriptions, _("Available Subscriptions"), 
+              "/systems/#{@system.uuid}/available_subscriptions", :class => 'navigation_element'           
+          end
+       end
     end
 
     # Hide this entire section if user is not an admin:

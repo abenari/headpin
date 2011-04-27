@@ -1,10 +1,11 @@
-
-%h2
-  = @system.name
-
-%h3 Current Subscriptions
-#providers
-  .grid_13#provider
+.grid_8
+  %h2 
+    = @system.name
+#systems
+  .grid_8
+    %nav.subnav
+      = render_navigation(:expand_all => true, :level => 3)
+  .grid_8#subscriptions      
     %table
       %thead
         %th Product

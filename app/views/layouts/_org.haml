@@ -3,11 +3,10 @@
     $('select#workingorgmenu').selectmenu({style:'dropdown', width:200});
   });
 
-= form_tag '/admin/organizations/use' do
-  %select{ :name => "workingorg", :id => "workingorgmenu", :onChange => "this.form.submit()" }
-    - @visible_orgs.each do |org|
-      %option{ :selected => (!working_org.nil? and working_org.key == org.key) }
-        = org.key
+.grid_4
+  = form_tag '/admin/organizations/use' do
+    %select{ :name => "workingorg", :id => "workingorgmenu", :onChange => "this.form.submit()" }
+      - @visible_orgs.each do |org|
+        %option{ :selected => (!working_org.nil? and working_org.key == org.key) }
+          = org.key
 
-
--# %button{:class=>"linkbutton grid_4", :onClick=>"location.href='#{admin_organization_path(working_org)}';return false"} #{working_org.displayName}

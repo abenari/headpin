@@ -95,24 +95,11 @@ class ApplicationController < ActionController::Base
 
   # TODO:  Refactor these two methods!
   def require_org
+    # If no working org is set, just use the first one in the visible list.
+    # For non-admins this will be their one and only org.
     if working_org.nil?
-
-      # Assume that non-super-admins have a single org
-      # and just set that
-      unless logged_in_user.superAdmin?
-        org = Organization.find(logged_in_user.owner.key)
-        self.working_org = org
-        return true
-      end
-
-      # Otherwise redirect the user to pick an org
-      flash[:notice] = _('Please select an organization')
-
-      session[:original_uri] = request.fullpath
-      redirect_to admin_organizations_url
-      return false
+      self.working_org = @visible_orgs[0]
     end
-
     true
   end
 

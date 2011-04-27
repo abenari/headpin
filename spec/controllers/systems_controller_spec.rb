@@ -25,9 +25,13 @@ describe SystemsController do
 
     context 'with no working org selected' do
       it 'should redirect to org selection' do
-      # Get index, no current org in the session:
-      get 'index'
-      response.should redirect_to("http://test.host/admin/organizations")
+        org = mock_org()
+        Organization.should_receive(:find).with(:all).and_return([org])
+        # Get index, no current org in the session:
+        controller.working_org.should be_nil
+        get 'index'
+        controller.working_org.key.should == org.key
+        response.should be_success
       end
     end
 

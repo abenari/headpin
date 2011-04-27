@@ -40,7 +40,8 @@ describe Admin::OrganizationsController do
       org = mock_org()
       Organization.should_receive(:find).with(org.key).and_return(org)
       Organization.should_receive(:find).with(:all).and_return([org])
-      get :use, :id => org.key
+      request.env['HTTP_REFERER'] = "/"
+      post :use, :workingorg => org.key
       session[:current_organization_id].should == org.key
     end
   end

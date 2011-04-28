@@ -1,3 +1,4 @@
+= include_javascripts :edit
 .grid_8
   %h2 
     = @system.name
@@ -6,35 +7,52 @@
     %nav.subnav
       = render_navigation(:expand_all => true, :level => 3)
   .grid_8#system
-    %p
-      #{_("Name")}:
-      = @system.name
+    %fieldset
+      .grid_1.ra
+        %label{:for => 'system_name'}
+          = "#{_('Name')}:"    
+      .grid_6.la.editable.edit_textfield{'name' => 'system[name]',
+                                         'url' => system_path(@system.uuid)} #{@system.name}
+                                         
+      .grid_1.ra
+        %label{:for => 'system_uuid'}
+          = "#{_('UUID')}:"    
+      .grid_6.la 
+        = @system.uuid
       
-    %p
-      #{_("UUID")}:
-      = @system.uuid
-  
-    %p
-      #{_("Organization")}:
-      = link_to @organization.displayName, admin_organization_path(@organization.id)
-  
-    %p
-      #{_("Type")}:
-      = @system.type
-  
-    %p
-      #{_("Subscription Status")}:
-      = @system.entitlement_status
-  
-    %p
-      #{_("Registered")}:
-      = l Date.parse(@system.created), :format => :long
-  
-    %p
-      #{_("Last Checkin")}:
-      = l(Date.parse(@system.lastCheckin), :format => :long) if !@system.lastCheckin.nil?
-  
-    %p
-      #{_("Registered By")}:
-      = @system.username
+      .grid_1.ra
+        %label{:for => 'system_org'}
+          = "#{_('Org')}:"    
+      .grid_6.la 
+        = link_to @organization.displayName, admin_organization_path(@organization.id)      
+                                                   
+      .grid_1.ra
+        %label{:for => 'system_org'}
+          = "#{_('Type')}:"    
+      .grid_6.la 
+        = @system.type
+        
+      .grid_1.ra
+        %label{:for => 'system_status'}
+          = "#{_('Status')}:"    
+      .grid_6.la 
+        = @system.entitlement_status  
+                
+      .grid_1.ra
+        %label{:for => 'system_registered'}
+          = "#{_('Status')}:"    
+      .grid_6.la 
+        = l Date.parse(@system.created), :format => :long
+           
+      .grid_1.ra
+        %label{:for => 'system_checkin'}
+          = "#{_('Status')}:"    
+      .grid_6.la 
+        = l(Date.parse(@system.lastCheckin), :format => :long) if !@system.lastCheckin.nil?
+          
+      .grid_1.ra
+        %label{:for => 'system_user'}
+          = "#{_('Registered By')}:"    
+      .grid_6.la 
+        = @system.username  
 

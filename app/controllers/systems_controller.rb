@@ -72,6 +72,18 @@ class SystemsController < ApplicationController
     flash[:notice] = _("Deleted system #{@system.name}.")
     redirect_to systems_path
   end
+  
+  def update
+    @system = System.find(params[:id])
+    @system.update_attributes(params[:system])
+
+    @system.save!
+
+    respond_to do |format|
+      format.html {render :text => params[:system].values.first}
+      format.js
+    end
+  end  
 
 end
 

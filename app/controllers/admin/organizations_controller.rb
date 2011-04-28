@@ -4,6 +4,7 @@ class Admin::OrganizationsController < ApplicationController
   navigation :organizations
   before_filter :require_user
   before_filter :require_admin
+  respond_to :html, :js
 
   def index
     @organizations = @visible_orgs
@@ -42,12 +43,11 @@ class Admin::OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
     @organization.update_attributes(params[:organization])
 
-    if @organization.save
-      flash[:notice] = N_("Organization '#{@organization.displayName}' was updated.")
-      redirect_to :action => 'index'
-    else
-      errors N_('There were errors updating the organization:'), @organization.errors.full_messages
-      render :edit
+    @organization.save!
+
+    respond_to do |format|
+      format.html {render :text => params[:organization].values.first}
+      format.js
     end
   end
 

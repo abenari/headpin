@@ -5,6 +5,7 @@ class SystemsController < ApplicationController
   
   before_filter :require_user 
   before_filter :require_org
+  before_filter :find_system, :only => [:edit, :facts, :subscriptions, :available_subscriptions, :unbind, :destroy, :update]
 
   def section_id
     'systems'
@@ -16,24 +17,14 @@ class SystemsController < ApplicationController
   end
   
   def edit
-    @system = System.find(params[:id])
-    @organization = Organization.find @system.owner.key
     render :partial => 'edit'
   end 
   
   def facts
-    @system = System.find(params[:id])
-    @organization = Organization.find @system.owner.key
     render :partial => 'edit_facts'
   end  
 
-  def show
-    @system = System.find(params[:id])
-    @organization = Organization.find @system.owner.key
-  end
-
   def subscriptions
-    @system = System.find(params[:id])
 
     # Method currently used for both GET and POST, check if we're subscribing:
     if params.has_key?("pool_id")
@@ -50,14 +41,12 @@ class SystemsController < ApplicationController
   end
 
   def available_subscriptions
-    @system = System.find(params[:id])
     @subscriptions = Subscription.find(:all, :params => {:consumer => @system.uuid})
     render :partial => "available_subscriptions"    
   end
 
   def unbind
     ent_id = params['entitlement_id']
-    @system = System.find(params[:id])
     ent = Entitlement.find(ent_id, :system_id => @system.uuid)
     Rails.logger.info "#{@system.uuid} unbinding entitlement #{ent_id}"
     product_name = Subscription.find(ent.pool.id).productName
@@ -67,14 +56,12 @@ class SystemsController < ApplicationController
   end
 
   def destroy
-    @system = System.find(params[:id])
     @system.destroy
     flash[:notice] = _("Deleted system #{@system.name}.")
     redirect_to systems_path
   end
   
   def update
-    @system = System.find(params[:id])
     @system.update_attributes(params[:system])
 
     @system.save!
@@ -84,6 +71,11 @@ class SystemsController < ApplicationController
       format.js
     end
   end  
+  
+  def find_system
+    @system = System.find(params[:id])
+    @organization = Organization.find @system.owner.key
+  end
 
 end
 

@@ -24,7 +24,7 @@
           %td
             = l Date.parse(sub.endDate)
           %td
-            = form_tag subscriptions_system_path(@system.uuid) do
+            = form_tag subscriptions_system_path(@system.uuid), :class => "panelform" do
               = hidden_field_tag("pool_id", sub.id)
               .actions
                 = submit_tag _("Subscribe")

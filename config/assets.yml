@@ -22,6 +22,8 @@ javascripts:
     - public/javascripts/changeset.js
   systems:
     - public/javascripts/systems.js
+  form:
+    - public/javascripts/jquery.form.js    
   panel:
     - public/javascripts/jquery.ba-resize.js
     - public/javascripts/panel.js

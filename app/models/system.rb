@@ -19,6 +19,13 @@ class System < Base
     ent = Entitlement.new(attributes)
     return ent
   end
+  
+  def entitlement_status()
+    status = facts.attributes['system.entitlements_valid']
+    return _("Unknown") if status.nil?
+    return _("Valid") if status
+    return _("Invalid")
+  end  
 
 end
 

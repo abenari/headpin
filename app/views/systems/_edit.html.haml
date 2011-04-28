@@ -5,7 +5,11 @@
   .grid_8
     %nav.subnav
       = render_navigation(:expand_all => true, :level => 3)
-  .grid_8#system         
+  .grid_8#system
+    %p
+      #{_("Name")}:
+      = @system.name
+      
     %p
       #{_("UUID")}:
       = @system.uuid
@@ -20,7 +24,7 @@
   
     %p
       #{_("Subscription Status")}:
-      = entitlement_status(@system)
+      = @system.entitlement_status
   
     %p
       #{_("Registered")}:

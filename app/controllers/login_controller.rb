@@ -28,7 +28,6 @@ class LoginController < ApplicationController
 
   def unauthenticated
     flash[:error] = _("You've entered an incorrect username or password combination, please try again.")
-    redirect_to new_login_url
     false
   end
 end

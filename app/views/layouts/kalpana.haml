@@ -20,6 +20,8 @@
     %div#head
       %header.container_16= render :partial => '/layouts/header'
     - if not current_user
+      .inner.container_16
+        = render :partial => '/layouts/notification'
       #content.container_16
         #formwindow
           = yield

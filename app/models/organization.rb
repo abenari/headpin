@@ -48,13 +48,13 @@ class Organization < Base
   # TODO: Fetching all subscriptions for the owner here (active today). This
   # could be optimized by adding new info to OwnerInfo in Candlepin.
   def subscriptions_summary
-    total_ents = 0
-    total_used = 0
-    subscriptions.each do |sub|
-      total_ents += sub.quantity
-      total_ents += sub.consumed
-    end
-    { :available => total_ents, :used => total_used }
+    { :available => subscriptions.inject(0) do |quantity, sub|
+        quantity += sub.quantity
+      end,
+      :used => subscriptions.inject(0) do |consumed, sub|
+        consumed += sub.consumed
+      end
+    }
   end
 
 end

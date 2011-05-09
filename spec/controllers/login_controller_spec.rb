@@ -25,6 +25,15 @@ describe LoginController do
       response.should redirect_to(:action => :new)
     end
 
+    it 'should notify user of invalid username/password' do
+      controller.stub!(:authenticate!) { controller.unauthenticated }
+      controller.stub!(:logged_in?).and_return false
+
+      post 'create'
+
+      flash[:error].should include('incorrect username or password')
+    end
+
     it 'should redirect back to the original uri on successful login' do
       controller.stub! :authenticate! 
       controller.stub!(:logged_in?).and_return true

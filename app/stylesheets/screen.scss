@@ -110,7 +110,6 @@ fieldset {
   min-height:500px;
   position:relative;
   z-index: 100;
-  background-color: #FFF;
   #new {
     border-bottom: 0 none;
     padding: 12px;
@@ -118,7 +117,7 @@ fieldset {
     margin: 0;
     right: 0;
     display: inline-block;
-    width: 8em;
+    width: 10em;
     text-align: center;
   }
 }
@@ -127,7 +126,7 @@ fieldset {
   padding:  6px 17px 6px 16px;
   cursor:pointer;
   position: relative;
-  width: 93%;
+  width: 416px;
   height: 17px;
   &.active {
     background-color: $listhover;
@@ -164,7 +163,18 @@ fieldset {
   top: 13.2em;
   z-index: 1;
 }
-#panel {
+#subpanel-frame {
+  position:absolute;
+  max-width:700px;
+  top: 13.2em;
+  z-index: 2;
+}
+
+.subpanel {
+  border-top: 1px solid #D1D1D2;
+}
+
+.panel {
   background-color:#F5FAFA;
   width:490px;
   height:490px;
@@ -176,7 +186,9 @@ fieldset {
   overflow-x: hidden;
   overflow-y: auto;
   border-right: 1px solid #D1D1D2;
+  border-left: 1px solid #D1D1D2;
   border-bottom: 1px solid #D1D1D2;
+  border-top: 1px solid #D1D1D2;
   z-index: 0;
   top: 0;
   label {
@@ -266,6 +278,12 @@ fieldset {
        }
     }
   }
+}
+#list-title {
+    display: block;
+    height: 25px;
+    width: 449px;
+    background-color: #FFF;
 }
 .slider {width: 437px;}
 
@@ -605,5 +623,10 @@ fieldset {
  line-height: 30px;      
  text-align: center;     
  width: 71px;   
- @include opacity(.7); 
+ @include opacity(.7);
+}
+
+.product_arch {
+  font-size: 11px;
+  display: inline;
 }

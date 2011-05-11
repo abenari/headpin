@@ -1096,3 +1096,18 @@ a.iconbutton {
 .outlined {
   outline: 2px solid #3465A4;
 }
+
+.remove_item {
+    color: darkRed;
+    right: 82px;
+    position: absolute;
+    top: 9px;
+}
+
+#provides same styling as .remove_item without the bound action
+.remove_item_custom {
+    color: darkRed;
+    right: 82px;
+    position: absolute;
+    top: 9px;
+}

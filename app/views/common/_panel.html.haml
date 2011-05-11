@@ -10,20 +10,31 @@
     %br
     #select-result
   #panel-frame
-    #panel
+    #panel.panel.closed
       .head
-        %a.close{:href => "#"} #{_("Close")}
+        %a.close{:href => "#", "data-close"=>"panel"} #{_("Close")}
       .data
         #spinner
           = image_tag ("spinner.gif")
-        #panel-content
+        .panel-content
+        %br.clear
+  #subpanel-frame
+    #subpanel.panel.subpanel.closed
+      .head
+        %a.close{:href => "#", "data-close"=>"subpanel"} #{_("Close")}
+      .data
+        #spinner
+          = image_tag ("spinner.gif")
+        .panel-content
         %br.clear
 
+
   .left
-    %h2.fl #{title}
-    - if enable_create
-      %a.fr{:href => "#", :id => "new", :class => "block", :onclick =>"$(this).addClass('active'); return false;", "data-ajax_url" => url_for(:action=> 'new')} 
-        #{_('+ New ')} #{create}
+    #list-title
+      %h2.fl #{title}
+      - if enable_create
+        %a.fr{:href => "#", :id => "new", :class => "block", :onclick =>"$(this).addClass('active'); return false;", "data-ajax_url" => url_for(:action=> 'new')}
+          #{_('+ New ')} #{create}
     %br.clear      
     #list
       - for item in collection

@@ -11,6 +11,8 @@ cp $KATELLO/src/app/views/layouts/kalpana.haml ./app/views/layouts
 cp $KATELLO/src/app/views/layouts/_footer.haml ./app/views/layouts
 cp $KATELLO/src/app/views/common/_panel.html.haml ./app/views/common
 cp $KATELLO/src/app/views/common/_list_item.html.haml ./app/views/common
+cp $KATELLO/src/app/views/common/_list_remove.js.haml ./app/views/common
+cp $KATELLO/src/app/views/common/_list_update.html.haml ./app/views/common
 
 cp $KATELLO/src/public/javascripts/panel.js ./public/javascripts
 cp $KATELLO/src/public/javascripts/kalpana.js ./public/javascripts

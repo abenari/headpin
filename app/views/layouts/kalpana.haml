@@ -3,8 +3,8 @@
   %head
     %meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     %title
-      Red Hat Subscription Asset Manager
-      = yield :title
+      Red Hat Katello -
+      = content_for?(:title) ? yield(:title) : 'Content and Systems Management'
 
     = include_stylesheets  :common 
     = include_javascripts  :common
@@ -12,9 +12,8 @@
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
 
     / [if lt IE 9]
-      = javascript_include_tag "html5.js"
-      
-    = yield :scripts
+      = include_javascripts  :html5
+
   - if controller.respond_to?(:section_id)
     - section_id = controller.section_id
   - else

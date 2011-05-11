@@ -12,6 +12,8 @@ javascripts:
     - public/javascripts/jquery.ui.selectmenu.js    
     - public/javascripts/kalpana.js
     - public/javascripts/application.js
+  html5:
+    - public/javascripts/html5.js    
   content:
     - public/javascripts/content.js
     - public/javascripts/jquery.periodicalupdater.js

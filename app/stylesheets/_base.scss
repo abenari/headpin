@@ -98,6 +98,12 @@ $lightgrey: #939292;
   -webkit-text-shadow: $x $y $blur $color;
 }
 
+@mixin no-text-shadow {
+  text-shadow: none;
+  -moz-text-shadow: none;
+  -webkit-textbox-shadow: none;
+}
+
 @mixin column-count($c) {
   -moz-column-count: $c;
   -o-column-count: $c;

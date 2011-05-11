@@ -1,18 +1,21 @@
-.grid_6
-  %a.fl{ :href => '/dashboard'}
+.grid_3
+  %a{:href => '/dashboard', :class => "fl"}
     %img{:src => '/images/rh_logo.png'}
     %img.kp{:src => '/images/nav_pipe.png'}
-    %h1 Subscription Asset Manager
+    %h1 SAM
   #loading.fr
     %img{:src => '/images/spinner_head.gif'}
-.grid_10
+.grid_13
   - if current_user
-    %div= render :partial => '/layouts/org'
+    /
+      %div.org
+        = render :partial => '/layouts/org'
   %ul
     %li.hello
-      = link_to '/logout' do
+      = link_to account_path do
         - if current_user
-          %b= current_user
+          %b
+            = current_user
           %li.logout
             %a{ :href => "/logout"}
               #{_("Logout")}

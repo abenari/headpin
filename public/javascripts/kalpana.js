@@ -19,9 +19,9 @@ $(document).ready(function (){
 		onInputField = false;
 	});
 
-        //Add a handler for helptips
-        $(".helptip-open").bind('click', helptip.handle_close); 
-        $(".helptip-close").bind('click', helptip.handle_open);
+    //Add a handler for helptips
+    $(".helptip-open").live('click', helptip.handle_close);
+    $(".helptip-close").live('click', helptip.handle_open);
 });
 
 /**
@@ -52,13 +52,11 @@ var svc = (function() {
 	};
 })();
 
-
 function localize(data) {
 	for (var key in data) {
 		i18n[key] =  data[key];
 	}
 }
-
 
 function update_status() {
   var statusElement = $(".status");
@@ -78,8 +76,6 @@ function update_status() {
   }, 1000);
 }  
 
-
-
 // Common functionality throughout Kalpana
 
 // Simple function to dump a message to the browser error log
@@ -89,7 +85,8 @@ function log(msg) {
     }, 0);
 }
 
-var helptip =  {
+var helptip =  (function() {
+    return {
         handle_close: function(){
           var key = this.id.split("helptip-opened_")[1];
           $("#helptip-opened_" + key).hide();
@@ -107,7 +104,7 @@ var helptip =  {
             type: "POST",
             url: "/users/enable_helptip",
             data: { "key":key},
-            cache: false,
+            cache: false
            });
         },
         disable: function(key) {
@@ -115,11 +112,11 @@ var helptip =  {
             type: "POST",
             url: "/users/disable_helptip",
             data: { "key":key},
-            cache: false,
+            cache: false
            });
         }
-}
-
+    };
+})();
 
 var common = (function() {
     return {

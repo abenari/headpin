@@ -1,6 +1,10 @@
 %ul.container_16
+  - if current_user
+    %li
+      %a{ :href => "/logout"}
+        #{_("Logout")}
   %li 
-    ! #{_("Copyright &copy; ")}
+    #{_("Copyright &copy; ")}
     :javascript
       document.write( (new Date()).getFullYear() );
     #{("Red Hat, Inc.")}

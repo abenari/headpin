@@ -8,41 +8,44 @@
 
     = include_stylesheets  :common 
     = include_javascripts  :common
-    = include_javascripts  :selectmenu
     = csrf_meta_tag
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
 
     / [if lt IE 9]
       = javascript_include_tag "html5.js"
-
+      
     = yield :scripts
+  - if controller.respond_to?(:section_id)
+    - section_id = controller.section_id
+  - else
+    - section_id = "generic"
   %body{:id => controller.section_id}
+    = render :partial => '/layouts/ajax_notices'
+    = render :partial => '/layouts/notification'
     %div#head
-      %header.container_16= render :partial => '/layouts/header'
+      %header.container_16
+        = render :partial => '/layouts/header'
     - if not current_user
-      .inner.container_16
-        = render :partial => '/layouts/notification'
       #content.container_16
         #formwindow
           = yield
     - else
       #subheader
-        %form#s.container_16
-          .prefix_10.grid_6
-            %input{ :name => "s", :type => "search", :placeholder => "Search Resources"}
-            %button.action{:form => "s"} #{_("Search")}
-          %p.prefix_10.grid_6
-            %a{ :href => "" }
-              #{_("Advanced Search")}
+        /
+          %form#s.container_16
+            .prefix_10.grid_6
+              %input{ :name => "s", :type => "search", :placeholder => "Search Katello Resources"}
+              %button.action{:form => "s"} #{_("Search")}
+            %p.prefix_10.grid_6
+              %a{ :href => "" }
+                #{_("Advanced Search")}
         %nav.container_16.tab_nav
           = render_navigation(:expand_all => true, :level => 1)
         %hr
       #content
         %nav.subnav
-          = render_navigation(:expand_all => true, :level => 2)
+          = render_navigation(:expand_all => true, :level => 2)      
         .inner.container_16
-          = render :partial => '/layouts/notification'
           = yield
     %footer
       = render :partial => "layouts/footer"
-    #grid

@@ -21,13 +21,10 @@
 
   .left
     %h2.fl #{title}
-    %a.fr{:href => "#", :id => "new", :class => "block", :onclick =>"$(this).addClass('active'); return false;", "data-ajax_url" => url_for(:action=> 'new')} 
-      #{_('+ New ')} #{create}
+    - if enable_create
+      %a.fr{:href => "#", :id => "new", :class => "block", :onclick =>"$(this).addClass('active'); return false;", "data-ajax_url" => url_for(:action=> 'new')} 
+        #{_('+ New ')} #{create}
     %br.clear      
     #list
       - for item in collection
-        .block{:id => item.send(accessor), "data-ajax_url" => url_for(:action=> 'edit', :id => item.send(accessor))}
-          - for col in columns 
-            %div{:class => 'column_' + columns.length.to_s} 
-              = item.send(col)
-          .arrow-right
+        = render :partial=>"common/list_item", :locals=>{:item=>item, :accessor=>accessor, :columns=>columns}

@@ -63,6 +63,10 @@ $(document).ready(function() {
     $(window).resize(function(){
         panel.panelResize(thisPanel);
     });
+
+    $('#content').resize(function(){
+        panel.panelResize(thisPanel);
+    });
     
     //this is the floating content
     var floatingPanels = $('#panel-frame');
@@ -111,6 +115,14 @@ $(document).ready(function() {
 //end doc ready
 });
 
+var list = (function(){
+   return {
+       add : function(html) {
+           $('#list').append($(html).hide().fadeIn(function(){$(this).addClass("add", 250, function(){$(this).removeClass("add", 250)})}));
+       }
+   }
+})();
+
 var panel = (function(){
     return {
         panelAjax : function(name, ajax_url) {
@@ -134,12 +146,14 @@ var panel = (function(){
         },
         /* must pass a jQuery object */
         panelResize : function(paneljQ){
-            if ($('#content').height() > 550){
-                paneljQ.height(common.height() - 155);
-            } else if (common.height() < 660) {
-                paneljQ.height(common.height() - 155);
+            var new_top = $('.left').position(top).top;
+            paneljQ.parent().animate({
+                top:new_top
+            }, 250);
+            if ($('#content').height() > 619){
+                paneljQ.height(common.height() - 192);
             } else {
-                $('#content').height(549);
+                //$('#content').height(549);
                 paneljQ.height(490);
             }
             return paneljQ;

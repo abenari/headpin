@@ -5,3 +5,4 @@ tmp/*
 *.swp
 public/stylesheets/compiled
 locale/*/LC_MESSAGES
+.project

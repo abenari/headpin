@@ -1,6 +1,9 @@
 #! /bin/bash
 
-KATELLO=/home/bkearney/code/kalpana
+if [ ! -n "$KATELLO" ]; then
+    # Default to assuming a sibling dir called 'katello'
+    KATELLO=../katello
+fi
 
 cp $KATELLO/src/app/stylesheets/kalpana.scss ./app/stylesheets
 cp $KATELLO/src/app/stylesheets/screen.scss ./app/stylesheets

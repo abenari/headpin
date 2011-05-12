@@ -5,6 +5,9 @@
   %h2= @organization.key
 #organizations
   .grid_8
+    %nav.subnav
+      = render_navigation(:expand_all => true, :level => 3)
+  .grid_8
     .subscriptions{:data_progress => @organization.subscriptions_summary[:used].to_i * 100 / [@organization.subscriptions_summary[:available].to_i, 1].max}
     %div{:style => 'text-align: center;'}
       #{_('Subscriptions')}:  #{@organization.subscriptions_summary[:used]} / #{@organization.subscriptions_summary[:available]}

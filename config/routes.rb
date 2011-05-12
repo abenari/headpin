@@ -21,6 +21,7 @@ ComplianceManager::Application.routes.draw do
         get :subscriptions
         post :subscriptions
         get :systems
+        get :events
       end
     end
   end

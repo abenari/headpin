@@ -1,0 +1,16 @@
+.grid_8
+  %h2= @organization.key
+#systems
+  .grid_8
+    %nav.subnav
+      = render_navigation(:expand_all => true, :level => 3)
+  .grid_8#events          
+    %table
+      %thead
+        %th= _("Time")
+        %th= _("Message")
+      - @events.each do |event|
+        %tr{:class => cycle(nil, 'alt')}
+          %td= l event.timestamp
+          %td= event.messageText
+

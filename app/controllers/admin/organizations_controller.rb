@@ -74,5 +74,11 @@ class Admin::OrganizationsController < ApplicationController
     self.working_org = @organization
     redirect_to subscriptions_path
   end
+  
+  def events
+    @organization = Organization.find(params[:id])    
+    @events = Event.find_for_org(@organization.key)
+    render :partial => 'edit_events'
+  end  
 
 end

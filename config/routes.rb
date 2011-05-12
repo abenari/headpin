@@ -9,6 +9,7 @@ ComplianceManager::Application.routes.draw do
       post :subscriptions
       delete :subscriptions
       get :available_subscriptions
+      get :events      
     end
   end
 

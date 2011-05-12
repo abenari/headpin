@@ -5,7 +5,9 @@ class SystemsController < ApplicationController
   
   before_filter :require_user 
   before_filter :require_org
-  before_filter :find_system, :only => [:edit, :facts, :subscriptions, :available_subscriptions, :unbind, :destroy, :update]
+  before_filter :find_system, :only => [:edit, :facts, :subscriptions, 
+    :available_subscriptions, :unbind, :destroy, :update,
+    :events]
 
   def section_id
     'systems'
@@ -23,6 +25,11 @@ class SystemsController < ApplicationController
   def facts
     render :partial => 'edit_facts'
   end  
+  
+  def events
+    @events = Event.find_for_consumer(@system.uuid)
+    render :partial => 'edit_events'
+  end
 
   def subscriptions
 

@@ -1,6 +1,6 @@
 /*
  * jQuery treeTable Plugin 2.3.0
- * http://ludo.cubicphuse.nl/jquery-plugins/treeTable/
+ * http://ludo.cubicphuse.nl/jquery-plugins/treeTable/doc/
  *
  * Copyright 2010, Ludo van den Boom
  * Dual licensed under the MIT or GPL Version 2 licenses.

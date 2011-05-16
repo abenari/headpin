@@ -8,6 +8,12 @@ $(document).ready(function() {
     e.preventDefault();    	
     $(this).ajaxSubmit(upload_options);
   });
+  
+  $("#factsTable").treeTable({
+  initialState: "collapsed"
+});
+
+  
 });
 
 var system = (function(){

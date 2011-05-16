@@ -5,13 +5,25 @@
   .grid_8
     %nav.subnav
       = render_navigation(:expand_all => true, :level => 3)
-  .grid_8#facts          
-    %table
+  .grid_8#facts
+    :javascript
+      $("#factsTable").treeTable({initialState: "collapsed", clickableNodeNames: true});
+    %table#factsTable
       %thead
+        %th= _("Group")
         %th= _("Fact")
         %th= _("Value")
-      - @system.facts.attributes.sort.each do |fact, value|
-        %tr{:class => cycle(nil, 'alt')}
-          %td= fact
-          %td= value
-
+      %tbody
+        - group = nil
+        - @system.facts.attributes.sort.each do |fact, value|
+          - new_group = fact.split(".", 2)[0]
+          - if (new_group != group)
+            - group = new_group
+            %tr{:id => group}
+              %td= new_group
+              %td 
+              %td
+          %tr{:class => "child-of-#{group}", :id => fact}
+            %td
+            %td= fact
+            %td= value

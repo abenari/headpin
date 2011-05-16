@@ -141,7 +141,7 @@ var list = (function(){
            return false;
        },
        refresh : function(id, url){
-           jQid = $('#' + id);
+           var jQid = $('#' + id);
             $.ajax({
                 cache: 'false',
                 type: 'GET',

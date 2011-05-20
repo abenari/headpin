@@ -60,6 +60,26 @@ body {
   padding-left: 47%;
 }
 
+/* details icon for in place editing */
+.details
+{
+  cursor: pointer;
+  cursor: hand;
+  @include border-radius(5px);
+  &:hover {
+    background: #F2F2F2;
+  }
+}
+
+.details-icon
+{
+  background: url("/images/icons/info.png") no-repeat scroll 98% 6px transparent;
+  &:hover {
+    background: url("/images/icons/info-hover.png") no-repeat scroll 98% 6px #F2F2F2;
+  }
+}
+/* end details icon for in place editing*/
+
 /* editable icon for in place editing */
 .editable
 {
@@ -120,6 +140,31 @@ fieldset {
     width: 10em;
     text-align: center;
   }
+  .block_head {
+    display: block;
+    height: 1.5em;
+    font-weight: bold;
+    color: $lightgrey;
+    .column_1, .column_2, .column_3 {
+        text-align: left;
+        padding-left: 1%;
+    }
+      .column_1 { width: 99%; }
+      .column_2 { width: 49%; }
+      .column_3 { width: 32%; }
+  }
+  .column_1 {
+    width: 100%;
+    float: left;
+  }
+  .column_2 {
+    width: 50%;
+    float: left;
+  }
+  .column_3 {
+    width: 33%;
+    float: left;
+  }
 }
 .block {
   border-bottom: solid 1px #F2F2F2;
@@ -172,6 +217,7 @@ fieldset {
 
 .subpanel {
   border-top: 1px solid #D1D1D2;
+  top: 35px;
 }
 
 .panel {
@@ -243,18 +289,6 @@ fieldset {
       background-color: $listhover;
       color: #FFF;    
     }
-  }
-  .column_1 {
-    width: 100%;
-    float: left;
-  }
-  .column_2 {
-    width: 50%;
-    float: left;
-  }
-  .column_3 {
-    width: 33%;
-    float: left;
   }
   .slide_link {
     background: url(/images/icons/right-arrow.png) no-repeat  right center transparent;
@@ -371,9 +405,17 @@ fieldset {
   }
 }
 
-.changeset_remove_product { color: #070; @include changeset_remove;}
-.changeset_remove_package { color: #666; @include changeset_remove;} 
-.changeset_remove_errata { color: #700; @include changeset_remove;}
+$product_color: #070;
+$package_color: #666;
+$errata_color: #700;
+
+.changeset_remove_product { color: $product_color; @include changeset_remove;}
+.changeset_remove_package { color: $package_color; @include changeset_remove;}
+.changeset_remove_errata { color: $errata_color; @include changeset_remove;}
+
+.changeset_product { color: $product_color;}
+.changeset_package { color: $package_color;}
+.changeset_errata { color: $errata_color; }
 
 .breadcrumb { 
     list-style: none; 
@@ -610,7 +652,7 @@ fieldset {
             padding: 0.2em 0.7em;
             width: auto;
             color: #FFF;
-            @include box-shadow(0, 1px 1px #000);
+            @include box-shadow(0, 1px, 1px, #000);
 }
 
 .product-icon {
@@ -629,4 +671,65 @@ fieldset {
 .product_arch {
   font-size: 11px;
   display: inline;
+}
+
+
+
+/*Environment selector stuff*/
+
+#path-widget {
+ margin: 0 auto;
+ width: 50%;
+}
+
+#path-controller {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+    
+    padding: 6px;
+
+}
+.path_selector {
+    display: inline;
+    float: right;
+
+    vertical-align:middle;
+    margin-top: 8px;
+}
+
+.path_selected {
+   display: inline;
+   padding-bottom: 6px;
+   margin-bottom: 6px;
+
+}
+.path_entry_selected {
+      background-color: $lightgrey;
+
+
+}
+.path_entry {
+    padding-left: 6px;
+    padding-right: 33px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    &:hover {
+      background-color: $lightgrey;
+      color: #FFF;
+    }
+
+}
+.path_entries {
+    @include box-shadow(4px,4px,2px,rgba(0, 0, 0, 0));
+ 
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d3d3d3;
+
+    display: none;
+
+    z-index: 200;
+    position: absolute;
+    background-color: #FFF;
 }

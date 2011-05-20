@@ -15,8 +15,8 @@ $(document).ready(function() {
 
     $('#panel-frame').css({"top" : original_top});
     $('#subpanel-frame').css({"top" : subpanel_top});
-    panel.panelResize(thisPanel, original_top, false);
-    panel.panelResize(subpanel, subpanel_top, true);
+    panel.panelResize(thisPanel, false);
+    panel.panelResize(subpanel, true);
 
     $('.block').live('click', function(e)
     {
@@ -80,13 +80,13 @@ $(document).ready(function() {
     });
     
     $(window).resize(function(){
-        panel.panelResize(thisPanel, original_top, false);
-        panel.panelResize(subpanel, subpanel_top, true);
+        panel.panelResize(thisPanel, false);
+        panel.panelResize(subpanel, true);
     });
 
     $('#content').resize(function(){
-        panel.panelResize(thisPanel, original_top, false);
-        panel.panelResize(subpanel, subpanel_top, true);
+        panel.panelResize(thisPanel, false);
+        panel.panelResize(subpanel, true);
 
     });
 
@@ -140,8 +140,12 @@ var list = (function(){
            $('#' + id).fadeOut(function(){$(this).empty().remove()});
            return false;
        },
+       complete_refresh: function(url) {
+        $('#list').html('<img src="images/spinner.gif">');
+        list.refresh("list", url);
+       },
        refresh : function(id, url){
-           var jQid = $('#' + id);
+           jQid = $('#' + id);
             $.ajax({
                 cache: 'false',
                 type: 'GET',
@@ -179,9 +183,11 @@ var panel = (function(){
             });
         },
         /* must pass a jQuery object */
-        panelResize : function(paneljQ, top, isSubpanel){
+        panelResize : function(paneljQ, isSubpanel){
+            var new_top = $('.left').position(top).top;
+            new_top = isSubpanel ? (new_top + subpanelSpacing) : new_top;
             paneljQ.parent().animate({
-                top:top
+                top:new_top
             }, 250);
 
             //if there is a lot in the list, make the panel a bit larger

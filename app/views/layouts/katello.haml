@@ -25,24 +25,15 @@
       %header.container_16
         = render :partial => '/layouts/header'
     - if not current_user
-      #content.container_16
+      #maincontent.container_16
         #formwindow
           = yield
     - else
       #subheader
-        /
-          %form#s.container_16
-            .prefix_10.grid_6
-              %input{ :name => "s", :type => "search", :placeholder => "Search Katello Resources"}
-              %button.action{:form => "s"} #{_("Search")}
-            %p.prefix_10.grid_6
-              %a{ :href => "" }
-                #{_("Advanced Search")}
         %nav.container_16.tab_nav
           = render_navigation(:expand_all => true, :level => 1)
-        %hr
-      #content
-        %nav.subnav
+      #maincontent
+        %nav.subnav.container_16
           = render_navigation(:expand_all => true, :level => 2)      
         .inner.container_16
           = yield

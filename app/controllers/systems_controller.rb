@@ -1,5 +1,6 @@
 
 class SystemsController < ApplicationController
+  include AutoCompleteSearch
 
   respond_to :html, :js
   

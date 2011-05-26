@@ -1,4 +1,5 @@
-= include_javascripts :panel
+= include_javascripts :panel, :fancyqueries
+= include_stylesheets :fancyqueries
 #container
   .right
     - if enable_create
@@ -15,7 +16,7 @@
       .head
         %a.close{:href => "#", "data-close"=>"panel"} #{_("Close")}
       .data
-        #spinner
+        .spinner
           = image_tag ("spinner.gif")
         .panel-content
         %br.clear
@@ -24,7 +25,7 @@
       .head
         %a.close{:href => "#", "data-close"=>"subpanel"} #{_("Close")}
       .data
-        #spinner
+        .spinner
           = image_tag ("spinner.gif")
         .panel-content
         %br.clear
@@ -36,12 +37,15 @@
       - if enable_create
         %a.fr{:href => "#", :id => "new", :class => "block", :onclick =>"$(this).addClass('active'); return false;", "data-ajax_url" => url_for(:action=> 'new')}
           #{_('+ New ')} #{create}
-    %br.clear
-    .block_head
-      - for col in columns
-        %div{:class => 'column_' + columns.length.to_s}
-          = col.to_s.sub(/[_]/, " ")
+    %form#search_form.search{"data-url" => "/fakedata.html"}
+      = auto_complete_field_tag_jquery(:search, params[:search], {:type => "text", :placeholder => "Filter..."},{ :delay => 100, :min_length => -1 })
+      %button.action{:form => "search"} #{_("Search")}
+
+    #list.clear
+      .block_head.clear
+        - for col in columns
+          %div{:class => 'column_' + columns.length.to_s}
+            = col.to_s.sub(/[_]/, " ")
       .arrow-right
-    #list
       - for item in collection
         = render :partial=>"common/list_item", :locals=>{:item=>item, :accessor=>accessor, :columns=>columns}

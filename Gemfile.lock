@@ -115,6 +115,8 @@ GEM
       rspec (~> 2.5.0)
     ruby_parser (2.0.6)
       sexp_processor (~> 3.0)
+    scoped_search (2.3.0)
+      activerecord (>= 2.1.0)
     sexp_processor (3.0.5)
     simple-navigation (3.1.0)
       activesupport (>= 2.3.2)
@@ -148,4 +150,5 @@ DEPENDENCIES
   rest-client
   rspec-rails
   ruby_parser
+  scoped_search (>= 2.3.0)
   simple-navigation (= 3.1.0)

@@ -1,7 +1,23 @@
+/**
+ Copyright © 2011 Red Hat, Inc.
+
+ This software is licensed to you under the GNU General Public License,
+ version 2 (GPLv2) or later. There is NO WARRANTY for this software, express
+ or implied, including the implied warranties of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You should have received a copy of GPLv2
+ along with this software; if not, see
+ http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
+
+ Red Hat trademarks are not licensed under GPLv2. No permission is
+ granted to use or replicate Red Hat trademarks that are incorporated
+ in this software or its documentation.
+*/
+
 var thisPanel  = null;
 var subpanel = null;
 var subpanelSpacing = 35;
 $(document).ready(function() {
+    //$('#list .block').linkHover({"timeout":200});
     thisPanel = $("#panel");
     subpanel = $('#subpanel');
 
@@ -68,8 +84,9 @@ $(document).ready(function() {
     });
 
 
-    $('.close').click(function() {
-        if($(this).attr("data-close") == "panel") {
+    $('.close').live("click", function() {
+        if($(this).attr("data-close") == "panel" ||
+          ($(this).attr("data-close") !== "subpanel" && $(this).parent().parent().hasClass('opened'))) {
             panel.closePanel(thisPanel);
             panel.closeSubPanel(subpanel);
         }
@@ -127,6 +144,8 @@ $(document).ready(function() {
         return false;
     });
 
+    $('.search').fancyQueries();
+
 //end doc ready
 });
 
@@ -164,7 +183,7 @@ var list = (function(){
 var panel = (function(){
     return {
         panelAjax : function(name, ajax_url, panel) {
-            var spinner = panel.find('#spinner');
+            var spinner = panel.find('.spinner');
             var panelContent = panel.find(".panel-content");
             spinner.show();
             panelContent.hide();
@@ -191,7 +210,7 @@ var panel = (function(){
             }, 250);
 
             //if there is a lot in the list, make the panel a bit larger
-            if ($('#content').height() > 619){
+            if ($('#content').height() > 642){
                 var extraHeight =  common.height() - 192;
                 if (isSubpanel)
                     extraHeight -= subpanelSpacing;
@@ -211,6 +230,7 @@ var panel = (function(){
                 opacity: 0
             }, 400, function(){
                 $(this).css({"z-index":"0"});
+                $(this).parent().css({"z-index":"1"});
             }).removeClass('opened').addClass('closed').attr("data-id", "");
             return false;
         },
@@ -221,6 +241,7 @@ var panel = (function(){
                     opacity: 0
                 }, 400, function(){
                     $(this).css({"z-index":"0"});
+                    $(this).parent().css({"z-index":"0"});
                 }).removeClass('opened').addClass('closed');
                 panel.updateResult();
             }
@@ -236,6 +257,7 @@ var panel = (function(){
             var panelWidth = 446;
             thisPanel.animate({ left: (panelWidth + 3) + "px", opacity: 1}, 200, function(){
                 $(this).css({"z-index":"204"});
+                $(this).parent().css({"z-index":"2"});
             }).removeClass('closed').addClass('opened');
             panel.panelAjax('', url, $('#subpanel-frame'));
 

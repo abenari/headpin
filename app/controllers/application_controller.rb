@@ -2,7 +2,7 @@ require 'active_resource/exceptions'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  layout 'kalpana'
+  layout 'katello'
   helper_method :working_org
   before_filter :set_gettext_locale, :set_locale
   #before_filter :set_visible_orgs
@@ -146,7 +146,7 @@ class ApplicationController < ActionController::Base
     I18n.locale = extract_locale_from_accept_language_header
   end
   
-  # XXX like in kalpana, this is temporary. we need a more robust method,
+  # XXX like in katello, this is temporary. we need a more robust method,
   # such rack middleware or a rails plugin
   def extract_locale_from_accept_language_header
     locale = "en_US"

@@ -1,5 +1,21 @@
+/**
+ Copyright © 2011 Red Hat, Inc.
+
+ This software is licensed to you under the GNU General Public License,
+ version 2 (GPLv2) or later. There is NO WARRANTY for this software, express
+ or implied, including the implied warranties of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE. You should have received a copy of GPLv2
+ along with this software; if not, see
+ http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
+
+ Red Hat trademarks are not licensed under GPLv2. No permission is
+ granted to use or replicate Red Hat trademarks that are incorporated
+ in this software or its documentation.
+*/
+
+
 /*
- * Kalpana Global JavaScript File
+ * Katello Global JavaScript File
  * Author: @jrist
  * Date: 09/01/2010
  */
@@ -32,8 +48,10 @@ $(window).ready(function(){
     //all purpose display loading icon for ajax calls
     $("#loading").bind("ajaxSend", function(){
       $(this).show();
+      $('body').css('cursor', 'wait');
     }).bind("ajaxComplete", function(){
       $(this).hide();
+      $('body').css('cursor', 'default');
     });
     $().UItoTop({ easingType: 'easeOutQuart' });
 });
@@ -76,7 +94,7 @@ function update_status() {
   }, 1000);
 }  
 
-// Common functionality throughout Kalpana
+// Common functionality throughout Katello
 
 // Simple function to dump a message to the browser error log
 function log(msg) {

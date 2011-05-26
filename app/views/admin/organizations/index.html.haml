@@ -1,2 +1,6 @@
 .grid_16
-  = two_panel(@organizations, :name => _('organization'), :col => ['key', 'system_count'], :enable_create => true)
+  = two_panel(@organizations,
+  :title => _('Organizations'), 
+  :name => _('organization'), 
+  :col => ['key', 'system_count'], 
+  :enable_create => true)

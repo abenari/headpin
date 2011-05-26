@@ -1,6 +1,7 @@
 require 'pp'
 
 class Admin::OrganizationsController < ApplicationController
+  include AutoCompleteSearch
   navigation :organizations
   before_filter :require_user
   before_filter :require_admin

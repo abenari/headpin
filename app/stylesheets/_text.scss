@@ -18,7 +18,7 @@ h1 { font-size: 180%;
         text-transform: uppercase;
         font-weight: bold;
 }
-h2 { font-size: 170%; text-transform: uppercase; }
+h2 { font-size: 170%; }
 h3 { font-size: 160%; }
 h4 { font-size: 150%; }
 h5 { font-size: 140%; }
@@ -27,6 +27,7 @@ h1,h2,h3,h4,h5 {
   font-family: $headlinefont;
   margin-top: 1em;
   font-weight: bold;
+  word-wrap: break-word;
 }
 li {
   margin-left: 0;

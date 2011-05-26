@@ -3,6 +3,7 @@ ComplianceManager::Application.routes.draw do
   # first created -> highest priority.
 
   resources :systems do
+    get 'auto_complete_search' , :on => :collection    
     member do
       get :facts
       get :subscriptions
@@ -17,6 +18,7 @@ ComplianceManager::Application.routes.draw do
 
   namespace "admin" do
     resources :organizations do
+      get 'auto_complete_search' , :on => :collection         
       member do
         get :subscriptions
         post :subscriptions

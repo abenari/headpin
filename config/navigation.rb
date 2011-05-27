@@ -10,6 +10,7 @@ SimpleNavigation::Configuration.run do |navigation|
     
     top_level.item :subscriptions, _('Subscriptions'), subscriptions_path do |sub|
       sub.item :current, _('Current Subscriptions'), subscriptions_path
+      sub.item :new_import, _('New Import'), new_import_path      
       sub.item :imports, _('Recent Imports'), imports_path
     end
 

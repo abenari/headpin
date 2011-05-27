@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def product_name
+    _("Headpin")
+  end
+
   def two_panel(collection, options)
     options[:accessor] ||= "id"
     enable_create = options[:enable_create]

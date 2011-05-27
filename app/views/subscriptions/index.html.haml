@@ -1,16 +1,14 @@
-= render 'menu'
-.grid_13#main
-  %h3= _('Current Subscriptions')
-  - if @subscriptions.nil? || @subscriptions.empty?
-    %p= _('No Subscriptions Available')
-  - else
-    %table
-      %thead
-        %th= _('Product')
-        %th= _('Consumed Subscriptions')
-        %th= _('Quantity Available')
-      - @subscriptions.each do |sub|
-        %tr{:class => cycle(nil, 'alt')}
-          %td= sub.productName
-          %td= sub.consumed
-          %td= sub.quantity
+%h3= _('Current Subscriptions')
+- if @subscriptions.nil? || @subscriptions.empty?
+  %p= _('No Subscriptions Available')
+- else
+  %table
+    %thead
+      %th= _('Product')
+      %th= _('Consumed Subscriptions')
+      %th= _('Quantity Available')
+    - @subscriptions.each do |sub|
+      %tr{:class => cycle(nil, 'alt')}
+        %td= sub.productName
+        %td= sub.consumed
+        %td= sub.quantity

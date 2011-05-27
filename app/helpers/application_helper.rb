@@ -1,8 +1,12 @@
 module ApplicationHelper
 
-  def product_name
+  def project_name
     _("Headpin")
   end
+  
+  def default_title
+    _("Open Source Subscription Management")
+  end  
 
   def two_panel(collection, options)
     options[:accessor] ||= "id"

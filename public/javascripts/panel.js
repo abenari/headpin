@@ -1,21 +1,22 @@
 /**
- Copyright © 2011 Red Hat, Inc.
+ Copyright 2011 Red Hat, Inc.
 
- This software is licensed to you under the GNU General Public License,
- version 2 (GPLv2) or later. There is NO WARRANTY for this software, express
- or implied, including the implied warranties of MERCHANTABILITY or FITNESS
- FOR A PARTICULAR PURPOSE. You should have received a copy of GPLv2
- along with this software; if not, see
+ This software is licensed to you under the GNU General Public
+ License as published by the Free Software Foundation; either version
+ 2 of the License (GPLv2) or (at your option) any later version.
+ There is NO WARRANTY for this software, express or implied,
+ including the implied warranties of MERCHANTABILITY,
+ NON-INFRINGEMENT, or FITNESS FOR A PARTICULAR PURPOSE. You should
+ have received a copy of GPLv2 along with this software; if not, see
  http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
-
- Red Hat trademarks are not licensed under GPLv2. No permission is
- granted to use or replicate Red Hat trademarks that are incorporated
- in this software or its documentation.
 */
 
 var thisPanel  = null;
 var subpanel = null;
 var subpanelSpacing = 35;
+var panelWidth = 446;
+
+
 $(document).ready(function() {
     //$('#list .block').linkHover({"timeout":200});
     thisPanel = $("#panel");
@@ -24,7 +25,6 @@ $(document).ready(function() {
     var activeBlock = null;
     var activeBlockId = null;
     var previousBlockId = null;
-    var panelWidth = 446;
     var ajax_url = null;
     var original_top = $('.left').position(top).top;
     var subpanel_top =  $('.left').position(top).top + subpanelSpacing;
@@ -46,36 +46,7 @@ $(document).ready(function() {
                 activeBlock.addClass('active');
             }
         } else {
-            $('.block.active').removeClass('active');
-            var currentPanelWidth=thisPanel.css('left');
-
-            if(!thisPanel.hasClass('opened') && thisPanel.attr("data-id") != activeBlockId){
-                // Open the Panel                           /4
-                thisPanel.animate({ left: (panelWidth + 3) + "px", opacity: 1}, 200, function(){
-                    $(this).css({"z-index":"200"});
-                }).removeClass('closed').addClass('opened').attr('data-id', activeBlockId);
-                activeBlock.addClass('active');
-                previousBlockId = activeBlockId;
-                panel.panelAjax(activeBlockId, ajax_url, thisPanel);
-            } else if (thisPanel.hasClass('opened') && thisPanel.attr("data-id") != activeBlockId){
-                panel.closeSubPanel(subpanel); //close the subpanel if it is open
-
-                // Keep the thisPanel open if they click another block
-                // remove previous classes besides opened
-                thisPanel.addClass('opened').attr('data-id', activeBlockId);
-                $("#" + previousBlockId).removeClass('active');
-                activeBlock.addClass('active');
-                previousBlockId = activeBlockId;
-                thisPanel.removeClass('closed');
-                panel.panelAjax(activeBlockId, ajax_url, thisPanel);
-            } else  if (thisPanel.hasClass('opened') && thisPanel.attr("data-id") == activeBlockId){
-                // Close the Panel
-                // Remove previous classes besides opened 
-                previousBlockId = activeBlockId;
-                panel.closeSubPanel(subpanel);
-                panel.closePanel(thisPanel);
-
-            }
+            panel.select_item(activeBlock);
         }
         //update the selected count
         panel.updateResult();
@@ -151,6 +122,9 @@ $(document).ready(function() {
 
 var list = (function(){
    return {
+       last_child : function() {
+         return $("#list").children().last();
+       },
        add : function(html) {
            $('#list').append($(html).hide().fadeIn(function(){$(this).addClass("add", 250, function(){$(this).removeClass("add", 250)})}));
            return false;
@@ -182,6 +156,44 @@ var list = (function(){
 
 var panel = (function(){
     return {
+        select_item :    function(activeBlock) {
+            thisPanel = $("#panel");
+            subpanel = $('#subpanel');
+
+            ajax_url = activeBlock.attr("data-ajax_url");
+            activeBlockId = activeBlock.attr('id');
+
+            $('.block.active').removeClass('active');
+            var currentPanelWidth=thisPanel.css('left');
+
+            if(!thisPanel.hasClass('opened') && thisPanel.attr("data-id") != activeBlockId){
+                // Open the Panel                           /4
+                thisPanel.animate({ left: (panelWidth + 3) + "px", opacity: 1}, 200, function(){
+                    $(this).css({"z-index":"200"});
+                }).removeClass('closed').addClass('opened').attr('data-id', activeBlockId);
+                activeBlock.addClass('active');
+                previousBlockId = activeBlockId;
+                panel.panelAjax(activeBlockId, ajax_url, thisPanel);
+            } else if (thisPanel.hasClass('opened') && thisPanel.attr("data-id") != activeBlockId){
+                panel.closeSubPanel(subpanel); //close the subpanel if it is open
+
+                // Keep the thisPanel open if they click another block
+                // remove previous classes besides opened
+                thisPanel.addClass('opened').attr('data-id', activeBlockId);
+                $("#" + previousBlockId).removeClass('active');
+                activeBlock.addClass('active');
+                previousBlockId = activeBlockId;
+                thisPanel.removeClass('closed');
+                panel.panelAjax(activeBlockId, ajax_url, thisPanel);
+            } else  if (thisPanel.hasClass('opened') && thisPanel.attr("data-id") == activeBlockId){
+                // Close the Panel
+                // Remove previous classes besides opened
+                previousBlockId = activeBlockId;
+                panel.closeSubPanel(subpanel);
+                panel.closePanel(thisPanel);
+
+            }
+        },
         panelAjax : function(name, ajax_url, panel) {
             var spinner = panel.find('.spinner');
             var panelContent = panel.find(".panel-content");
@@ -254,7 +266,6 @@ var panel = (function(){
         },
         openSubPanel : function(url) {
             var thisPanel = $('#subpanel');
-            var panelWidth = 446;
             thisPanel.animate({ left: (panelWidth + 3) + "px", opacity: 1}, 200, function(){
                 $(this).css({"z-index":"204"});
                 $(this).parent().css({"z-index":"2"});

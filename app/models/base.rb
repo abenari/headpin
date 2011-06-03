@@ -46,5 +46,13 @@ class Base < OAuthActiveResource::Resource
   def encode(options={})
     self.class.format.encode(attributes, options)
   end
+  
+  def created
+    DateTime.parse @attributes['created']
+  end
+  
+  def updated
+    DateTime.parse @attributes['updated']    
+  end
 end
 

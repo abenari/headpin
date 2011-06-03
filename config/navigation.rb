@@ -34,6 +34,10 @@ SimpleNavigation::Configuration.run do |navigation|
               "/systems/#{@system.uuid}/events", :class => 'navigation_element' 
           end
        end
+       
+      systems_sub.item :activation_keys, _("Activation Keys"), activation_keys_path do |keys_sub|  
+      
+      end     
     end
 
     # Hide this entire section if user is not an admin:

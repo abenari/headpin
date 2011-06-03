@@ -13,6 +13,10 @@ ComplianceManager::Application.routes.draw do
       get :events      
     end
   end
+  
+  resources :activation_keys do
+    get 'auto_complete_search' , :on => :collection       
+  end
 
   match 'systems/:id/unbind/:entitlement_id', :to => 'systems#unbind'
 

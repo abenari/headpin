@@ -1,0 +1,18 @@
+= include_javascripts :edit
+.grid_8
+  %h2 
+    = @activation_key.name
+#systems
+  .grid_8#activation_key
+    %fieldset
+      .grid_1.ra
+        %label{:for => 'activation_key_name'}
+          = "#{_('Name')}:"    
+      .grid_6.la.editable.edit_textfield{'name' => 'activation_key[name]',
+                                         'url' => activation_key_path(@activation_key.id)} #{@activation_key.name}
+                                         
+      .grid_1.ra
+        %label{:for => 'activation_key_id'}
+          = "#{_('ID')}:"    
+      .grid_6.la 
+        = @activation_key.id

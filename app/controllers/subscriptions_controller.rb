@@ -1,5 +1,4 @@
 class SubscriptionsController < ApplicationController
-  include OauthHelper
 
   navigation :subscriptions
   before_filter :require_user 

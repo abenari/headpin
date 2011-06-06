@@ -25,7 +25,7 @@ class ImportsController < ApplicationController
         temp_file.close
 
         import = params[:contents]
-        post_file "owners/#{working_org.key}/imports", 
+        puts post_file "owners/#{working_org.key}/imports", 
                   File.new(temp_file.path)
       ensure
         File.delete temp_file.path

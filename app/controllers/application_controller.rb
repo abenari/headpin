@@ -72,6 +72,7 @@ class ApplicationController < ActionController::Base
   def working_org
     org_id = session[:current_organization_id]
     @working_org ||= Organization.find(org_id) unless org_id.nil?
+    puts @working_org.to_json
     @working_org
   end
 

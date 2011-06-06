@@ -7,8 +7,12 @@ class Organization < Base
   self.element_name = "owner"
 
   # Candlepin API expects an owner key as the ID:
-  self.primary_key = :key
+  #self.primary_key = :key
 
+  #def id
+  #  @attributes[:key]
+  #end
+  
   schema do
     string 'key', 'displayName'
   end
@@ -55,6 +59,11 @@ class Organization < Base
         consumed += sub.consumed
       end
     }
+  end
+  
+  def to_json(options = {})
+    options.merge(:except => [:id])
+    super(options)
   end
 
 end

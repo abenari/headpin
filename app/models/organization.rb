@@ -6,13 +6,6 @@ class Organization < Base
   # Candlepin calls this resource an owner:
   self.element_name = "owner"
 
-  # Candlepin API expects an owner key as the ID:
-  #self.primary_key = :key
-
-  #def id
-  #  @attributes[:key]
-  #end
-  
   schema do
     string 'key', 'displayName'
   end

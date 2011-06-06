@@ -1,4 +1,6 @@
 class ImportsController < ApplicationController
+  include OauthHelper
+    
   navigation :subscriptions
   before_filter :require_user
   before_filter :require_org

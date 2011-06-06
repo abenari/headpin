@@ -1,5 +1,5 @@
 %h3= _('Upload Subscription Manifest')
-= form_tag subscriptions_path, :multipart => true do
+= form_tag imports_path, :multipart => true do
   %fieldset
     = label_tag :upload, "Specify Local Manifest"
     = file_field_tag :contents

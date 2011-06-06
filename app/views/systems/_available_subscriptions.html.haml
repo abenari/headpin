@@ -22,7 +22,7 @@
           %td
             = sub.contractNumber
           %td
-            = l Date.parse(sub.endDate)
+            = l sub.endDate
           %td
             = form_tag subscriptions_system_path(@system.uuid), :class => "panelform" do
               = hidden_field_tag("pool_id", sub.id)

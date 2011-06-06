@@ -43,7 +43,7 @@
         %label{:for => 'system_registered'}
           = "#{_('Status')}:"    
       .grid_6.la 
-        = l Date.parse(@system.created), :format => :long
+        = l @system.created, :format => :long
            
       .grid_1.ra
         %label{:for => 'system_checkin'}

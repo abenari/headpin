@@ -19,6 +19,6 @@
           %td
             = ent.contractNumber
           %td
-            = l Date.parse(ent.endDate)
+            = l ent.endDate
           %td.navigation_element
             = link_to _("Remove"), {:controller => "systems", :action => "unbind", :entitlement_id => ent.id}, :confirm => _('Are you sure?')

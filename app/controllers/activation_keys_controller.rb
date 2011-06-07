@@ -1,8 +1,6 @@
 class ActivationKeysController < ApplicationController
   include AutoCompleteSearch
-
   respond_to :html, :js
-  
     
   navigation :systems
   before_filter :require_user
@@ -41,7 +39,6 @@ class ActivationKeysController < ApplicationController
     begin
       @activation_key = ActivationKey.new(:name => params[:name])
       @activation_key.owner= working_org
-      puts @activation_key.to_json
       @activation_key.save!
     rescue Exception => error
       errors error.to_s

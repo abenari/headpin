@@ -16,7 +16,8 @@ class Subscription < Base
   end 
   
   def product
-    return Product.find(self.productId)
+    @product ||= Product.find(self.productId)
+    return @product
   end 
   
 end

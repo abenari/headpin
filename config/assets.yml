@@ -47,7 +47,9 @@ javascripts:
   org_edit:
     - public/javascripts/org_edit.js
   activation_key:
-    - public/javascripts/activation_key.js    
+    - public/javascripts/activation_key.js
+  subscription:
+    - public/javascripts/subscription.js          
   role:
     - public/javascripts/role.js
   role_edit:

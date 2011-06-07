@@ -10,6 +10,7 @@ class SubscriptionsController < ApplicationController
 
   def index
     @subscriptions = Subscription.find(:all, :params => { :owner => working_org.org_id })
+    @subscriptions.sort! { |a,b| a.productName <=> b.productName }
   end
 
 end

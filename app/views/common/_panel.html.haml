@@ -37,15 +37,21 @@
       - if enable_create
         %a.fr{:href => "#", :id => "new", :class => "block", :onclick =>"$(this).addClass('active'); return false;", "data-ajax_url" => url_for(:action=> 'new')}
           #{_('+ New ')} #{create}
-    %form#search_form.search{"data-url" => "/fakedata.html"}
-      = auto_complete_field_tag_jquery(:search, params[:search], {:type => "text", :placeholder => "Filter..."},{ :delay => 100, :min_length => -1 })
-      %button.action{:form => "search"} #{_("Search")}
+      %br
+      %br
+      %form#search_form.search{"data-url" => "/fakedata.html"}
+        = auto_complete_field_tag_jquery(:search, params[:search], {:type => "text", :placeholder => "Filter..."},{ :delay => 100, :min_length => -1 })
+        %button.action{:form => "search"} #{_("Search")}
 
     #list.clear
       .block_head.clear
         - for col in columns
           %div{:class => 'column_' + columns.length.to_s}
-            = col.to_s.sub(/[_]/, " ")
+            - if col.to_s.sub(/[_]/, " ") == "name"
+              = col.to_s.sub(/[_]/, " ") + " (abbr.)"
+            - else
+              = col.to_s.sub(/[_]/, " ")
       .arrow-right
       - for item in collection
         = render :partial=>"common/list_item", :locals=>{:item=>item, :accessor=>accessor, :columns=>columns}
+    %br.clear

@@ -54,20 +54,6 @@ $(window).ready(function(){
     $().UItoTop({ easingType: 'easeOutQuart' });
 });
 
-/**
- * Anonymous function to set up the Syncing AJAX service.
- */
-var svc = (function() {
-	currentServiceCall = null;
-	return {
-		returnType : {
-				text: "text",
-				xml: "xml",
-				json: "json"
-		}
-	};
-})();
-
 function localize(data) {
 	for (var key in data) {
 		i18n[key] =  data[key];
@@ -134,6 +120,7 @@ var helptip =  (function() {
     };
 })();
 
+//requires jQuery
 var common = (function() {
     return {
         height: function() {
@@ -147,6 +134,10 @@ var common = (function() {
         },
         scrollLeft: function() {
             return $(window).scrollLeft();
+        },
+        decode: function(value){
+            var decoded = decodeURIComponent(value);
+            return decoded.replace(/\+/g, " ");
         }
     };
 })();

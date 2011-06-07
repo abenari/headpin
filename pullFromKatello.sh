@@ -19,6 +19,8 @@ cp $KATELLO/src/app/views/common/_panel.html.haml ./app/views/common
 cp $KATELLO/src/app/views/common/_list_item.html.haml ./app/views/common
 cp $KATELLO/src/app/views/common/_list_remove.js.haml ./app/views/common
 cp $KATELLO/src/app/views/common/_list_update.html.haml ./app/views/common
+cp $KATELLO/src/app/views/common/_common_i18n.html.haml ./app/views/common
+cp $KATELLO/src/app/views/common/_edit_i18n.html.haml ./app/views/common
 
 cp $KATELLO/src/public/javascripts/panel.js ./public/javascripts
 cp $KATELLO/src/public/javascripts/katello.js ./public/javascripts

@@ -24,4 +24,25 @@ module ApplicationHelper
              :accessor=>options[:accessor] }
   end
 
+  def one_panel(panel_id, collection, options)
+    options[:accessor] ||= "id"
+    panel_id ||= "panel"
+
+    render :partial => "common/one_panel",
+           :locals => {
+             :panel_id => panel_id,
+             :title => options[:title],
+             :name => options[:name],
+             :columns => options[:col],
+             :collection => collection,
+             :accessor=>options[:accessor] }
+  end
+
+  def include_common_i18n
+    render :partial => "common/common_i18n"
+  end
+
+  def include_editable_i18n
+    render :partial=> "common/edit_i18n"
+  end
 end

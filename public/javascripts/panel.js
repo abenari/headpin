@@ -20,10 +20,11 @@ var panelLeft = null;
 $(document).ready(function() {
     $('.left').resize(function(){
         panelLeft = $(this).width();
+        var apanel = $('.panel');
         $('.block').width(panelLeft-17);
-        $('.panel').width(940-panelLeft);
+        apanel.width(940-panelLeft);
         $('.right').width(910-panelLeft);
-        $('.panel').css({"left":(panelLeft)});
+        if(apanel.hasClass('opened')){ apanel.css({"left":(panelLeft)}); }
         $('.left #new').css({"width":"10em"});
         $('.list-title').width(panelLeft);
         $('#list-title').width(panelLeft);
@@ -33,7 +34,7 @@ $(document).ready(function() {
         $('#systems .block').css({"font-size": parseInt(fontsize, 10) + "%"});
     });
     $('.left').resize();
-    
+
     //$('#list .block').linkHover({"timeout":200});
     thisPanel = $("#panel");
     subpanel = $('#subpanel');
@@ -61,7 +62,8 @@ $(document).ready(function() {
                 activeBlock.addClass('active');
             }
         } else {
-            panel.select_item(activeBlock);
+            if(activeBlock.hasClass('active')){ panel.closePanel(thisPanel); }
+            else { $.bbq.pushState({panel:activeBlockId}); }
         }
         //update the selected count
         panel.updateResult();
@@ -105,6 +107,7 @@ $(document).ready(function() {
             panel.handleScroll($('#panel-frame'), container, original_top, bodyY, 0);
             panel.handleScroll($('#subpanel-frame'), container, subpanel_top, bodyY, 1);
         });
+        $(window).scroll(panel.scrollExpand);
     }
 
     // It is possible for the pane (e.g. right) of a panel to contain navigation
@@ -135,6 +138,10 @@ $(document).ready(function() {
                                     autoHide: true
                                   });
     $('.search').fancyQueries();
+
+    //hash change for panel to trigger on refresh or back/forward or link passing
+    $(window).bind( 'hashchange', panel.hash_change);
+    $(window).trigger( 'hashchange' );
 
 //end doc ready
 });
@@ -181,12 +188,12 @@ var list = (function(){
 
 var panel = (function(){
     return {
-        select_item :    function(activeBlock) {
+        select_item :    function(activeBlockId) {
             thisPanel = $("#panel");
             subpanel = $('#subpanel');
 
+            var activeBlock = $('#' + activeBlockId);
             var ajax_url = activeBlock.attr("data-ajax_url");
-            var activeBlockId = activeBlock.attr('id');
             var previousBlockId = null;
 
             $('.block.active').removeClass('active');
@@ -200,7 +207,6 @@ var panel = (function(){
                 panel.panelAjax(activeBlockId, ajax_url, thisPanel);
             } else if (thisPanel.hasClass('opened') && thisPanel.attr("data-id") !== activeBlockId){
                 panel.closeSubPanel(subpanel); //close the subpanel if it is open
-
                 // Keep the thisPanel open if they click another block
                 // remove previous classes besides opened
                 thisPanel.addClass('opened').attr('data-id', activeBlockId);
@@ -209,18 +215,17 @@ var panel = (function(){
                 previousBlockId = activeBlockId;
                 thisPanel.removeClass('closed');
                 panel.panelAjax(activeBlockId, ajax_url, thisPanel);
-            } else  if (thisPanel.hasClass('opened') && thisPanel.attr("data-id") === activeBlockId){
+            } else {
                 // Close the Panel
                 // Remove previous classes besides opened
                 previousBlockId = activeBlockId;
                 panel.closeSubPanel(subpanel);
                 panel.closePanel(thisPanel);
-
             }
         },
-        panelAjax : function(name, ajax_url, panel) {
-            var spinner = panel.find('.spinner');
-            var panelContent = panel.find(".panel-content");
+        panelAjax : function(name, ajax_url, thisPanel) {
+            var spinner = thisPanel.find('.spinner');
+            var panelContent = thisPanel.find(".panel-content");
             spinner.show();
             panelContent.hide();
             $.ajax({
@@ -229,11 +234,12 @@ var panel = (function(){
                 dataType: 'html',
                 success: function (data, status, xhr) {
                     spinner.hide();
-                    panelContent.html(data).fadeIn();
+                    panelContent.html(data).fadeIn(function(){$(".panel-content :input:visible:enabled:first").focus();});
                 },
                 error: function (xhr, status, error) {
                     spinner.hide();
-                    panelContent.text(jQuery.parseJSON(xhr.responseText).message).fadeIn();
+                    panelContent.html("<h2>Error</h2><p>There was an error retrieving that row: " + error + "</p>").fadeIn();
+
                 }
             });
         },
@@ -262,6 +268,7 @@ var panel = (function(){
             return paneljQ;
         },
         closePanel : function(jPanel){
+            var content = jPanel.find('.panel-content');
             $('.block.active').removeClass('active');
             jPanel.animate({
                 left: 0,
@@ -270,6 +277,9 @@ var panel = (function(){
                 $(this).css({"z-index":"0"});
                 $(this).parent().css({"z-index":"1"});
             }).removeClass('opened').addClass('closed').attr("data-id", "");
+            content.html('');
+            $.bbq.removeState("panel");
+            panel.updateResult();
             return false;
         },
         closeSubPanel : function(jPanel){
@@ -298,6 +308,54 @@ var panel = (function(){
 
 
         },
+        retrievingNewContent : false,
+        scrollExpand : function() { //If we are scrolling past the bottom, we need to request more data
+            var list = $('#list');
+            if (list.hasClass("ajaxScroll") && !panel.retrievingNewContent &&
+                    $(window).scrollTop() >=  ($(document).height() - $(window).height()) - 700) {
+                panel.retrievingNewContent = true;
+                var offset = list.find(".block").size();
+                var page_size = list.attr("data-page_size");
+                if (parseInt(page_size) > parseInt(offset)) {
+                    return; //If we have fewer items than the pagesize, don't try to fetch anything else
+                }
+
+                var url = list.attr("data-scroll_url")
+                var search = $.deparam($.param.querystring()).search;
+                var params = {"offset":offset}
+                if (search)
+                    params.search = search;
+                
+                list.append(jQuery('<div/>', {
+                    'id': "list-spinner"
+                }));
+                $('#list-spinner').html( "<img src='/images/spinner.gif' class='ajax_scroll'>");
+
+                $.ajax({
+                    type: "GET",
+                    url: jQuery.param.querystring(url, params),
+                    cache: false,
+                    success: function(data) {
+                        panel.retrievingNewContent = false;
+                        var ul = list.find("ul")[0];
+                        if (ul) {
+                            $(ul).append(data); //The promotions page(s) uses a <ul> for each item instead of divs
+                        }
+                        else {
+                            list.append(data);
+                        }
+                        $('#list-spinner').remove();
+                        if (data.length == 0) {
+                            list.removeClass("ajaxScroll");
+                        }
+                    },
+                    error: function() {
+                        $('#list-spinner').remove();
+                        panel.retrievingNewContent = false;
+                    }
+                });
+            }
+        },
         handleScroll : function(jQPanel, container, top, bodyY, spacing) {
             var scrollY = common.scrollTop();
             var isfixed = jQPanel.css('position') === 'fixed';
@@ -315,6 +373,11 @@ var panel = (function(){
                     });
                 }
             }
+        },
+        hash_change: function() {
+            var refresh = $.bbq.getState("panel");
+            if(refresh) panel.select_item(refresh);
+            return false;
         }
     };
 

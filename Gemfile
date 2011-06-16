@@ -1,9 +1,9 @@
-source :rubygems
+source 'http://repos.fedorapeople.org/repos/katello/gems/'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.5'
 
 gem 'json'
-gem 'bson_ext', '>= 1.0.4'
+#gem 'bson_ext', '>= 1.0.4'
 gem 'rails_warden'
 gem 'rest-client', :require => 'rest_client'
 gem 'oauth-active-resource'

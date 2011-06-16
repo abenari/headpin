@@ -1,4 +1,4 @@
-= include_javascripts :panel, :fancyqueries
+= include_javascripts :panel, :fancyqueries, :bbq
 = include_stylesheets :fancyqueries
 #container
   .right
@@ -35,15 +35,21 @@
     #list-title
       %h2.fl #{title}
       - if enable_create
-        %a.fr{:href => "#", :id => "new", :class => "block", :onclick =>"$(this).addClass('active'); return false;", "data-ajax_url" => url_for(:action=> 'new')}
+        %a.fr{:href => "#", :id => "new", :class => "block", "data-ajax_url" => url_for(:action=> 'new')}
           #{_('+ New ')} #{create}
+          .arrow-right
       %br
       %br
-      %form#search_form.search{"data-url" => "/fakedata.html"}
-        = auto_complete_field_tag_jquery(:search, params[:search], {:type => "text", :placeholder => "Filter..."},{ :delay => 100, :min_length => -1 })
-        %button.action{:form => "search"} #{_("Search")}
+      - if url.nil?
+        %form#search_form.search{"data-url" => search_index_path()}
+          = auto_complete_field_tag_jquery(:search, params[:search], {:type => "text", :placeholder => "Filter..."},{ :delay => 100, :min_length => -1 })
+          %button.action{:form => "search_form"} #{_("Search")}
+      - else
+        %form#search_form.search{"data-url" => url_for(url)}
+          = auto_complete_field_tag_jquery(:search, params[:search], {:type => "text", :placeholder => "Filter..."},{ :delay => 100, :min_length => -1 })
+          %button.action{:form => "search_form"} #{_("Search")}
 
-    #list.clear
+    #list.clear{:class=>("ajaxScroll" if ajax_scroll), "data-scroll_url"=>ajax_scroll, "data-page_size"=>current_user.page_size}
       .block_head.clear
         - for col in columns
           %div{:class => 'column_' + columns.length.to_s}

@@ -21,7 +21,9 @@ module ApplicationHelper
              :enable_create => enable_create,
              :columns => options[:col],
              :collection => collection,
-             :accessor=>options[:accessor] }
+             :accessor=>options[:accessor],
+             :url=>options[:url], 
+             :ajax_scroll =>options[:ajax_scroll]}
   end
 
   def one_panel(panel_id, collection, options)
@@ -30,6 +32,8 @@ module ApplicationHelper
 
     render :partial => "common/one_panel",
            :locals => {
+             :single_select => options[:single_select] || false,
+             :hover_text_cb => options[:hover_text_cb],
              :panel_id => panel_id,
              :title => options[:title],
              :name => options[:name],

@@ -2,10 +2,10 @@
 @import "grid";
 
 /* colors */
-$kprimary: #b4d8dd; /* Primary Katello ID */
-$kselected: darken($kprimary,45%); /* all selected items */
-$linkfg: darken($kprimary,35%); /* default links */
-$tabon: darken($kselected, 10%);
+$kprimary: #26B3E2; /* Primary Katello ID */
+$kselected: darken($kprimary,15%); /* all selected items */
+$linkfg: darken($kprimary,05%); /* default links */
+$tabon: darken($kselected, 1%);
 $taboff: #747474; /* unfocused tabs */
 $lightkprimary: #F2FAFA;
 $listhover: lighten($kselected, 10%); /* list items prelight state */

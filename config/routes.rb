@@ -41,6 +41,17 @@ ComplianceManager::Application.routes.draw do
   match 'admin/organizations/use', :to => 'admin/organizations#use'
 
   match 'admin', :to => 'admin/organizations#index'
+  
+  resources :search, :only => {} do
+    get 'show', :on => :collection
+
+    get 'history', :on => :collection
+    delete 'history' => 'search#destroy_history', :on => :collection
+
+    get 'favorite', :on => :collection
+    post 'favorite' => 'search#create_favorite', :on => :collection
+    delete 'favorite/:id' => 'search#destroy_favorite', :on => :collection, :as => 'destroy_favorite'
+  end  
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

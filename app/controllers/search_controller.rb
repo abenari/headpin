@@ -9,22 +9,26 @@
 # NON-INFRINGEMENT, or FITNESS FOR A PARTICULAR PURPOSE. You should
 # have received a copy of GPLv2 along with this software; if not, see
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
-
-module AutoCompleteSearch
+#
+class SearchController < ApplicationController
   include SearchHelper
 
-  def auto_complete_search
-    begin
-      query = "#{params[:search]}"
-      @items = eval(controller_name.singularize.camelize).complete_for(params[:search])
-      @items = @items.map do |item|
-        category = (['and','or','not','has'].include?(item.to_s.sub(/^.*\s+/,''))) ? 'Operators' : ''
-        {:label => item, :category => category}
-      end
-      @items = [query] if @items.blank?
-    rescue ScopedSearch::QueryNotSupported => e
-       @items = [{:error =>e.to_s}]
-    end
-    render :json => @items
+  def show
+
   end
+
+  def create_favorite
+
+  end
+
+  def destroy_favorite
+
+  end
+
+  private 
+
+  def retrieve_path
+
+  end
+
 end

@@ -52,6 +52,14 @@ $(window).ready(function(){
       $('body').css('cursor', 'default');
     });
     $().UItoTop({ easingType: 'easeOutQuart' });
+
+    //allow all buttons with class .button to be clicked via enter or space button
+    $('.button').live('keyup', function(e){
+        if(e.which == 13 || e.which == 32)
+        {
+            $(this).click();
+        }
+    });
 });
 
 function localize(data) {
@@ -138,6 +146,9 @@ var common = (function() {
         decode: function(value){
             var decoded = decodeURIComponent(value);
             return decoded.replace(/\+/g, " ");
+        },
+        escapeId: function(myid) {
+            return myid.replace(/(:|\.)/g,'\\$1');
         }
     };
 })();

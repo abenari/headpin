@@ -1,6 +1,1 @@
-%span.sparkline 
-  - prepend=""
-  - stats.each do |stat|
-    =prepend
-    -prepend=","
-    =stat.value
+%span.sparkline=to_value_list(stats)

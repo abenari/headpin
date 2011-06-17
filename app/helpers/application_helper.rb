@@ -54,4 +54,15 @@ module ApplicationHelper
     render :partial => "common/stats_line",
       :locals => {:stats => stats}
   end
+  
+  def to_value_list(stats)
+    list = ""
+    prepend = ""
+    stats.each do |stat|
+      list += prepend
+      prepend = ","
+      list += stat.value.to_s
+    end
+    list
+  end
 end

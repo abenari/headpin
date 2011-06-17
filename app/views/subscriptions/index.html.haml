@@ -1,5 +1,5 @@
-= include_javascripts :subscription
 = include_javascripts :treetable
+= include_javascripts :subscription
 
 %h3= _('Current Subscriptions')
 .tree
@@ -11,6 +11,7 @@
       %thead
         %th= _('Product')
         %th= _('Quantity')
+        %th= _('Trend')        
         %th= _('Contract')
         %th= _('Support Level')
         %th= _('Arch')      
@@ -25,7 +26,8 @@
               %td= sub.productName
               %td 
               %td
-              %td 
+              %td
+              %td
               %td
               %td 
               %td                            
@@ -35,6 +37,13 @@
               = sub.consumed
               = "/"
               = sub.quantity
+            %td  
+              %span.sparkline 
+                - prepend=""
+                - sub.consumed_stats.each do |stat|
+                  = prepend
+                  -prepend=","
+                  =stat.value
             %td=sub.contractNumber
             %td=sub.product.support_level
             %td=sub.product.arch        

@@ -13,6 +13,7 @@ javascripts:
     - public/javascripts/katello.js
     - public/javascripts/application.js
     - public/javascripts/jquery.linkHover.js    
+    - public/javascripts/jquery.sparkline.min.js    
   html5:
     - public/javascripts/html5.js    
   content:
@@ -49,7 +50,8 @@ javascripts:
   activation_key:
     - public/javascripts/activation_key.js
   subscription:
-    - public/javascripts/subscription.js          
+    - public/javascripts/subscription.js
+    - public/javascripts/headpin.sparkline.js          
   role:
     - public/javascripts/role.js
   role_edit:

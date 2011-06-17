@@ -40,7 +40,8 @@
     expandable: true,
     indent: 19,
     initialState: "collapsed",
-    treeColumn: 0
+    treeColumn: 0,
+    onShow: null
   };
 
   // Recursively hide all node's children in a tree
@@ -71,6 +72,7 @@
 
       // this.style.display = "table-row"; // Unfortunately this is not possible with IE :-(
       $(this).show();
+      options.onShow.call()
     });
 
     return this;

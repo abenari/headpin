@@ -8,7 +8,8 @@
 # oauth_key and oauth_secre :Specify your oauth key and secret
 #   used to authenticate with Candlepin
 candlepin:
-  host: localhost
+  #host: breakout.usersys.redhat.com
+  host: localhost.localdomain
   port: 8443
   prefix: /candlepin
   oauth_key: sam

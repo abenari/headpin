@@ -20,4 +20,11 @@ class Subscription < Base
     return @product
   end 
   
+  def consumed_stats
+    @stats = Statistic.find_for_org(self.owner.key, :type => Statistic::PERPOOL, :reference => self.id)
+    @stats.select do |stat|
+      stat.valueType == "CONSUMED"
+    end
+  end
+  
 end

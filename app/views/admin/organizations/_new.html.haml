@@ -1,14 +1,19 @@
 %h1 #{_("Create Organization")}
-= form_for [:admin, @organization] do |f|
-  .grid_8
-    %fieldset.clearfix
-      %label{:for => 'organization_key'}
-        %b= _("Label")
-      = f.text_field :key
-    %fieldset.clearfix
-      %label{:for => 'organization_displayName'}
-        %b= _("Name")
-      = f.text_field :displayName
-  .grid_6
-    = f.submit "#{_('Create')}", :class => "submit dialogbutton", :style=>"float:right;"
-    %button.formbutton{:disabled => true, :style=>"float:right;"} #{_("Reset")}
+.katello_form
+  = form_for [:admin, @organization] do |f|
+    .grid_8
+      %fieldset.clearfix
+        .grid_1.ra      
+          %label{:for => 'organization_key'}
+            %b= _("Label")
+        .grid_5.la            
+          = f.text_field :key
+      %fieldset.clearfix
+        .grid_1.ra         
+          %label{:for => 'organization_displayName'}
+            %b= _("Name")
+        .grid_5.la               
+          = f.text_field :displayName
+    .grid_6.ra
+      = f.submit "#{_('Create')}", :class => "submit dialogbutton", :style=>"float:right;"
+      %button.formbutton{:disabled => true, :style=>"float:right;"} #{_("Reset")}

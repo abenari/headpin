@@ -1,5 +1,48 @@
+= include_javascripts :dashboard
+
 .grid_16
-  %br
-  %h1 #{_("Dashboard")}
-  %h3 Page 4000
-  %p #{_("This is to be the Dashboard area containing Monitors, Reporting, and Workflow branches.")}
+  .grid_7
+    %h2 #{_("Subscriptions")}
+    .grid_3.la
+      %label
+        #{_("Total Subscription")}
+    .grid_1.la
+      =@org.subscriptions_summary[:available] 
+    .grid_2.la=stats_line(@org.total_subscription_stats)             
+    .clear
+    .grid_3.la
+      %label
+        #{_("Total Consumed")}
+    .grid_1.la
+      =@org.subscriptions_summary[:used] 
+    .grid_2.la=stats_line(@org.subscription_consumed_stats)                
+    .clear
+    .grid_3.la
+      %label
+        #{_("Percentage")}
+    .grid_1.la
+      =consumed_percentage
+      ="%"    
+    .grid_2.la=stats_line(@org.subscription_percent_consumed_stats)            
+    .clear                      
+  .grid_7
+    %h2 #{_("Systems")}
+    .grid_2.la
+      %label
+        #{_("Physical")}
+    .grid_2.la
+      =@org.system_count
+    .clear
+    .grid_2.la
+      %label
+        #{_("Virtual")}
+    .grid_2.la
+      =@org.guest_count        
+    .clear
+  .clear
+  .grid_7
+    %h2 #{_("Dates")}
+    .grid_3.la
+      %label
+        #{_("Next Expiration Date")}
+    .clear    

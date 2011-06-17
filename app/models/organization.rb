@@ -35,24 +35,54 @@ class Organization < Base
   end
 
   def system_count
-    info['consumerCounts']['system']
+    info['consumerGuestCounts']['physical']
   end
+  
+  def guest_count
+    info['consumerGuestCounts']['guest']
+  end  
 
   def subscriptions
     @subscriptions ||= Subscription.find(:all, :params => { :owner => org_id })
   end
+  
+  def total_consumer_stats
+    @total_consumer_stats ||= Statistic.find_for_org(self.key, :type => Statistic::TOTALCONSUMERS)
+  end
+  
+  def total_subscription_stats
+    @total_consumer_stats ||= Statistic.find_for_org(self.key, :type => Statistic::TOTALSUBSCRIPTIONCOUNT)
+  end  
+  
+  def subscription_consumed_stats
+    @subscription_consumed_stats ||= 
+      Statistic.find_for_org(self.key, 
+        :type => Statistic::TOTALSUBSCRIPTIONCONSUMED).select do |stat|
+          stat.valueType = "RAW"
+        end
+  end  
+  
+  def subscription_percent_consumed_stats
+    @subscription_percent_consumed_stats ||= 
+      Statistic.find_for_org(self.key, 
+        :type => Statistic::TOTALSUBSCRIPTIONCONSUMED).select do |stat|
+          stat.valueType = "PERCENTAGECONSUMED"
+        end
+  end    
 
   # TODO: Fetching all subscriptions for the owner here (active today). This
   # could be optimized by adding new info to OwnerInfo in Candlepin.
   def subscriptions_summary
-    { :available => subscriptions.inject(0) do |quantity, sub|
-        quantity += sub.quantity
-      end,
-      :used => subscriptions.inject(0) do |consumed, sub|
-        consumed += sub.consumed
-      end
-    }
+    @subscription_summary ||= 
+      { :available => subscriptions.inject(0) do |quantity, sub|
+          quantity += sub.quantity
+        end,
+        :used => subscriptions.inject(0) do |consumed, sub|
+          consumed += sub.consumed
+        end
+      }
   end
+  
   
   def to_json(options = {})
     options.merge(:except => [:id])

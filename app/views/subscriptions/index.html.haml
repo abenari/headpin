@@ -38,12 +38,7 @@
               = "/"
               = sub.quantity
             %td  
-              %span.sparkline 
-                - prepend=""
-                - sub.consumed_stats.each do |stat|
-                  = prepend
-                  -prepend=","
-                  =stat.value
+              %span.sparkline=stats_line(sub.consumed_stats) 
             %td=sub.contractNumber
             %td=sub.product.support_level
             %td=sub.product.arch        

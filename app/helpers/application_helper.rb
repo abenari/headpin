@@ -49,4 +49,9 @@ module ApplicationHelper
   def include_editable_i18n
     render :partial=> "common/edit_i18n"
   end
+  
+  def stats_line(stats, options ={})
+    render :partial => "common/stats_line",
+      :locals => {:stats => stats}
+  end
 end

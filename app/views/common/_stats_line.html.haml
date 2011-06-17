@@ -1,0 +1,6 @@
+%span.sparkline 
+  - prepend=""
+  - stats.each do |stat|
+    =prepend
+    -prepend=","
+    =stat.value

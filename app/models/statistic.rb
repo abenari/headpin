@@ -5,6 +5,9 @@ class Statistic < Base
 
 
   PERPOOL = "PERPOOL"
+  TOTALCONSUMER = "TOTALCONSUMERS"
+  TOTALSUBSCRIPTIONCOUNT = "TOTALSUBSCRIPTIONCOUNT"
+  TOTALSUBSCRIPTIONCONSUMED = "TOTALSUBSCRIPTIONCONSUMED"
   
   def self.find_for_org(key, options={})
     url = "#{AppConfig.candlepin.prefix}/owners/#{key}/statistics"

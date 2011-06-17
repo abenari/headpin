@@ -15,7 +15,9 @@ javascripts:
     - public/javascripts/jquery.linkHover.js    
     - public/javascripts/jquery.sparkline.min.js    
   html5:
-    - public/javascripts/html5.js    
+    - public/javascripts/html5.js
+  dashboard:
+    - public/javascripts/headpin.sparkline.js   
   content:
     - public/javascripts/content.js
     - public/javascripts/jquery.periodicalupdater.js

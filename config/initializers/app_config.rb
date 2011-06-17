@@ -11,8 +11,8 @@ module ApplicationConfiguration
     attr_reader :config_file
 
     def initialize 
-      @config_file = "/etc/sam/sam.yml"
-      @config_file = "#{Rails.root}/config/sam.yml" unless File.exists? @config_file
+      @config_file = "/etc/sam/headpin.yml"
+      @config_file = "#{Rails.root}/config/headpin.yml" unless File.exists? @config_file
 
       config = YAML::load_file(@config_file) || {}
       @ostruct = hashes2ostruct(config)

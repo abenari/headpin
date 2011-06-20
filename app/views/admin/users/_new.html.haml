@@ -1,0 +1,25 @@
+%h1 #{_("Create User")}
+.katello_form
+  = form_for [:admin, @user] do |f|
+    .grid_8
+      %fieldset.clearfix
+        .grid_1.ra      
+          %label{:for => 'user_username'}
+            %b= _("User")
+        .grid_5.la            
+          = f.text_field :username
+      %fieldset.clearfix
+        .grid_1.ra         
+          %label{:for => 'user_password'}
+            %b= _("Password")
+        .grid_5.la               
+          = f.password_field :password
+      %fieldset.clearfix
+        .grid_1.ra         
+          %label{:for => 'user_superAdmin'}
+            %b= _("SuperAdmin")
+        .grid_5.la               
+          = f.check_box :superAdmin          
+    .grid_6.ra
+      = f.submit "#{_('Create')}", :class => "submit dialogbutton", :style=>"float:right;"
+      %button.formbutton{:disabled => true, :style=>"float:right;"} #{_("Reset")}

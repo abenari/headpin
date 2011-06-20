@@ -9,7 +9,7 @@ class Statistic < Base
   TOTALSUBSCRIPTIONCOUNT = "TOTALSUBSCRIPTIONCOUNT"
   TOTALSUBSCRIPTIONCONSUMED = "TOTALSUBSCRIPTIONCONSUMED"
   
-  def self.find_for_org(key, options={})
+  def self.find_by_org(key, options={})
     url = "#{AppConfig.candlepin.prefix}/owners/#{key}/statistics"
     url += "/#{options[:type]}" if options[:type]
     puts url

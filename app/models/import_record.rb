@@ -7,7 +7,7 @@ class ImportRecord < Base
     DateTime.parse @attributes['updated']
   end
 
-  def self.find_for_org(key)
+  def self.find_by_org(key)
     self.find(:all, :from => "#{AppConfig.candlepin.prefix}/owners/#{key}/imports")
   end
 

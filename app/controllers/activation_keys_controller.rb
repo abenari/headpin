@@ -16,7 +16,7 @@ class ActivationKeysController < ApplicationController
   end
   
   def index
-    @activation_keys = ActivationKey.find_for_org(working_org.key)
+    @activation_keys = ActivationKey.find_by_org(working_org.key)
   end
   
   def edit

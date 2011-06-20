@@ -3,7 +3,7 @@ class ActivationKey < Base
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  def self.find_for_org(key)
+  def self.find_by_org(key)
     self.find(:all, :from => "#{AppConfig.candlepin.prefix}/owners/#{key}/activation_keys")
   end
   

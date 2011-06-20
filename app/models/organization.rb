@@ -47,16 +47,16 @@ class Organization < Base
   end
   
   def total_consumer_stats
-    @total_consumer_stats ||= Statistic.find_for_org(self.key, :type => Statistic::TOTALCONSUMERS)
+    @total_consumer_stats ||= Statistic.find_by_org(self.key, :type => Statistic::TOTALCONSUMERS)
   end
   
   def total_subscription_stats
-    @total_consumer_stats ||= Statistic.find_for_org(self.key, :type => Statistic::TOTALSUBSCRIPTIONCOUNT)
+    @total_consumer_stats ||= Statistic.find_by_org(self.key, :type => Statistic::TOTALSUBSCRIPTIONCOUNT)
   end  
   
   def subscription_consumed_stats
     @subscription_consumed_stats ||= 
-      Statistic.find_for_org(self.key, 
+      Statistic.find_by_org(self.key, 
         :type => Statistic::TOTALSUBSCRIPTIONCONSUMED).select do |stat|
           stat.valueType = "RAW"
         end
@@ -64,7 +64,7 @@ class Organization < Base
   
   def subscription_percent_consumed_stats
     @subscription_percent_consumed_stats ||= 
-      Statistic.find_for_org(self.key, 
+      Statistic.find_by_org(self.key, 
         :type => Statistic::TOTALSUBSCRIPTIONCONSUMED).select do |stat|
           stat.valueType = "PERCENTAGECONSUMED"
         end

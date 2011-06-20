@@ -10,7 +10,7 @@ class ImportsController < ApplicationController
   end
 
   def index
-    @imports = ImportRecord.find_for_org(working_org.key)
+    @imports = ImportRecord.find_by_org(working_org.key)
   end
   
   def create

@@ -28,7 +28,7 @@ class SystemsController < ApplicationController
   end  
   
   def events
-    @events = Event.find_for_consumer(@system.uuid)
+    @events = Event.find_by_consumer(@system.uuid)
     render :partial => 'edit_events'
   end
 

@@ -78,7 +78,7 @@ class Admin::OrganizationsController < ApplicationController
   
   def events
     @organization = Organization.find(params[:id])    
-    @events = Event.find_for_org(@organization.key)
+    @events = Event.find_by_org(@organization.key)
     render :partial => 'edit_events'
   end  
 

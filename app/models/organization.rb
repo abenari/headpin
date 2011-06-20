@@ -15,6 +15,10 @@ class Organization < Base
     :with => /\A[^\/#]*\Z/,
     :message => _("cannot contain / or #")
 
+  def self.find_by_user(username)
+    Organization.find(:all, :from => "#{AppConfig.candlepin.prefix}/users/#{username}/owners")
+  end
+  
   def org_id
     @attributes[:id]
   end

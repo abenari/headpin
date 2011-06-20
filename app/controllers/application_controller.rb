@@ -89,8 +89,7 @@ class ApplicationController < ActionController::Base
   # Sets a variable listing all orgs the current user can access. We can safely
   # assume that there is a logged in user at this point.
   def set_visible_orgs
-    @visible_orgs ||= logged_in_user.superAdmin? ? Organization.find(:all) :
-      [Organization.find(logged_in_user.owner.key)]
+    @visible_orgs ||= Organization.find_by_user(logged_in_user.username)
   end
 
   # TODO:  Refactor these two methods!

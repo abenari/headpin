@@ -30,6 +30,9 @@ ComplianceManager::Application.routes.draw do
         get :events
       end
     end
+    resources :users do
+      get 'auto_complete_search' , :on => :collection         
+    end    
   end
   
   resource :account

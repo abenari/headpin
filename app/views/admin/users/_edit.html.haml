@@ -1,5 +1,4 @@
 = include_javascripts :edit
-= include_javascripts :org_edit
 
 .grid_8
   %h2= @user.username
@@ -12,5 +11,4 @@
       .grid_6.la.editable.edit_textfield{'name' => 'user[username]',
                                          'url' => admin_user_path(@user.username)} #{@user.username}
 
-  .prefix_3
-    = button_to _("Remove #{@user.username}"), {:action => 'destroy', :controller => 'users'}, :method => :delete, :confirm => _('Are you sure?')
+  = link_to _("Remove User"), { :controller => "users", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :class=>"remove_item"

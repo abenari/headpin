@@ -44,17 +44,18 @@ SimpleNavigation::Configuration.run do |navigation|
     top_level.item :administration, _("Admin"), "/admin", 
       :if => Proc.new { not @user.nil?  and @user.superAdmin? } do |admin_sub|
 
-      admin_sub.item :organizations, _("Organizations"), 
-        {:controller => 'admin/organizations'}, :class => 'organizations' do | org_sub |
-          if (not @organization.nil?) 
-            org_sub.item :edit, ("General"),
-              edit_admin_organization_path(@organization.key), :class => 'navigation_element'
-              
-            org_sub.item :events, _("Events"), 
-              "/admin/organizations/#{@organization.key}/events", :class => 'navigation_element'              
+        admin_sub.item :organizations, _("Organizations"), 
+          {:controller => 'admin/organizations'}, :class => 'organizations' do | org_sub |
+            if (not @organization.nil?) 
+              org_sub.item :edit, ("General"),
+                edit_admin_organization_path(@organization.key), :class => 'navigation_element'
+                
+              org_sub.item :events, _("Events"), 
+                "/admin/organizations/#{@organization.key}/events", :class => 'navigation_element'              
+            end
           end
-        end
-
+  
+        admin_sub.item :users, _("Users"), {:controller => 'admin/users'}, :class => 'users' 
     end 
 
     

@@ -1,11 +1,25 @@
+/**
+ Copyright 2011 Red Hat, Inc.
+
+ This software is licensed to you under the GNU General Public
+ License as published by the Free Software Foundation; either version
+ 2 of the License (GPLv2) or (at your option) any later version.
+ There is NO WARRANTY for this software, express or implied,
+ including the implied warranties of MERCHANTABILITY,
+ NON-INFRINGEMENT, or FITNESS FOR A PARTICULAR PURPOSE. You should
+ have received a copy of GPLv2 along with this software; if not, see
+ http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
+*/
+
 
 $(document).ready(function() {
    
-    $('#password_field').live('keyup.kalpana', verifyPassword);
-    $('#confirm_field').live('keyup.kalpana',verifyPassword);
+    $('#password_field').live('keyup.katello', verifyPassword);
+    $('#confirm_field').live('keyup.katello',verifyPassword);
     $('#save_user').live('click',createNewUser);
     $('#clear_helptips').live('click',clear_helptips);
     $('#save_roles').live('click',save_roles);
+    $('#save_password').live('click',changePassword);
 });
 
 
@@ -52,25 +66,35 @@ function verifyPassword() {
     if(a!= b){
         $("#password_conflict").text(i18n.password_match);
         $(match_button).addClass("disabled");
-        $('#save_password').unbind('click');
+        $('#save_password').die('click');
+        $('#save_user').die('click');
+        return false;
     }
     else {
         $("#password_conflict").text("");
         $(match_button).removeClass("disabled");
-        $('#save_password').unbind('click');
-        $('#save_password').bind('click',changePassword);
 
+        //reset the edit user button
+        $('#save_password').die('click');
+        $('#save_password').live('click',changePassword);
+        //reset the new user button 
+        $('#save_user').die('click');
+        $('#save_user').live('click',createNewUser);
+        return true;
     }
 }
 
 //Create user functions
 function createNewUser(){
-user.create($('#username_field').val(), $('#password_field').val(), 
-      successCreate, errorCreate);
+    if (verifyPassword()) {
+        user.create($('#username_field').val(), $('#password_field').val(),
+              successCreate, errorCreate);
+    }
 }
 
-function successCreate() {
- //alert("Created!");
+function successCreate(data) {
+    list.add(data);
+    panel.closePanel($('#panel'));
 }
 
 function errorCreate(request) {

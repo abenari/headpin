@@ -1,3 +1,8 @@
+= include_javascripts :user, :password, :katello_client, :edit, :multiselect
+:javascript
+  var current_username = '#{_(@user.username)}';
+  //what button should be disabled when passwords don't match    
+  
 .grid_16
   = two_panel(@users,
   :title => _('Users'), 

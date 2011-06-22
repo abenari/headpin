@@ -65,4 +65,11 @@ module ApplicationHelper
     end
     list
   end
+  
+  def remove_link(link_text, controller)
+    render :partial => "common/tupane_remove", 
+      :locals => {
+          :link_text => link_text,
+          :controller => controller}    
+  end
 end

@@ -19,7 +19,5 @@
           %b= "#{_('Name')}:"
       .grid_6.la.editable.edit_textfield{'name' => 'organization[displayName]',
                                          'url' => admin_organization_path(@organization.key)} #{@organization.displayName}
-
-  .prefix_3
-    = button_to _("Remove #{@organization.key}"), {:action => 'destroy', :controller => 'organizations'}, :method => :delete, :confirm => _('Are you sure?')
+  = remove_link(_("Remove #{@organization.key}"), :organizations)
 

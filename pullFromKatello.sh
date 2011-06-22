@@ -27,6 +27,7 @@ cp $KATELLO/src/public/javascripts/katello.js ./public/javascripts
 cp $KATELLO/src/public/javascripts/jquery.ba-bbq.js ./public/javascripts
 cp $KATELLO/src/public/javascripts/jquery.fancyqueries.js ./public/javascripts
 cp $KATELLO/src/public/javascripts/search.js ./public/javascripts
+cp $KATELLO/src/public/javascripts/jquery.simplePassMeter.js ./public/javascripts
 
 cp $KATELLO/src/public/fakedata.html ./public
 cp -r $KATELLO/src/public/images ./public

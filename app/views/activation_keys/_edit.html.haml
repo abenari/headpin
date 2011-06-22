@@ -16,3 +16,5 @@
           = "#{_('ID')}:"    
       .grid_6.la 
         = @activation_key.id
+        
+= remove_link(_("Remove #{@activation_key.name}"), :activation_keys)

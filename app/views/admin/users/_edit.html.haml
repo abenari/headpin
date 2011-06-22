@@ -1,14 +1,30 @@
-= include_javascripts :edit
+= include_javascripts :password
+= include_javascripts :user_edit
 
-.grid_8
-  %h2= @user.username
+%h3 #{_("Edit User")}
 #users
   .grid_8
     %fieldset
-      .grid_1.ra
-        %label{:for => 'user_username'}
-          %b= "#{_('Username')}:"
-      .grid_6.la.editable.edit_textfield{'name' => 'user[username]',
-                                         'url' => admin_user_path(@user.username)} #{@user.username}
+      .grid_2.ra
+        = label :name, _("Username")
+      .grid_5.la 
+        #{@user.username}
+    %fieldset 
+      .grid_2.ra
+        = label :user, :password, _("Change Password")
+      .grid_5.la
+        = text_field :user, :password, :id=>"password_field", :value=>"", :type=>"password"
+    .grid_6.la.prefix_2
+      #password_meter           
+    %fieldset
+      .grid_2.ra
+        = label :user, :username, _("Confirm")
+      .grid_5.la
+        = text_field :user, :username, :id=>"confirm_field", :value=>"", :type=>"password"     
+    .grid_6.la.prefix_2
+      #save_password.verify_password.button{:data_username=>@user.username}
+        #{_("Save")}
+    .grid_6.la.prefix_2
+      #password_conflict 
 
-  = link_to _("Remove User"), { :controller => "users", :action => "destroy" }, :confirm => _('Are you sure?'), :method => :delete, :class=>"remove_item"
+  = remove_link(_("Remove User"), :organizations)

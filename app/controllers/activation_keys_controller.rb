@@ -5,7 +5,7 @@ class ActivationKeysController < ApplicationController
   navigation :systems
   before_filter :require_user
   before_filter :require_org
-  before_filter :find_activation_key, :only => [:edit, :update] 
+  before_filter :find_activation_key, :only => [:edit, :update, :destroy] 
     
   def section_id
     'activation_keys'
@@ -47,6 +47,17 @@ class ActivationKeysController < ApplicationController
     end
     render :partial=>"common/list_item", :locals=>{:item=>@activation_key, :accessor=>"id", :columns=>['name', 'poolCount']}
   end  
+  
+  def destroy
+    begin
+      @activation_key.destroy
+      flash[:notice] = N_("Activation Key '#{@activation_key.name}' was deleted.")
+      redirect_to :action => 'index'
+    rescue ActiveResource::ForbiddenAccess => error
+      errors error.message
+      render :show
+    end
+  end    
 
   def find_activation_key
     @activation_key = ActivationKey.find(params[:id])

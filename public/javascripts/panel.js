@@ -125,7 +125,7 @@ $(document).ready(function() {
             url: $(this).attr('href'),
             dataType: 'html',
             success: function(data) {
-            $(".panel-content").html(data);
+                $(".panel-content").html(data);
             }
         });
         return false;
@@ -188,6 +188,8 @@ var list = (function(){
 
 var panel = (function(){
     return {
+        extended_cb : function() {}, //callback for post extended scroll
+        expand_cb: function() {}, //callback after a pane is loaded
         select_item :    function(activeBlockId) {
             thisPanel = $("#panel");
             subpanel = $('#subpanel');
@@ -235,6 +237,8 @@ var panel = (function(){
                 success: function (data, status, xhr) {
                     spinner.hide();
                     panelContent.html(data).fadeIn(function(){$(".panel-content :input:visible:enabled:first").focus();});
+                    panel.expand_cb(name);
+
                 },
                 error: function (xhr, status, error) {
                     spinner.hide();
@@ -336,18 +340,15 @@ var panel = (function(){
                     url: jQuery.param.querystring(url, params),
                     cache: false,
                     success: function(data) {
+                        var expand_list = $('.expand_list');
                         panel.retrievingNewContent = false;
-                        var ul = list.find("ul")[0];
-                        if (ul) {
-                            $(ul).append(data); //The promotions page(s) uses a <ul> for each item instead of divs
-                        }
-                        else {
-                            list.append(data);
-                        }
+                        expand_list.append(data);
                         $('#list-spinner').remove();
+                        
                         if (data.length == 0) {
                             list.removeClass("ajaxScroll");
                         }
+                        panel.extended_cb();
                     },
                     error: function() {
                         $('#list-spinner').remove();

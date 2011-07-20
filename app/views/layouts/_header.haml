@@ -1,20 +1,20 @@
 .grid_3
-  %a{:href => '/dashboard', :class => "fl"}
-    %img{:src => '/images/candlepin_logo.png'}
-    %img.kp{:src => '/images/nav_pipe.png'}
+  %a{:href => '/dashboard', :class => "logo"}
+    %img{:src => '/images/candlepin_logo.png', :alt => 'Katello Logo'}
+    %span{:class => 'pipe'}
     %h1 Headpin
   #loading.fr
-    %img{:src => '/images/spinner_head.gif'}
+    %img{:src => '/images/spinner_head.gif', :alt => 'Spinning Work Indicator'}
 .grid_13
   - if current_user
-    %div.org
-      = render :partial => '/layouts/org'
-  %ul
-    %li.hello
-      = link_to account_path do
-        - if current_user
-          %b
-            = current_user
-          %li.logout
-            %a{ :href => "/logout"}
-              #{_("Logout")}
+    /
+      %div.org
+        = render :partial => '/layouts/org'
+    %ul
+      %li.hello
+        = link_to account_path do
+          %strong
+            = current_user.username
+      %li.logout
+        %a{ :href => "/logout"}
+          #{_("Logout")}

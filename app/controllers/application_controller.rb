@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
   end
   
   def logged_in_user
-    @user ||= User.find(current_user) unless current_user.nil?
+    @user ||= current_user
   end
 
   private
@@ -147,7 +147,7 @@ class ApplicationController < ActionController::Base
 
   def require_no_user
     if current_user
-      flash[:notice] = _("Welcome Back!") + ", " + current_user
+      flash[:notice] = _("Welcome Back!") + ", " + current_user.username
       redirect_to dashboard_index_url
       return false
     end

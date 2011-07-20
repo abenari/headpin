@@ -82,5 +82,14 @@ stylesheets:
     - public/stylesheets/jquery.jnotify.css
     - public/stylesheets/jquery.treeTable.css
   fancyqueries:
-    - public/stylesheets/compiled/fancyqueries.css    
+    - public/stylesheets/compiled/fancyqueries.css
+  loginpage:
+    - public/stylesheets/compiled/loginpage.css
+  dashboard:
+    - public/stylesheets/compiled/dashboard.css
+  current:
+  imports:
+  systems:
+  activation_keys:
+  generic:
   empty:

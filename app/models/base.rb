@@ -34,8 +34,8 @@ class Base < OAuthActiveResource::Resource
     def headers
       # Pulling the current request here - this is the
       # hack in ApplicationController
-      username = Thread.current[:request].env['warden'].user
-      username.nil? ? {} : { 'cp-user' => username }
+      user = Thread.current[:request].env['warden'].user
+      user.nil? ? {} : { 'cp-user' => user.username }
     end
 
     # Active record tries to use the format in the URL (resource.json), overriding

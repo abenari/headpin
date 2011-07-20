@@ -28,4 +28,9 @@ class User < Base
   def superAdmin=(value)
     attrs[:superAdmin]= TRUE_VALUES.include?(value)    
   end
+  
+  # Fake outs. May need to persist these values
+  def page_size
+    20
+  end
 end

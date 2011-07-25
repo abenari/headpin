@@ -95,7 +95,7 @@ class Admin::OrganizationsController < ApplicationController
   def events
     @organization = Organization.find(params[:id])    
     @events = Event.find_by_org(@organization.key)
-    render :partial => 'edit_events'
+    render :partial => 'edit_events', :layout => "tupane_layout"   
   end  
 
 end

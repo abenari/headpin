@@ -92,7 +92,9 @@ stylesheets:
   dashboard:
     - public/stylesheets/compiled/sections/dashboard.css
   subscriptions:
-    - public/stylesheets/compiled/sections/dashboard.css
+    - public/stylesheets/compiled/sections/subscriptions.css
+  systems:
+    - public/stylesheets/compiled/sections/systems.css    
   admin:
     - public/stylesheets/compiled/sections/admin.css
   scroll_pane:

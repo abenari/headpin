@@ -105,4 +105,7 @@ class Organization < Base
     super(options)
   end
 
+  def id
+    key
+  end
 end

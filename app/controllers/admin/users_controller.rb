@@ -19,6 +19,10 @@ class Admin::UsersController < ApplicationController
   before_filter :require_admin
   respond_to :html, :js
 
+  def section_id
+    'admin'
+  end
+  
   def index
     @users = User.find(:all)
   end

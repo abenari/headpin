@@ -7,7 +7,7 @@ javascripts:
     - public/javascripts/jquery-ui-1.8.11.custom/js/jquery-ui-1.8.11.custom.min.js
     - public/javascripts/jquery/plugins/jquery.hoverIntent.js
     - public/javascripts/jquery/plugins/jquery.ui.totop.js
-    - public/javascripts/jquery/plugins/jquery-ujs/rails.js
+    - public/javascripts/jquery-ujs/rails.js
     - public/javascripts/jquery/plugins/jquery.jnotify.js
     - public/javascripts/jquery/plugins/jquery.ui.selectmenu.js    
     - public/javascripts/katello.js
@@ -70,6 +70,10 @@ javascripts:
   fancyqueries:
     - public/javascripts/jquery/plugins/jquery.fancyqueries.js
     - public/javascripts/search.js
+  scroll_pane:
+    - public/javascripts/jquery/plugins/jquery.mousewheel.js
+    - public/javascripts/jquery/plugins/jquery.jscrollpane.min.js
+    - public/javascripts/scroll_pane.js    
   bbq:
     - public/javascripts/jquery/plugins/jquery.ba-bbq.js
         
@@ -89,8 +93,8 @@ stylesheets:
     - public/stylesheets/compiled/sections/dashboard.css
   subscriptions:
     - public/stylesheets/compiled/sections/dashboard.css
-  imports:
-  systems:
-  activation_keys:
-  generic:
-  empty:
+  admin:
+    - public/stylesheets/compiled/sections/admin.css
+  scroll_pane:
+    - public/stylesheets/jquery.jscrollpane.css    
+

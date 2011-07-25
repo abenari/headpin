@@ -1,23 +1,27 @@
 = include_javascripts :edit
 = include_javascripts :org_edit
 
-.grid_8
-  %h2= @organization.key
-#organizations
-  .grid_8
-    %nav.subnav
-      = render_navigation(:expand_all => true, :level => 3)
-  .grid_8
-    .subscriptions{:data_progress => @organization.subscriptions_summary[:used].to_i * 100 / [@organization.subscriptions_summary[:available].to_i, 1].max}
-    %div{:style => 'text-align: center;'}
-      #{_('Subscriptions')}:  #{@organization.subscriptions_summary[:used]} / #{@organization.subscriptions_summary[:available]}
-
-  .grid_8
-    %fieldset
-      .grid_1.ra
-        %label{:for => 'organization_displayName'}
-          %b= "#{_('Name')}:"
-      .grid_6.la.editable.edit_textfield{'name' => 'organization[displayName]',
-                                         'url' => admin_organization_path(@organization.key)} #{@organization.displayName}
+= content_for :title do
+  = @organization.displayName 
+  
+= content_for :navigation do
+  = render_navigation(:expand_all => true, :level => 3) 
+  
+= content_for :remove_item do
   = remove_link(_("Remove #{@organization.key}"), :organizations)
+  
+= content_for :content do 
+  #organizations
+    .grid_8
+      .subscriptions{:data_progress => @organization.subscriptions_summary[:used].to_i * 100 / [@organization.subscriptions_summary[:available].to_i, 1].max}
+      %div{:style => 'text-align: center;'}
+        #{_('Subscriptions')}:  #{@organization.subscriptions_summary[:used]} / #{@organization.subscriptions_summary[:available]}
+  
+    .grid_8
+      %fieldset
+        .grid_1.ra
+          %label{:for => 'organization_displayName'}
+            %b= "#{_('Name')}:"
+        .grid_6.la.editable.edit_textfield{'name' => 'organization[displayName]',
+                                           'url' => admin_organization_path(@organization.key)} #{@organization.displayName}
 

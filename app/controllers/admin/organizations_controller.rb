@@ -19,6 +19,10 @@ class Admin::OrganizationsController < ApplicationController
   before_filter :require_admin
   respond_to :html, :js
 
+  def section_id
+    'admin'
+  end
+  
   def index
     @organizations = @visible_orgs
   end
@@ -48,7 +52,7 @@ class Admin::OrganizationsController < ApplicationController
 
   def edit
     @organization = Organization.find(params[:id])
-    render :partial => 'edit'
+    render :partial => 'edit', :layout => "tupane_layout"    
   end
 
   def update

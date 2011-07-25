@@ -20,7 +20,7 @@ class ActivationKeysController < ApplicationController
   before_filter :find_activation_key, :only => [:edit, :update, :destroy] 
     
   def section_id
-    'activation_keys'
+    'admin'
   end
 
   def new

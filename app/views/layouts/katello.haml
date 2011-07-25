@@ -27,7 +27,7 @@
     - section_id = controller.section_id
   - else
     - section_id = "generic"
-  %body{:id => controller.section_id}
+  %body{:id => controller.section_id + "body"}
     %div#head
       %header.container_16
         = render :partial => '/layouts/header'

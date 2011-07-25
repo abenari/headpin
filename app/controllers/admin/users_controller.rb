@@ -29,7 +29,7 @@ class Admin::UsersController < ApplicationController
 
   def new
     @user = User.new
-    render :partial => 'new'
+    render :partial => 'new', :layout => "tupane_layout" 
   end
 
   def create
@@ -46,7 +46,7 @@ class Admin::UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    render :partial => 'edit'
+    render :partial => 'edit', :layout => "tupane_layout" 
   end
 
   def update

@@ -18,17 +18,10 @@ javascripts:
     - public/javascripts/html5.js
   dashboard:
     - public/javascripts/headpin.sparkline.js   
-  content:
-    - public/javascripts/content.js
-    - public/javascripts/jquery/plugins/jquery.periodicalupdater.js
   katello_client:
     - public/javascripts/katello_client.js
   login:
     - public/javascripts/login.js    
-  environment:
-    - public/javascripts/environment.js
-  changeset:
-    - public/javascripts/changeset.js
   systems:
     - public/javascripts/systems.js
   form:
@@ -38,11 +31,6 @@ javascripts:
   panel:
     - public/javascripts/jquery/plugins/jquery.ba-resize.js
     - public/javascripts/panel.js
-  provider:
-    - public/javascripts/provider.js
-  notices:
-    - public/javascripts/notices.js
-    - public/javascripts/jquery/plugins/jquery.periodicalupdater.js
   password:
     - public/javascripts/jquery/plugins/jquery.simplePassMeter.js
   user:
@@ -56,10 +44,6 @@ javascripts:
   subscription:
     - public/javascripts/subscription.js
     - public/javascripts/headpin.sparkline.js          
-  role:
-    - public/javascripts/role.js
-  role_edit:
-    - public/javascripts/role_edit.js
   edit:
     - public/javascripts/jquery/plugins/jquery.jeditable.js
     - public/javascripts/jquery/plugins/jquery.jeditable.ajaxupload.js

@@ -31,16 +31,16 @@ class SystemsController < ApplicationController
   end
   
   def edit
-    render :partial => 'edit'
+    render :partial => 'edit', :layout => "tupane_layout"  
   end 
   
   def facts
-    render :partial => 'edit_facts'
+    render :partial => 'edit_facts', :layout => "tupane_layout"  
   end  
   
   def events
     @events = Event.find_by_consumer(@system.uuid)
-    render :partial => 'edit_events'
+    render :partial => 'edit_events', :layout => "tupane_layout"  
   end
 
   def subscriptions
@@ -56,12 +56,12 @@ class SystemsController < ApplicationController
 
     @entitlements = Entitlement.find(:all, :params => {:consumer => @system.uuid})
     
-    render :partial => "subscriptions"
+    render :partial => "subscriptions", :layout => "tupane_layout"  
   end
 
   def available_subscriptions
     @subscriptions = Subscription.find(:all, :params => {:consumer => @system.uuid})
-    render :partial => "available_subscriptions"    
+    render :partial => "available_subscriptions" , :layout => "tupane_layout"     
   end
 
   def unbind

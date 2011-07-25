@@ -1,17 +1,21 @@
-.grid_8
-  %h2 
-    = @system.name
-#systems
-  .grid_8
-    %nav.subnav
-      = render_navigation(:expand_all => true, :level => 3)
-  .grid_8#events          
-    %table
-      %thead
-        %th= _("Time")
-        %th= _("Message")
-      - @events.each do |event|
-        %tr{:class => cycle(nil, 'alt')}
-          %td= l event.timestamp
-          %td= event.messageText
+= content_for :title do
+  = @system.name
+  
+= content_for :navigation do
+  = render_navigation(:expand_all => true, :level => 3) 
+  
+= content_for :remove_item do
+  = remove_link(_("Remove #{@system.name}"), :systems)
+  
+= content_for :content do 
+  #systems
+    .grid_8#events          
+      %table
+        %thead
+          %th= _("Time")
+          %th= _("Message")
+        - @events.each do |event|
+          %tr{:class => cycle(nil, 'alt')}
+            %td= l event.timestamp
+            %td= event.messageText
 

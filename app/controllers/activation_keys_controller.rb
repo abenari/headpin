@@ -33,7 +33,7 @@ class ActivationKeysController < ApplicationController
   
   def edit
     puts @activation_key.to_json()    
-    render :partial => 'edit'
+    render :partial => 'edit', :layout => "tupane_layout"  
   end   
   
   def update

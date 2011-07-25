@@ -80,13 +80,15 @@ stylesheets:
     - public/stylesheets/compiled/ie.css
     - public/stylesheets/jquery.jnotify.css
     - public/stylesheets/jquery.treeTable.css
+    - public/stylesheets/compiled/headpin.css
   fancyqueries:
     - public/stylesheets/compiled/fancyqueries.css
   loginpage:
     - public/stylesheets/compiled/sections/loginpage.css    
   dashboard:
-    - public/stylesheets/compiled/dashboard.css
-  current:
+    - public/stylesheets/compiled/sections/dashboard.css
+  subscriptions:
+    - public/stylesheets/compiled/sections/dashboard.css
   imports:
   systems:
   activation_keys:

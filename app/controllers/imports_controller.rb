@@ -18,7 +18,7 @@ class ImportsController < ApplicationController
   before_filter :require_org
 
   def section_id
-    'imports'
+    'subscriptions'
   end
 
   def index

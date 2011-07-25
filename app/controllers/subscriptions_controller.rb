@@ -17,7 +17,7 @@ class SubscriptionsController < ApplicationController
   before_filter :require_org
 
   def section_id
-    'current'
+    'subscriptions'
   end
 
   def index

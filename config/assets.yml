@@ -3,26 +3,28 @@ javascript_compressor: yui
 
 javascripts:
   common:
-    - public/javascripts/jquery-1.5.2.js
+    - public/javascripts/jquery/jquery-1.5.2.js
     - public/javascripts/jquery-ui-1.8.11.custom/js/jquery-ui-1.8.11.custom.min.js
-    - public/javascripts/jquery.hoverIntent.js
-    - public/javascripts/jquery.ui.totop.js
-    - public/javascripts/jquery-ujs/rails.js
-    - public/javascripts/jquery.jnotify.js
-    - public/javascripts/jquery.ui.selectmenu.js    
+    - public/javascripts/jquery/plugins/jquery.hoverIntent.js
+    - public/javascripts/jquery/plugins/jquery.ui.totop.js
+    - public/javascripts/jquery/plugins/jquery-ujs/rails.js
+    - public/javascripts/jquery/plugins/jquery.jnotify.js
+    - public/javascripts/jquery/plugins/jquery.ui.selectmenu.js    
     - public/javascripts/katello.js
     - public/javascripts/application.js
-    - public/javascripts/jquery.linkHover.js    
-    - public/javascripts/jquery.sparkline.min.js    
+    - public/javascripts/jquery/plugins/jquery.linkHover.js    
+    - public/javascripts/jquery/plugins/jquery.sparkline.min.js    
   html5:
     - public/javascripts/html5.js
   dashboard:
     - public/javascripts/headpin.sparkline.js   
   content:
     - public/javascripts/content.js
-    - public/javascripts/jquery.periodicalupdater.js
+    - public/javascripts/jquery/plugins/jquery.periodicalupdater.js
   katello_client:
     - public/javascripts/katello_client.js
+  login:
+    - public/javascripts/login.js    
   environment:
     - public/javascripts/environment.js
   changeset:
@@ -30,19 +32,19 @@ javascripts:
   systems:
     - public/javascripts/systems.js
   form:
-    - public/javascripts/jquery.form.js
+    - public/javascripts/jquery/plugins/jquery.form.js
   treetable:
-    - public/javascripts/jquery.treeTable.js
+    - public/javascripts/jquery/plugins/jquery.treeTable.js
   panel:
-    - public/javascripts/jquery.ba-resize.js
+    - public/javascripts/jquery/plugins/jquery.ba-resize.js
     - public/javascripts/panel.js
   provider:
     - public/javascripts/provider.js
   notices:
     - public/javascripts/notices.js
-    - public/javascripts/jquery.periodicalupdater.js
+    - public/javascripts/jquery/plugins/jquery.periodicalupdater.js
   password:
-    - public/javascripts/jquery.simplePassMeter.js
+    - public/javascripts/jquery/plugins/jquery.simplePassMeter.js
   user:
     - public/javascripts/user.js
   user_edit:
@@ -59,24 +61,21 @@ javascripts:
   role_edit:
     - public/javascripts/role_edit.js
   edit:
-    - public/javascripts/jquery.jeditable.js
-    - public/javascripts/jquery.jeditable.ajaxupload.js
-    - public/javascripts/jquery.ajaxfileupload.js
+    - public/javascripts/jquery/plugins/jquery.jeditable.js
+    - public/javascripts/jquery/plugins/jquery.jeditable.ajaxupload.js
+    - public/javascripts/jquery/plugins/jquery.ajaxfileupload.js
     - public/javascripts/jeditable_helpers.js
   multiselect:
-    - public/javascripts/jquery.ui.multiselect.js
+    - public/javascripts/jquery/plugins/jquery.ui.multiselect.js
   fancyqueries:
-    - public/javascripts/jquery.fancyqueries.js
+    - public/javascripts/jquery/plugins/jquery.fancyqueries.js
     - public/javascripts/search.js
   bbq:
-    - public/javascripts/jquery.ba-bbq.js
+    - public/javascripts/jquery/plugins/jquery.ba-bbq.js
         
 stylesheets:
   common:
     - public/javascripts/jquery-ui-1.8.11.custom/css/custom-theme/jquery-ui-1.8.11.custom.css
-    - public/stylesheets/compiled/screen.css
-    - public/stylesheets/compiled/katello.css
-    - public/stylesheets/compiled/headpin.css    
     - public/stylesheets/jquery.loadmask.css
     - public/stylesheets/compiled/ie.css
     - public/stylesheets/jquery.jnotify.css
@@ -84,7 +83,7 @@ stylesheets:
   fancyqueries:
     - public/stylesheets/compiled/fancyqueries.css
   loginpage:
-    - public/stylesheets/compiled/loginpage.css
+    - public/stylesheets/compiled/sections/loginpage.css    
   dashboard:
     - public/stylesheets/compiled/dashboard.css
   current:

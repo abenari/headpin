@@ -1,7 +1,11 @@
+= include_javascripts :login
+
+
 .modalbox
   %h2 #{_('Log In')}
   .katello_form
     = form_tag '/login', :method => "post" do |f|
+      /= error_messages
       %fieldset
         = label_tag :username
         = text_field_tag :username, params[:username]

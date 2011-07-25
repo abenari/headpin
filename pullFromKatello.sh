@@ -11,6 +11,8 @@ cp $KATELLO/src/app/stylesheets/grid.scss ./app/stylesheets
 cp $KATELLO/src/app/stylesheets/fancyqueries.scss ./app/stylesheets
 cp $KATELLO/src/app/stylesheets/_*.scss ./app/stylesheets
 
+cp $KATELLO/src/app/stylesheets/sections/loginpage.scss ./app/stylesheets/sections
+
 cp $KATELLO/src/public/stylesheets/images/* ./public/stylesheets/images
 
 cp $KATELLO/src/app/views/layouts/katello.haml ./app/views/layouts
@@ -24,13 +26,11 @@ cp $KATELLO/src/app/views/common/_edit_i18n.html.haml ./app/views/common
 
 cp $KATELLO/src/public/javascripts/panel.js ./public/javascripts
 cp $KATELLO/src/public/javascripts/katello.js ./public/javascripts
-cp $KATELLO/src/public/javascripts/jquery.ba-bbq.js ./public/javascripts
-cp $KATELLO/src/public/javascripts/jquery.fancyqueries.js ./public/javascripts
 cp $KATELLO/src/public/javascripts/search.js ./public/javascripts
-cp $KATELLO/src/public/javascripts/jquery.simplePassMeter.js ./public/javascripts
 
 cp $KATELLO/src/public/fakedata.html ./public
 cp -r $KATELLO/src/public/images ./public
 
 cp $KATELLO/src/app/controllers/auto_complete_search.rb ./app/controllers
 cp $KATELLO/src/app/helpers/search_helper.rb ./app/helpers
+cp $KATELLO/src/app/helpers/layout_helper.rb ./app/helpers

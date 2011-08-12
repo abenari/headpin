@@ -14,7 +14,7 @@ describe Admin::OrganizationsController do
     context 'with no existing organizations' do
 
       it 'should be successful' do
-        Organization.should_receive(:find).with(:all).and_return([])
+        Organization.should_receive(:find).with(:all, anything()).and_return([])
         get 'index'
         response.should be_success
       end
@@ -24,8 +24,8 @@ describe Admin::OrganizationsController do
     context 'as non-admin' do
       it 'should redirect to dashboard' do
         org = mock_org()
-        Organization.should_receive(:find).with(org.key).and_return(org)
-        mock_user = mock(User, :superAdmin? => false)
+        Organization.should_receive(:find).with(:all, anything()).and_return(org)
+        mock_user = mock(User, :superAdmin? => false, :username => "admin")
         mock_user.stub_chain(:owner, :key).and_return(org.key)
         controller.stub!(:logged_in_user).and_return(mock_user)
         get 'index'
@@ -39,7 +39,7 @@ describe Admin::OrganizationsController do
     it 'should set the current organization in the session' do
       org = mock_org()
       Organization.should_receive(:find).with(org.key).and_return(org)
-      Organization.should_receive(:find).with(:all).and_return([org])
+      Organization.should_receive(:find).with(:all, anything()).and_return([org])
       request.env['HTTP_REFERER'] = "/"
       post :use, :workingorg => org.key
       session[:current_organization_id].should == org.key
@@ -57,7 +57,7 @@ describe Admin::OrganizationsController do
 
     it 'should create a new organization' do
       org = mock_org()
-      Organization.should_receive(:find).with(:all).and_return([org])
+      Organization.should_receive(:find).with(:all, anything()).and_return([org])
       org.should_receive(:save).and_return(true)
       Organization.stub!(:new).and_return org
 
@@ -70,7 +70,7 @@ describe Admin::OrganizationsController do
 
     it 'should change the working org' do
       org = mock_org()
-      Organization.should_receive(:find).with(:all).and_return([org])
+      Organization.should_receive(:find).with(:all, anything()).and_return([org])
       Organization.should_receive(:find).with(org.key).and_return(org)
       get 'systems', :id => org.key
       session[:current_organization_id].should == org.key
@@ -78,7 +78,7 @@ describe Admin::OrganizationsController do
 
     it 'should redirect to top-level systems path' do
       org = mock_org()
-      Organization.should_receive(:find).with(:all).and_return([org])
+      Organization.should_receive(:find).with(:all, anything()).and_return([org])
       Organization.should_receive(:find).with(org.key).and_return(org)
       get 'systems', :id => org.key
       response.should redirect_to(systems_path)
@@ -91,14 +91,14 @@ describe Admin::OrganizationsController do
     it 'should change the working org' do
       org = mock_org()
       Organization.should_receive(:find).with(org.key).and_return(org)
-      Organization.should_receive(:find).with(:all).and_return([org])
+      Organization.should_receive(:find).with(:all, anything()).and_return([org])
       get 'subscriptions', :id => org.key
       session[:current_organization_id].should == org.key
     end
 
     it 'should redirect to top-level systems path' do
       org = mock_org()
-      Organization.should_receive(:find).with(:all).and_return([org])
+      Organization.should_receive(:find).with(:all, anything()).and_return([org])
       Organization.should_receive(:find).with(org.key).and_return(org)
       get 'subscriptions', :id => org.key
       response.should redirect_to(subscriptions_path)

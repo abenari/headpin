@@ -1,7 +1,9 @@
 source 'http://repos.fedorapeople.org/repos/katello/gems/'
+source "http://rubygems.org"
 
 gem 'rails', '3.0.5'
-
+gem 'rcov'
+gem 'awesome_print'
 gem 'json'
 #gem 'bson_ext', '>= 1.0.4'
 gem 'rails_warden'
@@ -26,7 +28,7 @@ gem 'ruby_parser', :require => false
 
 
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
+ gem 'ruby-debug'
 # gem 'ruby-debug19'
 
 # Bundle gems for the local environment. Make sure to

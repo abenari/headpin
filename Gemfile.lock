@@ -1,5 +1,6 @@
 GEM
   remote: http://repos.fedorapeople.org/repos/katello/gems/
+  remote: http://rubygems.org/
   specs:
     POpen4 (0.1.4)
       Platform (>= 0.4.0)
@@ -35,7 +36,9 @@ GEM
       activesupport (= 3.0.5)
     activesupport (3.0.5)
     arel (2.0.10)
+    awesome_print (0.4.0)
     builder (2.1.2)
+    columnize (0.3.4)
     compass (0.10.6)
       haml (>= 3.0.4)
     compass-960-plugin (0.10.0)
@@ -60,6 +63,8 @@ GEM
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
     json (1.5.2)
+    linecache (0.46)
+      rbx-require-relative (> 0.0.4)
     locale (2.0.5)
     mail (2.2.19)
       activesupport (>= 2.3.6)
@@ -98,6 +103,8 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.9.2)
+    rbx-require-relative (0.0.5)
+    rcov (0.9.10)
     regin (0.3.8)
     rest-client (1.6.3)
       mime-types (>= 1.16)
@@ -114,6 +121,11 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.6.0)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     ruby_parser (2.0.6)
       sexp_processor (~> 3.0)
     scoped_search (2.3.1)
@@ -134,6 +146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   compass (>= 0.10.5)
   compass-960-plugin (>= 0.10.0)
   gettext (>= 1.9.3)
@@ -147,8 +160,10 @@ DEPENDENCIES
   oauth-active-resource
   rails (= 3.0.5)
   rails_warden
+  rcov
   rest-client
   rspec-rails
+  ruby-debug
   ruby_parser
   scoped_search (>= 2.3.1)
   simple-navigation (= 3.1.0)

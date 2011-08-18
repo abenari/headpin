@@ -24,11 +24,11 @@ class User < Base
   schema do
     string 'username', 'password', "superAdmin"
   end
-  
-  def superAdmin=(value)
-    attrs[:superAdmin]= TRUE_VALUES.include?(value)    
+
+  def new?
+    attributes[:id].nil?
   end
-  
+
   # Fake outs. May need to persist these values
   def page_size
     20

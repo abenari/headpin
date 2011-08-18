@@ -17,7 +17,7 @@ require 'oauth_active_resource'
 #class CandlepinObject < ActiveResource::Base
 class Base < OAuthActiveResource::Resource
 
-  TRUE_VALUES = [true, 1, "true", "yes", "TRUE", "YES", "T", "t", "Y", "y"]
+  TRUE_VALUES = [true, 1, "1", "true", "yes", "TRUE", "YES", "T", "t", "Y", "y"]
   
   self.site = "https://#{AppConfig.candlepin.host}:#{AppConfig.candlepin.port}#{AppConfig.candlepin.prefix}"
   self.format = :json

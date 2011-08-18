@@ -26,9 +26,9 @@
         .grid_2.ra
           = label :user, :username, _("Confirm")
         .grid_5.la
-          = text_field :user, :username, :id=>"confirm_field", :value=>"", :type=>"password"     
+          = text_field :user, :username, :id=>"confirm_field", :value=>"", :type=>"password"
       .grid_6.la.prefix_2
-        #save_password.verify_password.button{:data_username=>@user.username}
+        #save_password.verify_password.button{'data-url'=>admin_user_path(@user.username)}
           #{_("Save")}
       .grid_6.la.prefix_2
         #password_conflict 

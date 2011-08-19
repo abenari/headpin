@@ -1,11 +1,20 @@
 require 'spec_helper'
 
 describe LoginController do
+  render_views
 
   describe '#index' do
     it 'should redirect to the login page' do
       get 'index'
       response.should redirect_to(:action => :new)
+    end
+
+    it 'should render the login page' do
+      controller.stub!(:require_no_user).and_return true
+      #in case the view calls current_user  (which means warden has been initiated but current_user returns false)
+      request.env['warden'] = stub(Object, :user => false)
+      get 'new'
+      response.should render_template :new
     end
   end
 

@@ -50,23 +50,26 @@ class Base < OAuthActiveResource::Resource
       "#{prefix(prefix_options)}#{collection_name}#{query_string(query_options)}"
     end
 
-    def new_element_path(prefix_options = {})
+#    def new_element_path(prefix_options = {})
       # TODO: This new doesn't look like it matches anything in Candlepin:
-      "#{prefix(prefix_options)}#{collection_name}/new"
-    end
+#      raise 'test here'
+#      "#{prefix(prefix_options)}#{collection_name}/new"
+#    end
 
   end
 
-  def encode(options={})
-    self.class.format.encode(attributes, options)
-  end
+#  def encode(options={})
+#    raise "encode"
+#    self.class.format.encode(attributes, options)
+#  end
   
   def created
     DateTime.parse @attributes['created']
   end
   
-  def updated
-    DateTime.parse @attributes['updated']    
-  end
+#  def updated
+#    raise "uupdated"
+#    DateTime.parse @attributes['updated']    
+#  end
 end
 

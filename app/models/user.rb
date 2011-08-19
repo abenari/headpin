@@ -15,20 +15,20 @@ class User < Base
   extend ActiveModel::Naming
 
   self.primary_key = :username
-  
+
   def initialize(attrs={})
     attrs[:superAdmin]= TRUE_VALUES.include?(attrs[:superAdmin])
     super(attrs)
   end
-  
+
   schema do
     string 'username', 'password', "superAdmin"
   end
-  
-  def superAdmin=(value)
-    attrs[:superAdmin]= TRUE_VALUES.include?(value)    
-  end
-  
+
+  #  def superAdmin=(value)
+  #    attrs[:superAdmin]= TRUE_VALUES.include?(value)    
+  #  end
+
   # Fake outs. May need to persist these values
   def page_size
     20

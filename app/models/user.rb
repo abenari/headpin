@@ -26,8 +26,12 @@ class User < Base
   end
 
   #  def superAdmin=(value)
-  #    attrs[:superAdmin]= TRUE_VALUES.include?(value)    
+  #    attrs[:superAdmin]= TRUE_VALUES.include?(value)
   #  end
+
+  def new?
+    attributes[:id].nil?
+  end
 
   # Fake outs. May need to persist these values
   def page_size

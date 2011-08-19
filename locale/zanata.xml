@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<config xmlns="http://zanata.org/namespace/config/">
+    <url>https://translate.engineering.redhat.com</url> 
+    <project>Headpin</project> 
+    <project-version>1.0</project-version>
+    <locales>
+        <locale>de</locale>
+        <locale>es</locale>
+        <locale>fr</locale>
+        <locale>it</locale>
+        <locale>ja</locale>
+        <locale>ko</locale>
+        <locale>pt-BR</locale>
+        <locale map-from="zh-CN">zh-Hans</locale>
+        <locale map-from="zh-TW">zh-Hant</locale>      
+    </locales>
+</config>

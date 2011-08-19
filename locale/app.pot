@@ -7,145 +7,441 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: version 0.0.1\n"
-"POT-Creation-Date: 2011-04-06 15:34-0300\n"
+"POT-Creation-Date: 2011-08-17 17:04-0400\n"
 "PO-Revision-Date: 2011-04-06 15:34-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: app/controllers/organizations_controller.rb:115
-msgid "None Imported"
+#: app/views/layouts/_footer.haml:7
+msgid " Red Hat, Inc."
 msgstr ""
 
-#: app/views/systems/subscriptions.html.haml:23
-msgid "Remove"
+#: app/helpers/translation_helper.rb:15
+msgid "%{relative_time} ago"
 msgstr ""
 
-#: app/views/systems/subscriptions.html.haml:23 app/views/systems/show.html.haml:9
-#: app/views/organizations/edit.html.haml:6 app/views/organizations/show.html.haml:9
+#: app/views/common/_panel.html.haml:22
+msgid "+ New "
+msgstr ""
+
+#: app/views/activation_keys/index.html.haml:12 config/navigation.rb:38
+msgid "Activation Keys"
+msgstr ""
+
+#: config/navigation.rb:44
+msgid "Admin"
+msgstr ""
+
+#: app/controllers/application_controller.rb:42
+msgid "An error has occurred in the Entitlement Server."
+msgstr ""
+
+#: app/controllers/application_controller.rb:35
+msgid "An unexpected error has occurred, details have been logged."
+msgstr ""
+
+#: app/views/subscriptions/index.html.haml:17
+msgid "Arch"
+msgstr ""
+
+#: app/views/common/_common_i18n.html.haml:3
+#: app/views/common/_tupane_remove.html.haml:1
+#: app/views/systems/_subscriptions.html.haml:28
 msgid "Are you sure?"
 msgstr ""
 
-#: app/views/systems/show.html.haml:3 app/views/organizations/edit.html.haml:3
-#: app/views/organizations/show.html.haml:3
-msgid "Actions"
+#: config/navigation.rb:30
+msgid "Available Subscriptions"
 msgstr ""
 
-#: app/views/systems/show.html.haml:9 app/views/organizations/edit.html.haml:6
-#: app/views/organizations/show.html.haml:9
-msgid "Delete"
+#: app/views/common/403.html.haml:7
+msgid "Back"
 msgstr ""
 
-#: app/views/systems/show.html.haml:16
-msgid "UUID"
+#: app/views/subscriptions/index.html.haml:18
+msgid "Begins"
 msgstr ""
 
-#: app/views/systems/show.html.haml:20
-msgid "Organization"
+#: app/views/common/_edit_i18n.html.haml:3
+msgid "Cancel"
 msgstr ""
 
-#: app/views/systems/show.html.haml:23
-msgid "Type"
+#: app/views/admin/users/_edit.html.haml:20
+msgid "Change Password"
 msgstr ""
 
-#: app/views/systems/show.html.haml:27
-msgid "Registered"
+#: app/views/common/_panel.html.haml:8
+msgid "Click New to create a new"
 msgstr ""
 
-#: app/views/systems/show.html.haml:31
-msgid "Last Checkin"
+#: app/views/common/_edit_i18n.html.haml:3
+msgid "Click to edit"
 msgstr ""
 
-#: app/views/systems/show.html.haml:35
-msgid "Registered By"
+#: app/views/layouts/_tupane_layout.html.haml:14
+#: app/views/layouts/_tupane_layout.html.haml:19
+msgid "Close"
 msgstr ""
 
-#: app/views/systems/show.html.haml:39
-msgid "Facts"
+#: app/views/admin/users/_edit.html.haml:27
+msgid "Confirm"
 msgstr ""
 
-#: app/views/systems/show.html.haml:43
-msgid "Fact"
+#: app/views/subscriptions/index.html.haml:15
+msgid "Contract"
 msgstr ""
 
-#: app/views/systems/show.html.haml:44
-msgid "Value"
-msgstr ""
-
-#: app/views/systems/available_subscriptions.html.haml:29
-msgid "Subscribe"
-msgstr ""
-
-#: app/views/systems/index.html.haml:4 app/views/systems/index.html.haml:9
-#: app/views/organizations/systems.html.haml:4 app/views/organizations/systems.html.haml:9 config/navigation.rb:11
-#: config/navigation.rb:14
-msgid "Systems"
-msgstr ""
-
-#: app/views/organizations/edit.html.haml:22 app/views/organizations/show.html.haml:16
-#: app/views/organizations/new.html.haml:11
-msgid "Name"
-msgstr ""
-
-#: app/views/organizations/edit.html.haml:28
-msgid "Update"
-msgstr ""
-
-#: app/views/organizations/show.html.haml:7
-msgid "Edit"
-msgstr ""
-
-#: app/views/organizations/new.html.haml:1
-msgid "Create Organization"
-msgstr ""
-
-#: app/views/organizations/new.html.haml:6
-msgid "Label"
-msgstr ""
-
-#: app/views/organizations/new.html.haml:15
-msgid "Create"
-msgstr ""
-
-#: app/views/organizations/new.html.haml:16
-msgid "Reset"
-msgstr ""
-
-#: app/views/organizations/index.html.haml:4 app/views/organizations/index.html.haml:10 config/navigation.rb:9
-msgid "Organizations"
-msgstr ""
-
-#: app/views/organizations/index.html.haml:7
-msgid "New Organization"
-msgstr ""
-
-#: app/views/layouts/_footer.haml:3
+#: app/views/layouts/_footer.haml:7
 msgid "Copyright &copy; "
 msgstr ""
 
-#: app/views/layouts/kalpana.haml:32
-msgid "Search"
+#: app/views/admin/organizations/_new.html.haml:18
+#: app/views/admin/users/_new.html.haml:24
+msgid "Create"
 msgstr ""
 
-#: app/views/layouts/kalpana.haml:35
-msgid "Advanced Search"
+#: app/views/admin/organizations/_new.html.haml:1
+msgid "Create Organization"
 msgstr ""
 
-#: config/navigation.rb:10
-msgid "Subscriptions"
+#: app/views/admin/users/_new.html.haml:1
+msgid "Create User"
 msgstr ""
 
-#: config/navigation.rb:15
-msgid "Details"
-msgstr ""
-
-#: config/navigation.rb:16
+#: app/views/subscriptions/index.html.haml:4 config/navigation.rb:12
+#: config/navigation.rb:27
 msgid "Current Subscriptions"
 msgstr ""
 
+#: config/navigation.rb:9
+msgid "Dashboard"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:45
+msgid "Dates"
+msgstr ""
+
+#: config/navigation.rb:19
+msgid "Details"
+msgstr ""
+
+#: app/views/admin/users/_edit.html.haml:5
+msgid "Edit User"
+msgstr ""
+
+#: app/controllers/application_controller.rb:56
+msgid "Error has occurred, unable to redirect to previous page."
+msgstr ""
+
+#: config/navigation.rb:33 config/navigation.rb:53
+msgid "Events"
+msgstr ""
+
+#: app/views/subscriptions/index.html.haml:19
+msgid "Expires"
+msgstr ""
+
+#: app/views/systems/_edit_facts.html.haml:18
+msgid "Fact"
+msgstr ""
+
+#: app/views/systems/_edit_facts.html.haml:17
+msgid "Group"
+msgstr ""
+
+#: app/helpers/application_helper.rb:16
+msgid "Headpin"
+msgstr ""
+
+#: app/views/activation_keys/_edit.html.haml:21
+msgid "ID"
+msgstr ""
+
+#: app/views/imports/index.html.haml:6
+msgid "Import Time"
+msgstr ""
+
+#: app/models/system.rb:39
+msgid "Invalid"
+msgstr ""
+
+#: app/views/admin/organizations/_new.html.haml:8
+msgid "Label"
+msgstr ""
+
+#: app/views/login/new.html.haml:5 app/views/login/new.html.haml:18
+msgid "Log In"
+msgstr ""
+
+#: app/controllers/login_controller.rb:30
+msgid "Login Successful"
+msgstr ""
+
+#: app/views/accounts/show.html.haml:6 app/views/layouts/_footer.haml:5
+#: app/views/layouts/_header.haml:19
+msgid "Logout"
+msgstr ""
+
+#: app/controllers/login_controller.rb:37
+msgid "Logout Successful"
+msgstr ""
+
+#: app/views/systems/_edit_events.html.haml:16
+#: app/views/imports/index.html.haml:4
+#: app/views/admin/organizations/_edit_events.html.haml:16
+msgid "Message"
+msgstr ""
+
+#: app/views/systems/_edit.html.haml:18
+#: app/views/activation_keys/_edit.html.haml:15
+#: app/views/activation_keys/_new.html.haml:6
+#: app/views/admin/organizations/_edit.html.haml:24
+#: app/views/admin/organizations/_new.html.haml:14
+msgid "Name"
+msgstr ""
+
+#: app/views/activation_keys/_new.html.haml:1
+msgid "New Activation Key"
+msgstr ""
+
+#: config/navigation.rb:13
+msgid "New Import"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:48
+msgid "Next Expiration Date"
+msgstr ""
+
+#: app/views/subscriptions/index.html.haml:7
+msgid "No Subscriptions Available"
+msgstr ""
+
+#: app/helpers/application_helper.rb:20
+msgid "Open Source Subscription Management"
+msgstr ""
+
+#: app/views/systems/_edit.html.haml:30
+msgid "Org"
+msgstr ""
+
+#: app/views/admin/organizations/index.html.haml:8 config/navigation.rb:47
+msgid "Organizations"
+msgstr ""
+
+#: app/views/admin/users/_new.html.haml:14
+msgid "Password"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:23
+msgid "Percentage"
+msgstr ""
+
+#: app/views/common/403.html.haml:1
+msgid "Permission denied"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:33
+msgid "Physical"
+msgstr ""
+
+#: app/views/common/403.html.haml:4
+msgid "Please request the required privileges from an administrator."
+msgstr ""
+
+#: app/views/subscriptions/index.html.haml:12
+msgid "Product"
+msgstr ""
+
+#: app/views/subscriptions/index.html.haml:13
+msgid "Quantity"
+msgstr ""
+
+#: app/views/imports/index.html.haml:1 config/navigation.rb:14
+msgid "Recent Imports"
+msgstr ""
+
+#: app/views/systems/_edit.html.haml:60
+msgid "Registered By"
+msgstr ""
+
+#: app/views/systems/_subscriptions.html.haml:28
+msgid "Remove"
+msgstr ""
+
+#: app/views/admin/users/_edit.html.haml:8
+msgid "Remove User"
+msgstr ""
+
+#: app/views/admin/organizations/_new.html.haml:19
+#: app/views/admin/users/_new.html.haml:25
+msgid "Reset"
+msgstr ""
+
+#: app/views/common/_edit_i18n.html.haml:3
+#: app/views/activation_keys/_new.html.haml:10
+#: app/views/admin/users/_edit.html.haml:32
+msgid "Save"
+msgstr ""
+
+#: app/views/common/_edit_i18n.html.haml:3
+msgid "Saving..."
+msgstr ""
+
+#: app/views/common/_panel.html.haml:29 app/views/common/_panel.html.haml:33
+msgid "Search"
+msgstr ""
+
+#: app/views/common/_panel.html.haml:12
+msgid "Select Result"
+msgstr ""
+
+#: app/views/systems/_edit.html.haml:42 app/views/systems/_edit.html.haml:48
+#: app/views/systems/_edit.html.haml:54 app/views/imports/index.html.haml:5
+msgid "Status"
+msgstr ""
+
+#: app/views/systems/_available_subscriptions.html.haml:34
+msgid "Subscribe"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:6
+#: app/views/admin/organizations/_edit.html.haml:18 config/navigation.rb:11
+msgid "Subscriptions"
+msgstr ""
+
+#: app/views/admin/users/_new.html.haml:20
+msgid "SuperAdmin"
+msgstr ""
+
+#: app/views/subscriptions/index.html.haml:16
+msgid "Support Level"
+msgstr ""
+
+#: app/views/systems/index.html.haml:10 app/views/dashboard/index.html.haml:30
 #: config/navigation.rb:17
-msgid "Available Subscriptions"
+msgid "Systems"
+msgstr ""
+
+#: app/controllers/admin/organizations_controller.rb:48
+msgid "There were errors creating the organization:"
+msgstr ""
+
+#: app/controllers/admin/users_controller.rb:42
+msgid "There were errors creating the user:"
+msgstr ""
+
+#: app/views/systems/_edit_events.html.haml:15
+#: app/views/admin/organizations/_edit_events.html.haml:15
+msgid "Time"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:16
+msgid "Total Consumed"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:9
+msgid "Total Subscription"
+msgstr ""
+
+#: app/views/subscriptions/index.html.haml:14
+msgid "Trend"
+msgstr ""
+
+#: app/views/systems/_edit.html.haml:36
+msgid "Type"
+msgstr ""
+
+#: app/views/systems/_edit.html.haml:24
+msgid "UUID"
+msgstr ""
+
+#: app/controllers/application_controller.rb:49
+msgid "Unable to connect to the Entitlement Server."
+msgstr ""
+
+#: app/models/system.rb:37
+msgid "Unknown"
+msgstr ""
+
+#: app/views/common/_edit_i18n.html.haml:3
+msgid "Upload"
+msgstr ""
+
+#: app/views/imports/new.html.haml:1
+msgid "Upload Subscription Manifest"
+msgstr ""
+
+#: app/views/common/_edit_i18n.html.haml:3
+msgid "Uploading"
+msgstr ""
+
+#: app/views/admin/users/_new.html.haml:8
+msgid "User"
+msgstr ""
+
+#: app/views/admin/users/_edit.html.haml:15
+msgid "Username"
+msgstr ""
+
+#: app/views/admin/users/index.html.haml:13 config/navigation.rb:58
+msgid "Users"
+msgstr ""
+
+#: app/models/system.rb:38
+msgid "Valid"
+msgstr ""
+
+#: app/views/common/_common_i18n.html.haml:3
+msgid "Validation Failed:"
+msgstr ""
+
+#: app/views/systems/_edit_facts.html.haml:19
+msgid "Value"
+msgstr ""
+
+#: app/views/dashboard/index.html.haml:39
+msgid "Virtual"
+msgstr ""
+
+#: app/controllers/application_controller.rb:150
+msgid "Welcome Back!"
+msgstr ""
+
+#: app/views/common/403.html.haml:3
+msgid "You are not authorised to perform this action."
+msgstr ""
+
+#: app/controllers/application_controller.rb:140
+msgid "You must be an administrator to access that page."
+msgstr ""
+
+#: app/controllers/application_controller.rb:120
+msgid "You must be logged in to access that page."
+msgstr ""
+
+#: app/controllers/login_controller.rb:42
+msgid ""
+"You've entered an incorrect username or password combination, please try "
+"again."
+msgstr ""
+
+#: app/views/activation_keys/index.html.haml:12
+msgid "activationKey"
+msgstr ""
+
+#: app/views/admin/organizations/index.html.haml:8
+msgid "organization"
+msgstr ""
+
+#: app/views/systems/index.html.haml:10
+msgid "system"
+msgstr ""
+
+#: app/views/admin/users/index.html.haml:13
+msgid "user"
 msgstr ""
